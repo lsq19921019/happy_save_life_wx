@@ -34,7 +34,9 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title || '9.9'
     })
-
+    that.setData({
+      title: options.title
+    });
     if (getCurrentPages().length < 2) {
       //从其他页面直接跳转过来的，如 分享,  模板消息
       that.setData({
@@ -253,8 +255,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
+    
+    let that = this;
+
     return {
-      path: 'pages/list/list?userId=' + app.globalData.user.unionidF
+      title: that.data.title,
+      // path: 'pages/list/list?userId=' + app.globalData.user.unionidF
+      path: '/pages/list/list?themeId=' + that.data.themeId + '&title=' + that.data.title
     }
   },
 

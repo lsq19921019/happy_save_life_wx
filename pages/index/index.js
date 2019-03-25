@@ -548,7 +548,7 @@ Page({
     let that = this;
     console.log(e.currentTarget.dataset.catid)
     wx.navigateTo({
-      url: '/pages/classify/classify?catid=' + e.currentTarget.dataset.catid,
+      url: '/pages/classify/classify?catid=' + e.currentTarget.dataset.catid+ "&title=" + e.currentTarget.dataset.catname,
     })
   },
 

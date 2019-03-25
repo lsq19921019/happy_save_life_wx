@@ -19,7 +19,7 @@ Page({
     _num: 0, //排序 默认综合
     arrange: 0, //商品显示样式
     catid:'',
-    
+    title:'',
     //分页功能
     goodslist: [], //商品例表
     page: 1, //页码
@@ -35,11 +35,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({ title: options.title });
     let that = this;
     console.log(options.catid)
     that.setData({
-      catid: options.catid
+      catid: options.catid,
+      title: options.title
     })
 
     that.getData(1, 0, that.data.catid, 1)
@@ -150,8 +151,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
     let that = this;
+    console.log(that.data.title);
+    wx.setNavigationBarTitle({ title: that.data.title });
     that.setData({
       role: wx.getStorageSync('userMsg').role, //角色代号 0粉丝   
     })
@@ -208,8 +211,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this;
+    console.log(that.data.catid);
     return {
-      path: 'pages/index/index?userId=' + app.globalData.user.unionidF
+      // path: 'pages/index/index?userId=' + app.globalData.user.unionidF
+      title: that.data.title,
+      path: '/pages/classify/classify?catid=' + that.data.catid +'&title=' + that.data.title
     }
   }
 })

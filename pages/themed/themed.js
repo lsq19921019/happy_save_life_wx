@@ -168,6 +168,7 @@ Page({
     let options = currentPage.options
     url = url + "?themeId=" + options.themeId+ "&title=" + options.title + "&userId=" + app.globalData.user.unionidF;
     return {
+      title: options.title,
       path: url
     }
   },
