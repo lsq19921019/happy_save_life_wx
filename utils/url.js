@@ -4,8 +4,8 @@
 
 //测试域名
 // let mainUrl = "https://minit.bnln100.com/"
-// let mainUrl = "https://pddmini.bainians.com/"
-let mainUrl = "https://pddmini.hzduomi.net/"
+let mainUrl = "https://pddmini.bainians.com/"
+// let mainUrl = "https://pddmini.hzduomi.net/"
 
 let weSelect = "https://mini.jzk100.com/";
 
