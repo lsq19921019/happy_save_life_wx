@@ -21,9 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.setNavigationBarTitle({
-      title: '邀请好友',
-    })
+    wx.setNavigationBarTitle({ 
+      title: '邀请好友', 
+    }) 
     console.log('haha');
     let that = this;
 
@@ -79,9 +79,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    wx.setNavigationBarTitle({
-      title: '邀请好友',
-    })
+    wx.setNavigationBarTitle({ 
+      title: '邀请好友', 
+    }) 
   },
 
   /**
@@ -142,24 +142,9 @@ Page({
             filePath: res.tempFilePath,
             success: function() {
               // wx.showToast({
-              //   // title: '分享图已全部保存',
-              //   title: '已保存到相册，快分享给好友吧',
+              //   title: '分享图已全部保存',
               //   icon: "success",
               //   duration: 3000
-              // })
-              // wx.showModal({
-              //   title: '提示',
-              //   content: '已保存到相册，快分享给好友吧',
-              //   success: (showRes) => {
-              //     if (!showRes.confirm) {
-              //       return;
-              //     }
-              //     wx.openSetting({
-              //       success: () => {
-
-              //       }
-              //     })
-              //   }
               // })
               wx.showToast({
                 title: '已保存到相册，快分享给好友吧',
