@@ -1,0 +1,179 @@
+<import src="../wxParse/wxParse.wxml" />
+
+
+
+<view class='page'>
+  <view class='navbox' wx:if="{{role!=0}}">
+    <view class="nav {{navindex==0?'active':''}}" bindtap='qiehuan' data-index='0'>每日精选</view>
+    <view class="nav {{navindex==1?'active':''}}" bindtap='qiehuan' data-index='1'>宣传素材</view>
+  </view>
+
+  <view class='banner' wx:if="{{navindex!=1&&bannerimg&&bannerimg!=''&&bannerimg!=null}}" bindtap='jump_h5' data-link='{{link}}'>
+   
+      <image src='{{bannerimg}}'></image>
+ 
+  </view>
+
+
+  <!-- <block wx:for="{{replyTemArray}}" wx:key="">
+  回复{{index}}:
+  <template is="wxParse" data="{{wxParseData:item}}" />
+</block> -->
+  <!-- <block wx:for="{{circlelist}}" wx:key="{{index}}"  wx:for="{{replyTemArray}}"> -->
+
+  <view class='circlewrap'>
+    <!-- 实际上你要循环的数据是circlelist wxpase有自己的规范 但是为了把列表里的文本全部渲染进列表  这里使用了一个蠢办法 -->
+    <!-- replyTemArray的长度实际上跟circlelist的长度是一样的-->
+    <!-- 需要转换的文字依旧使用 <template is="wxParse" data="{{wxParseData:item}}" />就行 -->
+    <!-- 其他的信息你可以根据   circlelist所在的索引引入  例如 {{circlelist[index].time}} 这样 -->
+    
+    <block wx:key="{{index}}" wx:for="{{replyTemArray}}">
+      <view class='circlelist'>
+        <!-- 头部区域 -->
+        <view class='top'>
+          <view class='left'>
+            <image src='{{logo}}'></image>
+          </view>
+
+          <view class='right'>
+            <view class='left'>
+              <p class='username'>{{title}}</p>
+              <p>{{circlelist[index].time}}前</p>
+            </view>
+
+            <block wx:if="{{navindex==0}}">
+              <view class='sharbtn' catchtap='godetail' data-goodsid='{{circlelist[index].goodsId}}' data-platform='{{circlelist[index].platform}}'>
+                <view class='center'>
+                  <image src='../../img/buycar.png'></image>
+                  <text>购买</text>
+                </view>
+              </view>
+            </block>
+
+            <block wx:if="{{navindex==1}}">
+              <view class='sharbtn1' catchtap="saveimgarr" data-imgarr='{{circlelist[index].array}}'>
+                <view class='center'>
+                  <image src='../../img/saveimg1.png'></image>
+                  <text>保存图片</text>
+                </view>
+              </view>
+            </block>
+
+          </view>
+        </view>
+
+        <view class='concent'>
+          <!-- 描述 -->
+          <view class='des' bind:longpress='copycon1' data-concent="{{circlelist[index].des}}">
+          <!-- <view class='des' data-concent="{{circlelist[index].des}}"> -->
+            <template is="wxParse" data="{{wxParseData:item}}" />
+          </view>
+
+          <!-- 图片 -->
+          <view class='img_wrap' catchtap="{{navindex==0?'godetail':'showbig'}}" data-goodsid='{{circlelist[index].goodsId}}' data-platform='{{circlelist[index].platform}}' data-imgarr='{{circlelist[index].array}}'>
+            <view class='img' wx:for="{{circlelist[index].array}}" wx:key="{{index}}">
+              <image src='{{item}}'></image>
+            </view>
+          </view>
+
+          <block wx:if="{{navindex==0}}">
+            <!-- 按钮区域-->
+            <view class='bottom'>
+              <view class='l_btn' wx:if="{{role==1}}">预计赚￥{{circlelist[index].tkCommission}}</view>
+              <view class='r_btn' bindtap="canvasFn" data-goodsinfo='{{circlelist[index]}}'>保存小程序码</view>
+            </view>
+
+            <view class='copyconcent'>
+              <text>【正确下单步骤：识别图中二维码→领取拼多多内部优惠券→下单购买】</text>
+
+              <view class='copy' bindtap='copycon' data-concent="【正确下单步骤：识别图中二维码→领取拼多多内部优惠券→下单购买】">复制评论</view>
+            </view>
+
+            <!-- <view class='bottom'>
+            <view class='copy' bindtap='copycon' data-concent="【正确下单步骤：识别图中二维码→领取拼多多内部优惠券→下单购买】">复制评论</view>
+          </view> -->
+
+          </block>
+        </view>
+      </view>
+    </block>
+
+
+
+
+
+    <!-- 第二种写法  目前没用 -->
+    <block wx:key="{{index}}" wx:for="{{replyTemArray}}" wx:if='{{false}}'>
+      <view class='circlelist'>
+        <!-- 头部区域 -->
+        <view class='top'>
+          <view class='left'>
+            <image src='{{logo}}'></image>
+          </view>
+
+          <view class='right'>
+            <view class='left'>
+              <p class='username'>{{title}}</p>
+              <p>{{item[0].reallist.time}}前</p>
+            </view>
+
+            <block wx:if="{{navindex==0}}">
+              <view class='sharbtn' catchtap='godetail' data-goodsid='{{item[0].reallist.goodsId}}' data-platform='{{item[0].reallist.platform}}'>
+                <view class='center'>
+                  <image src='../../img/buycar.png'></image>
+                  <text>购买</text>
+                </view>
+              </view>
+            </block>
+
+            <block wx:if="{{navindex==1}}">
+              <view class='sharbtn1' catchtap="canvasFn" data-goodsinfo='{{item[0].reallist}}'>
+                <view class='center'>
+                  <image src='../../img/saveimg1.png'></image>
+                  <text>保存图片</text>
+                </view>
+              </view>
+            </block>
+
+          </view>
+        </view>
+
+        <view class='concent'>
+          <!-- 描述 -->
+          <view class='des'>
+            <!-- <template is="wxParse" data="{{wxParseData:article1.nodes}}" /> -->
+            <template is="wxParse" data="{{wxParseData:item}}" />
+          </view>
+
+          <!-- 图片 -->
+          <view class='img_wrap' catchtap='godetail' data-goodsid='{{item[0].reallist.goodsId}}' data-platform='{{item[0].reallist.platform}}'>
+            <view class='img' wx:for="{{item[0].reallist.array}}" wx:key="{{index}}">
+              <image src='{{item}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+
+
+    <view class='loding-ico' wx:if="{{!nomore}}">
+      <block wx:if="{{showloding}}">
+        <image src="../../img/loading1.gif"></image>
+      </block>
+    </view>
+    <view class='nomore' wx:if="{{nomore}}">- -没有更多- -</view>
+
+    <!-- 分享图+转发好友 -->
+    <canvas style="width: 300px; height: 500px;position:fixed;left:-1000px;" canvas-id="myCanvas"></canvas>
+    <view class="imgMark" wx:if="{{hbImgBl}}">
+      <image src="{{hbImg}}" bindtap='previewImage'></image>
+      <view>这张商品优惠券已自动保存到手机相册</view>
+      <view class='text_t'>快快分享给好友吧</view>
+      <view class='bottom'>
+        <text class='text' bindtap='hideMark'>我知道了</text>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "团队",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "ec-canvas": "../../../ec-canvas/ec-canvas"
+  }
+}

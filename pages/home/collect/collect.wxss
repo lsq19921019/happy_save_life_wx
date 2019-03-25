@@ -1,0 +1,76 @@
+.navBar {
+  width: 100%;
+  height: 60rpx;
+  background-color: white;
+  font-size: 26rpx;
+  border-top: 1rpx solid #f0f0f0;
+  border-bottom: 4rpx solid #f0f0f0;
+}
+
+/* .fixed{
+position: fixed;
+left: 0;
+top: 0;
+} */
+
+
+.navBar .swiperScroll {
+  position: relative;
+  display: inline-block;
+  border-bottom: 4rpx solid transparent;
+  padding-bottom: 8rpx;
+  overflow: hidden;
+  width: 50%;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.navBar .navbar__slider {
+  width: 86rpx;
+  height: 4rpx;
+  background: #ed2d3c;
+  display: block;
+  content: " ";
+  transition: transform 0.2s;
+  position: absolute;
+  top: 55rpx;
+  left:144rpx;
+}
+
+.active {
+  color: #ed2d3c;
+}
+.scrollCntent{
+  background:#F5F5F5;
+}
+.scrollCntent  .list{
+  position:absolute;
+  top:0;
+  bottom:0;
+
+}
+.scrollCntent swiper{
+    height:1145rpx;
+}
+.scrollCntent .store .storeList{
+    height:140rpx;
+    width:100%;
+    line-height: 136rpx;
+    background:#fff;
+}
+.scrollCntent .store .storeList image{
+  margin:25rpx;
+  width:90rpx;
+  height:90rpx;
+  border-radius:50%;
+  float:left;
+} 
+.scrollCntent .store .storeList view{
+  margin-left:142rpx;
+  border-bottom:4rpx solid #f5f5f5;
+  font-size:30rpx;
+}
+
+.scrollCntent  .goodsbox {
+  margin-top: 0rpx;
+}

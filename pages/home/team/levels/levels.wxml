@@ -1,0 +1,85 @@
+<view class='levels'>
+  <!--头部背景  -->
+  <view class='userBg'>
+    <!-- <image src='../../../../img/lvbg.png'></image> -->
+    <view class='userInfo'>
+      <image class='head' src='{{headimg}}'></image>
+      <view class='userName'>
+        <view class='indeta'>
+          <view class='name'>{{name}}</view>
+          <view class='retime'>注册：{{createTime}}</view>
+        </view>
+        <view class='indeta'>
+          <view class='phone'>{{mobile}}</view>
+          <view class='uptime' wx:if="{{timeType}}">升级：{{upgradeTime}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='earn'>
+      <view class='earnItem'>
+        <view class='total'>累计消费</view>
+        <view class='num'>￥{{totalCousume}}</view>
+      </view>
+      <view class='earnItem'>
+        <view class='total'>累计节省</view>
+        <view class='num'>￥{{totalCheap}}</view>
+      </view>
+      <view class='earnItem'>
+        <view class='total'>累计收益</view>
+        <view class='num'>￥{{totalCommission}}</view>
+      </view>
+      <view class='earnItem'>
+        <view class='total'>累计订单</view>
+        <view class='num'>{{totalOrders}}</view>
+      </view>
+    </view>
+  </view>
+  <!--类型  -->
+  <view class='type'>
+    <view class='typeItem'>
+      <view class='item'>
+        <view class='genre'>直属粉丝</view>
+        <view class='num'>{{firstFans}}</view>
+      </view>
+      <view class='item'>
+        <view class='genre'>直属合伙人</view>
+        <view class='num'>{{firstProxys}}</view>
+      </view>
+    </view>
+    <view class='typeItem'>
+      <view class='item'>
+        <view class='genre'>团队粉丝</view>
+        <view class='num'>{{teamFans}}</view>
+      </view>
+      <view class='item'>
+        <view class='genre'>团队合伙人</view>
+        <view class='num'>{{teamProxys}}</view>
+      </view>
+    </view>
+  </view>
+  <!--消费  -->
+  <view class='mtype'>
+    <view class='typeItem'>
+      <view class='item'>
+        <view class='genre'>今日收益</view>
+        <view class='num'>￥{{statsInfo.estimate1}}</view>
+      </view>
+      <view class='item'>
+        <view class='genre'>昨日收益</view>
+        <view class='num'>￥{{statsInfo.estimate2}}</view>
+      </view>
+    </view>
+    <view class='typeItem'>
+      <view class='item'>
+        <view class='genre'>本月收益</view>
+        <view class='num'>￥{{statsInfo.estimateThisMon}}</view>
+      </view>
+      <view class='item'>
+        <view class='genre'>上月收益</view>
+        <view class='num'>￥{{statsInfo.estimatePreMon}}</view>
+      </view>
+    </view>
+  </view>
+  <!--挽回  -->
+  
+</view>

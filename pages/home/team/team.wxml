@@ -1,0 +1,287 @@
+<!-- <view class='teamType'>
+  <view class='teamList {{showTeam?"color":""}}' bindtap='team' data-index='1'>列表</view>
+  <view class='teamState {{!showTeam?"color":""}}' bindtap='team' data-index='2'>统计</view>
+</view> -->
+
+
+<view class="team">
+  <!-- 团队列表 -->
+  <view hidden='{{!showTeam}}' class="underTeam">
+    <view class="seekbg">
+      <view class="seekBox">
+        <input placeholder='查询昵称' value="{{nickName}}" bindinput="userInput" />
+        <view class="definite" bindtap="sendMsg">
+          <image src="../../../img/seekTeam.png" mode="widthFix" />
+        </view>
+      </view>
+      <!-- <view class='classify' bindtap='showSlide'>
+        <image src='../../../img/classF.png'/>
+      </view> -->
+      <!-- <view class='showAsk' bindtap='showAsk'>
+        <image src='../../../img/Wask.png'></image>
+      </view> -->
+      <view class="acting clearfloat">
+        <view class="bgBox {{opt==0?'teamActive':''}}" bindtap="seek" data-id="0">
+          <view>
+            <p>粉丝</p>
+            <p>{{countNormal}}人</p>
+          </view>
+        </view>
+        <view class="bgBox {{opt==1?'teamActive':''}}" bindtap="seek" data-id="1">
+          <view>
+            <p>合伙人</p>
+            <p>{{countProxy}}人</p>
+          </view>
+        </view>
+
+        <!-- <view class="bgBox {{opt==2?'teamActive':''}}" bindtap="seek" data-id="2" > -->
+        <view class="bgBox"  >
+          <p>邀请人</p>
+        </view>
+
+      </view>
+    </view>
+
+
+    <block wx:if="{{teamList=='none'}}"></block>
+    <block wx:elif="{{teamList.length>0}}">
+
+      <block wx:for="{{teamList}}" wx:key="*this">
+        <navigator url="/pages/home/team/levels/levels?point={{item.id}}&time={{item.createTime}}">
+          <view class="layer clearfloat">
+            <view class="avatar">
+              <image src="{{item.headImg==''?'../../../img/defaultAvatar.png':item.headImg}}" />
+            </view>
+            <view class="userName">
+              <p>{{item.wxNickName}}</p>
+              <p>{{item.roleName}}</p>
+              <p>{{item.createTime}}</p>
+            </view>
+            <view class="people">
+              <p>粉丝：{{item.fans}}人</p>
+              <p>合伙人：{{item.proxys}}人</p>
+            </view>
+            <view class="butState">
+  
+           
+              <view class="check binding" catchtap="copy" data-wx="{{item.wxAccount}}" data-id='{{item.imUserId}}' data-wxh='{{item.wxNickName}}'>
+                复制微信号
+              </view>
+
+
+              <!-- <navigator  wx:else  class="check"
+                      url="/pages/home/team/levels/levels?point={{item.id}}&time={{item.createTime}}">
+            查看详情
+          </navigator> -->
+
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </block>
+
+
+    <block wx:else="{{teamList.length==0}}">
+      <view class="none">
+        <image src="../../../img/TeamNone.png" />
+        <view>您还没有发展团队</view>
+        <button open-type="share" plain="true">前往邀请</button>
+      </view>
+    </block>
+    <!-- 加载图标 -->
+    <block wx:if="{{!noneData}}">
+      <view class="loading" hidden="{{floorstatus}}">
+        <image src="../../../img/loading1.gif"></image>
+      </view>
+    </block>
+    <!-- 没数据 -->
+    <!-- <view class="bottom" wx:if="{{noneData}}">----我是有底线的----</view> -->
+  </view>
+
+
+
+
+<!-- 不要的功能11111111111111111111111111111111111111111111111111111111111111111111111 -->
+  <!--团队分析  -->
+  <view hidden='{{showTeam}}' class='teamBox'>
+    <view wx:if='{{teamState.firsts!=0}}'>
+      <view class='distribution'>
+        <view class='TeamCan'>
+          <view class='distribute'>合伙人分布：(单位/人)</view>
+          <view class='box'>
+            <block wx:for="{{levelStateList}}" wx:key='1'>
+              <view style='height:{{item.scale==0?1:item.scale}}%' class='bar' bindtap='sendLevel' data-level='{{index}}' data-name='{{item.name}}' data-nums='{{item.nums}}'>
+                <view class='top'>
+                  <view class='baifen'>{{item.scale}}% </view>
+                  <view class=''>{{item.nums}}</view>
+                </view>
+                <view class='level'>{{item.name}}</view>
+              </view>
+            </block>
+            <view class='{{barline[0]}}'></view>
+          </view>
+          <!-- 文案位置  -->
+          <view class='levIns' bindtap='showAsk'>
+            <image src='../../../img/levIns.png'></image>
+          </view>
+        </view>
+      </view>
+      <!--粉丝 新贵  -->
+      <view class='TeamType'>
+        <view class="teamState {{_num==1?'select':''}}" data-style="1" bindtap='sendNetwork'>粉丝</view>
+        <view class="teamList {{_num==2?'select':''}}" data-style="2" bindtap='sendNetwork'>新贵</view>
+      </view>
+      <!--粉丝  -->
+      <block wx:if="{{showChange}}">
+        <view class='today'>
+          <view class='headTb'>
+            <view class='earnings'>
+              <text class='pre'>今日新增</text>
+              <text class='prenum'>{{teamState.totayFans}}</text>
+            </view>
+            <view class='earnings'>
+              <text class='pre'>当前</text>
+              <text class='prenum'>{{teamState.totalFans}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!--新贵  -->
+      <block wx:else>
+        <view class='today'>
+          <view class='headTb'>
+            <view class='earnings'>
+              <text class='pre'>今日新增</text>
+              <text class='prenum'>{{teamState.totayProxy}}</text>
+            </view>
+            <view class='earnings'>
+              <text class='pre'>当前</text>
+              <text class='prenum'>{{teamState.totalProxy}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!--直属 团队  扇形-->
+      <view class='fanshaped'>
+        <view class='shaped'>
+          <text class='shapedTitle'>直属用户与团队用户：</text>
+          <view class='pie {{getNum}}  {{barline[1]}}'>
+            <view class='coverAllNum {{barline[2]}}'>
+              <view class='Size5'>总数</view>{{teamsNum}}
+            </view>
+          </view>
+          <ec-canvas style='width:400px;height:300px;' id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ otherChart }}"></ec-canvas>
+        </view>
+      </view>
+
+    </view>
+    <view wx:elif="{{teamState.firsts==0}}" class="none">
+      <image src="../../../img/TeamNone.png" />
+      <view>您还没有发展团队</view>
+      <button open-type="share" plain="true">前往邀请</button>
+    </view>
+  </view>
+
+
+  <!-- 回到首页 -->
+  <navigator url="/pages/index/index" open-type="switchTab" class="goIndex" wx:if="{{scene}}">
+    <image class="cicon" src="../../../img/backIndex.png"></image>
+    <p>首页</p>
+  </navigator>
+
+
+
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" hidden="{{floorstatus}}"></view>
+</view>
+
+
+
+<!--侧边栏  -->
+<view class='aslide' hidden="{{showSlide}}" bindtap='hideSlide'></view>
+<view class='slide' style="transform:translateX({{sliderOffset}}px);">
+  <view class='headTop'>
+    筛选
+  </view>
+  <!--来源  -->
+  <view class='source'>
+    <block wx:for="{{ranking}}" wx:key="{{key}}">
+      <view class='sourceItem {{item.state==1?"mouthItemBg":""}}' bindtap='change' data-item="{{item.grading}}" data-num='{{index}}'>{{item.grading}} </view>
+    </block>
+  </view>
+  <!--选择时间段  -->
+  <view class='times'>
+    <text style='padding-left:20rpx;display:block'>当前时间：</text>
+    <view class='date mouthItemBg'>
+      2018年
+    </view>
+  </view>
+  <!--月份  -->
+  <view class='mouth'>
+    <block wx:for="{{mouthList}}" wx:key="{{key}}">
+      <view class='mouthItem {{item.state==1?"mouthItemBg":""}}' bindtap='addBg' data-item="{{item.month}}" data-add='{{index}}'>
+        {{item.month}}月
+      </view>
+    </block>
+  </view>
+  <!--按钮  -->
+  <view class='btn'>
+    <view class='btnImg' bindtap='reset'>
+      <image src='../../../img/reset.png'></image>
+      <text class='funBtn'>重置</text>
+    </view>
+    <view class='btnImg' bindtap='confirm'>
+      <image src='../../../img/confirm.png'></image>
+      <text class='funBtn'>确定</text>
+    </view>
+  </view>
+</view>
+
+
+
+<!--文案弹窗  -->
+<view class=' withdraw' wx:if='{{showAsk}}'>
+  <view class='drawType'>
+    <view class='drawHead'>
+      团队说明
+    </view>
+    <view class='sysType'>
+      <view class='system'>
+        1、城市合伙人名下的所有用户可通过点击团队列表中的“城市合伙人”查看【城市合伙人】设置的信息并通过二维码添加城市合伙人为微信好友。
+      </view>
+      <view class='system'>
+        2、上级可以通过直属名下用户设置好的微信二维码进行添加为微信好友。
+      </view>
+      <view class='system'>
+        3、总结为：城市合伙人名下所有用户可以主动添加其为微信好友但不能主动添加直属上级为微信好友,但上级可主动添加下级为微信好友。
+      </view>
+      <view class='iknow' bindtap='showAsk' wx:if='{{showAsk}}'>
+        朕知道了
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!--加好友提示框  -->
+<view class='getFriend' wx:if='{{shoeGf}}'>
+  <view class='friendCon'>
+    <view class='remind'>提醒</view>
+    <view class='content' wx:if="{{!Gf}}">推送给"{{sendName}}"的服务消息中，会带上您的个人的微信二维码以方便让"{{sendName}}"能顺利加您为好友</view>
+    <view class='content' wx:else>已发送消息通知"{{sendName}}",是否 需要再发送一条微信消息?</view>
+    <view class='btnFriend'>
+      <block wx:if="{{!Gf}}">
+        <view class='item' bindtap='closeRej'>拒绝加好友</view>
+        <navigator class='item reject' url='/pages/home/setup/setupInfo/setupInfo'> 去完善</navigator>
+      </block>
+      <block wx:else>
+        <view class='item' bindtap='closeRej'>拒绝</view>
+        <button open-type="share" plain="true" class='item'>需要</button>
+      </block>
+    </view>
+  </view>
+</view>
+<view class='goHome' bindtap='toHome' wx:if="{{ifRootPage}}">
+ <image src='../../../img/return.png'></image>
+</view>

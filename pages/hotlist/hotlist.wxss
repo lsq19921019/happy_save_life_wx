@@ -1,0 +1,29 @@
+/* pages/hotlist/hotlist.wxss */
+
+
+.banner {
+  width: 750rpx;
+  height: 260rpx;
+}
+
+.tap {
+  width: 750rpx;
+  height: 90rpx;
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 20rpx;
+}
+
+.tap view {
+  flex: 1;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: FZLTHK--GBK1-0;
+}
+
+.tap view.active {
+  color: rgba(255, 43, 51, 1);
+  font-weight:bold;
+}

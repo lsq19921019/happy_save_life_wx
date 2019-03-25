@@ -1,0 +1,10 @@
+<!--package/pages/course/course.wxml-->
+
+<view class='page'>
+  <view class='banner'>
+    <image src='https://bnlnimg.bnln100.com/course_banner.png' mode='widthFix'></image>
+  </view>
+  <view class='concent'>
+    <image src='https://bnlnimg.bnln100.com/course_bg.png' mode='widthFix'></image>
+  </view>
+</view>

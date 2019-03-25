@@ -1,0 +1,327 @@
+<!-- <view class="details" wx:if="{{goodsInfo!='none'}}"> -->
+<!-- 是否下架 -->
+<!-- <view class="details" wx:if="{{!isshelves}}"> -->
+
+
+
+
+
+<view class="details" wx:if="{{goodsInfo!='none'}}">
+  <block wx:if='{{!result}}'>
+
+    <!-- 轮播图 -->
+    <swiper class="swiper" autoplay="true" interval="3000" duration="700" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" indicator-active-color="#fff" circular="true" wx:if="{{bannerImg.length!=0}}" bindtap="previewImage">
+      <block wx:for="{{goodsInfo.goodsGalleryUrls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!--用户购买信息  -->
+    <view wx:if="{{sm}}" class='userBuy'>
+      <image class='buyImg' src='{{showMsg.headImg}}'></image>
+      <view class='buyName'>{{showMsg.content}}</view>
+    </view>
+
+    <!--是否收藏  -->
+
+
+    <!--商品信息 -->
+    <view class="goods_info">
+
+      <view class="info">
+
+        <view class='pricebox'>
+          <view class='pricequ'>
+            <text class='endPrice'><text>￥</text> {{goodsInfo.endPrice}}</text>
+            <text class='beforePrice'>原价:￥{{goodsInfo.price}}</text>
+          </view>
+          <view class='sale'>{{goodsInfo.sales}}人己买</view>
+        </view>
+
+        <!-- <view class="store" bindtap="delStore" wx:if="{{collect==true}}">
+      <span class="pt"></span>
+      己收藏
+    </view> -->
+
+        <!-- <view class="store" bindtap="addStore" wx:if="{{collect==false}}">
+      <span></span>
+      收藏
+    </view> -->
+
+        <view class='goodsbox'>
+          <view class="title">
+            {{goodsInfo.goodsName}}
+          </view>
+          <block wx:if="{{collect==true}}">
+            <view class='iscollection' bindtap="delStore" bindtap="delStore">
+              <image class='colico' src='https://bnlnimg.bnln100.com/detail_yescol.png'></image>
+              己收藏
+            </view>
+          </block>
+          <block wx:if="{{collect==false}}">
+            <view class='iscollection' bindtap="delStore" bindtap="addStore">
+              <image class='colico' src='https://bnlnimg.bnln100.com/detail_nocol.png'></image>
+              收藏
+            </view>
+          </block>
+        </view>
+
+        <view class='describe tworow'>
+          {{goodsInfo.goodsDesc}}
+        </view>
+
+        <!-- 优惠券区域 -->
+        <view class='disTicket' wx:if="{{goodsInfo.couponMoney>0}}">
+          <navigator class='now' target="miniProgram" hover-class="none" open-type="navigate" app-id="{{jupappid}}" path="{{path}}" extra-data='{{wxExtraData}}' version="release">
+            <view class='yuan'>{{goodsInfo.couponMoney}}元优惠券</view>
+            <view class='time'>
+              <p>使用期限</p>
+              <p>{{goodsInfo.couponEndTime}}</p>
+            </view>
+          </navigator>
+        </view>
+      </view>
+
+      <view class='servenav' bindtap='isCheck'>
+        <view class='left'>
+          <block wx:for="{{serviceList}}">
+            <view class='senav'>
+              <image class='ico' src='https://bnlnimg.bnln100.com/detail_gou.png'></image>
+              <text>{{item.type}}</text>
+            </view>
+          </block>
+        </view>
+        <view class='row'>
+          <image src='https://bnlnimg.bnln100.com/detail_row.png'></image>
+        </view>
+      </view>
+
+
+      <!--服务说明弹框  -->
+      <view class='server' wx-if="{{isCheck!=false}}">
+        <view class='servarBox'>
+          <view class='serverHead'>
+            服务说明
+            <text class='uncheck' bindtap='isCheck'></text>
+          </view>
+
+          <!-- <scroll-view class='serverDetails clearfloat' scroll-y='true'>
+           <block wx:for="{{serviceList}}">
+              <view class='serverList'>
+                <view class='serverPng'>
+                  <image src='https://bnlnimg.bnln100.com/detail_gou.png'></image>
+                </view>
+
+                <view class='serverInfo'>
+                  <text class='package'>{{item.type}}</text>
+                  <text class='packageAll'>{{item.des}}</text>
+                </view>
+              </view>
+            </block>
+          </scroll-view> -->
+
+          <view class='serverDetails clearfloat'>
+            <block wx:for="{{serviceList}}">
+              <view class='serverList'>
+                <view class='serverPng'>
+                  <image src='https://bnlnimg.bnln100.com/detail_gou.png'></image>
+                </view>
+
+                <view class='serverInfo'>
+                  <text class='package'>{{item.type}}</text>
+                  <text class='packageAll'>{{item.des}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <!--服务说明结束   -->
+
+
+      <!--推荐词  -->
+      <!-- <view class="recom clearfloat" wx:if="{{goodsInfo.goodsDesc!=''&&goodsInfo.goodsDesc}}">
+        <span>推荐词</span>
+        <span style='width:85%;text-align: justify;overflow:hidden'>{{goodsInfo.goodsDesc}}</span>
+      </view> -->
+    </view>
+
+
+    <!--店铺  -->
+    <!-- /package/pages/shop/shop?mallId={{goodsInfo.mallId}}&platform={{platform}}&shopname={{goodsInfo.mallName}}" -->
+    <view class='storequ' bindtap='gostore' data-mallid='{{goodsInfo.mallId}}' data-platform='{{platform}}' data-shopname="{{goodsInfo.mallName}}">
+      <view class='top'>
+        <view class='left'>
+          <image src='{{mallBean.mallImg}}'></image>
+        </view>
+        <view class='right'>
+          <view class='nameinfo'>
+            <view class='name'>{{mallBean.mallName}}</view>
+            <view class='count'>
+              <text>商品数量 {{mallBean.goodsNun}}</text>
+              <text>已拼 {{mallBean.sales}}件</text>
+            </view>
+          </view>
+
+          <view class='btn'>进店逛逛</view>
+        </view>
+      </view>
+
+      <view class='statisticalbox' wx:if="{{mallBean.ifHaveDes==1}}">
+        <view class='xbox'>
+          <text class='xname'>描述相符</text>
+          <text class='score'>{{mallBean.avgDesc}}</text>
+          <view class='scoreimg' style="{{mallBean.avgDescS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallBean.avgDescS}}</view>
+        </view>
+        <view class='xbox'>
+          <text class='xname'>卖家服务</text>
+          <text class='score'>{{mallBean.avgServ}}</text>
+          <view class='scoreimg' style="{{mallBean.avgServS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallBean.avgServS}}</view>
+        </view>
+        <view class='xbox'>
+          <text class='xname'>物流服务</text>
+          <text class='score'>{{mallBean.avgLgst}}</text>
+          <view class='scoreimg' style="{{mallBean.avgLgstS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallBean.avgLgstS}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!--图文详情 -->
+    <view class='imginfo'>
+      <view class='toptittle'>
+        <view class='tittlename'>图文详情</view>
+        <!-- <view class='raw'>
+          <image src='{{arrowimg}}'></image>
+        </view> -->
+      </view>
+      <view class='imgbox'>
+        <image class='img' wx:for="{{imginfolist}}" wx:key="index" src='{{item}}' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view style="height:110rpx;"></view>
+    <view class='bonFixed'>
+      <view class='left'>
+        <view class='indexH' bindtap="index">
+          <view class='indexHImg'>
+            <image src='https://bnlnimg.bnln100.com/detail_index.png'></image>
+          </view>
+          <view class='indexHkFont'>
+            首页
+          </view>
+        </view>
+
+        <block wx:if="{{role==1}}">
+          <view class='indexH' bindtap="canvasFn">
+            <view class='indexHImg'>
+              <image src='https://bnlnimg.bnln100.com/detail_more.png'></image>
+            </view>
+            <view class='indexHkFont'>
+              更多
+            </view>
+          </view>
+        </block>
+
+        <block wx:else>
+          <view class='indexH' bindtap="canvasFn">
+            <view class='indexHImg'>
+              <image src='https://bnlnimg.bnln100.com/detail_share.png'></image>
+            </view>
+            <view class='indexHkFont'>
+              分享商品
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <block wx:if="{{role==1}}">
+        <view class="shareBottom">
+          <view class="shareApp">
+            <navigator class='newShare newShare1' target="miniProgram" hover-class="none" open-type="navigate" app-id="{{jupappid}}" path="{{path}}" extra-data='{{wxExtraData}}' version="release">
+              <p>券后￥{{goodsInfo.endPrice}}</p>
+              <p> 购买再返￥{{goodsInfo.commission}} </p>
+            </navigator>
+
+            <view class='newShare newShare2' wx:if="{{role!=0}}">
+              <button class='btnShare' style="padding:0;border:none" open-type="share" plain="true">
+                分享赚{{goodsInfo.commission}}元
+              </button>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class='sharebtna'>
+          <navigator class='newShare newShare1' target="miniProgram" hover-class="none" open-type="navigate" app-id="{{jupappid}}" path="{{path}}" extra-data='{{wxExtraData}}' version="release">
+            <button>券后价：￥{{goodsInfo.endPrice}}</button>
+          </navigator>
+        </view>
+      </block>
+    </view>
+
+  </block>
+
+
+
+
+
+
+  <!-- 商品被抢完时显示 -->
+  <block wx:else>
+    <block wx:if="{{!showGuess}}">
+      <view class='detailsNone'>
+        <view class='outLoadImg'>
+          <image src='../../../img/outLoad.png'></image>
+        </view>
+        <view class='outLoadInfo'>该商品已被抢完，看看其他商品吧</view>
+
+        <view class='backhome' bindtap="index">回到首页</view>
+      </view>
+    </block>
+
+
+    <block wx:else>
+      <view class='showGuess'>
+        <view class='showImg'>
+          <image src='../../img/outLoad.png'></image>
+        </view>
+        <view class='showInfo'>该商品已被抢完，看看其他商品吧</view>
+        <view class='backhome' bindtap="index">回到首页</view>
+      </view>
+      <view class='guess'>
+        <image src='../../../img/guess.png'></image>
+      </view>
+      <block wx:for="{{goodsList}}" wx:key="*this">
+        <template is="glModel" data="{{item,mode,role,ifNeedCut:sysData.ifNeedCut}}"></template>
+      </block>
+    </block>
+  </block>
+
+  <!-- 分享图+转发好友 -->
+  <canvas style="width: 300px; height: 500px;position:fixed;left:-1000px;" canvas-id="myCanvas"></canvas>
+
+  <view class="imgMark" wx:if="{{hbImgBl}}">
+    <image src="{{hbImg}}" bindtap='previewImage'></image>
+    <view>这张商品优惠券已自动保存到手机相册</view>
+    <view class='text_t'>快快分享给好友吧</view>
+    <view class='bottom'>
+      <!-- <button bindtap='copy'>复制微口令</button> -->
+      <text class='text' bindtap='hideMark'>我知道了</text>
+    </view>
+  </view>
+
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" hidden="{{isShow}}"></view>
+
+  <canvas style="width: 400px; height: 320px;position:fixed;left:-1000px;" canvas-id="shareCanvas"></canvas>
+
+  <!-- position:fixed;left:-1000px; -->
+
+</view>
+
+<view class='goHome' bindtap='toHome' wx:if="{{ifRootPage}}">
+ <image src='../../img/return.png'></image>
+</view>

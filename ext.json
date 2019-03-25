@@ -1,0 +1,19 @@
+{
+  "extEnable": true,
+  "extAppid": "wx180667792a4578db",
+  "directCommit": false,
+  "ext": {
+    "extAppid": "wx180667792a4578db",
+    "appSecret": "a4e16ebf3b9e146c3af705fbd7cc6c49",
+    "partnerId": 1,
+    "title": "乐省生活",
+    "ins": "网购，省钱又赚钱。",
+    "headImg": "http://wx.qlogo.cn/mmopen/Q3auHgzwzM6sLMdPaD6nM3JdrYP5nKEQr27V2MXYxZ5aibkN7A5pxlCnXic1LibycLK7dEmUdMyXnGvM9GwG9Qu2Sutsjib7q1adRKEbxTuiaxdA/0"
+  },
+
+  "navigateToMiniProgramAppIdList": [
+    "wx32540bd863b27570",
+    "wx13e41a437b8a1d2e",
+    "wxca3957e5474b3670"
+  ]
+}

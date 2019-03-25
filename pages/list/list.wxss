@@ -1,0 +1,13 @@
+
+.banner{
+  width: 750rpx;
+  height: 300rpx;
+}
+.goHome image{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 20rpx;
+  top: 80%;
+  /* background: #000; */
+}

@@ -1,0 +1,62 @@
+<view class="underTeam">
+  <view class="seekbg">
+    <view class="seekBox">
+      <input placeholder='查询昵称' value="{{nickName}}" bindinput="userInput" />
+      <view class="definite" bindtap="sendMsg">
+        <image src="../../../../img/seekTeam.png" mode="widthFix" />
+      </view>
+    </view>
+    <!-- <view class='classify' bindtap='showSlide'>
+        <image src='../../../../img/classF.png'></image>
+      </view> -->
+    <view class="acting clearfloat">
+      <view class="bgBox {{opt==0?'teamActive':''}}" bindtap="seek" data-id="0">
+        <view>
+          <p>直属</p>
+          <p>{{firstNums}}人</p>
+        </view>
+      </view>
+      <view class="bgBox {{opt==1?'teamActive':''}}" bindtap="seek" data-id="1">
+        <view>
+          <p>团队</p>
+          <p>{{nums}}人</p>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{teamData.list=='none'}}"></block>
+  <block wx:elif="{{teamData.list.length>0}}">
+    <view class="layer clearfloat" wx:for="{{teamData.list}}" wx:key="*this">
+      <view class="avatar">
+        <image src="{{item.headImg==''?'../../../../img/defaultAvatar.png':item.headImg}}" />
+      </view>
+      <view class="userName">
+        <p>{{item.wxNickName}}</p>
+        <p>{{item.roleName}}</p>
+        <p>{{item.createTime}}</p>
+      </view>
+      <view class="people">
+        <p>粉丝：{{item.fans}}人</p>
+        <p>合伙人：{{item.proxys}}人</p>
+      </view>
+      <navigator wx:if="{{opt==0}}" url="/pages/home/team/levels/levels?point={{item.id}}&time={{item.createTime}}" class="joinFirend">
+        查看详情
+      </navigator>
+    </view>
+  </block>
+  <block wx:else="{{teamList.length==0}}">
+    <view class="none">
+      <image src="../../../../img/TeamNone.png" />
+      <view>您还没有发展团队</view>
+      <button open-type="share" plain="true">前往邀请</button>
+    </view>
+  </block>
+  <!-- 加载图标 -->
+  <block wx:if="{{!noneData}}">
+    <view class="loading" hidden="{{floorstatus}}">
+      <image src="../../../../img/loading1.gif"></image>
+    </view>
+  </block>
+  <!-- 没数据 -->
+  <view class="bottom" wx:if="{{noneData}}">----我是有底线的----</view>
+</view>

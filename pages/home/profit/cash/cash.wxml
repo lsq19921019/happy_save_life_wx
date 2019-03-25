@@ -1,0 +1,39 @@
+<view class="cash">
+  <view class="cash-msg">
+    <block wx:if='{{!AliAccount}}'>
+      <view class="inputWx">
+        <text>到帐支付宝：</text>
+        <input bindblur="amountInput" placeholder-class="point" placeholder="请输入的支付宝账号" />
+      </view>
+    </block>
+    <block wx:if='{{AliAccount}}'>
+      <view class="inputWx">
+        <text>到帐支付宝：</text>
+        <input bindblur="amountInput" placeholder-class="point" value='{{AliAccount}}' placeholder="请输入的支付宝账号" />
+        <view class='amend' bindtap='Getali'>修改</view>
+      </view>
+
+    </block>
+    <view class="inputMoney">
+      <text>提现金额：</text>
+      <view>
+        <text>￥</text>
+        <input bindinput="amountInput" type="digit" placeholder-class="point" placeholder="请输入金额" />
+      </view>
+    </view>
+    <view class="money" >可提现:￥{{wallet}}</view>
+  </view>
+
+  <view class="sumbit-buttom">
+    <view bindtap='button'>提现</view>
+    <p>请注意查看支付宝—我的—余额—明细</p>
+  </view>
+</view>
+<view class='withdrawal' wx:if="{{withdrawal}}">
+  <icon class='icon' type='success' size='120'></icon>
+  <text class='success'>提现申请成功</text>
+  <text class='attenction'>将在24小时内收到款项,请留意支付宝</text>
+   <view class='confirm' bindtap='getback'>
+     谢主隆恩
+   </view>
+</view>

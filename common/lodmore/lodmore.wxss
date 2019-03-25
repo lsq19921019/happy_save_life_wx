@@ -1,0 +1,25 @@
+image{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* 分页加载图标以及没有数据提示 */
+
+.loding-ico {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+
+.loding-ico image {
+  width: 100%;
+  height: 100%;
+}
+
+.nomore {
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 100rpx;
+}

@@ -1,0 +1,118 @@
+page {
+}
+
+.pagetop {
+  background: #fff;
+}
+
+.imgbox {
+  width: 100%;
+  height: 140rpx;
+  background: #ff2b33;
+  position: relative;
+  /* border-radius: 0 0 1750rpx 1750rpx; */
+}
+
+.imgbox .img {
+  width: 103rpx;
+  height: 103rpx;
+  background: rgba(221, 221, 221, 1);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -51rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow: hidden;
+}
+
+.storeinfo {
+  text-align: center;
+  margin-top: 52rpx;
+  padding: 20rpx 0;
+}
+
+.stname {
+  font-size: 32rpx;
+  color: rgba(1, 1, 1, 1);
+  margin: 20rpx 0;
+}
+
+.databox {
+  width: 300rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  color: #999;
+  font-size: 22rpx;
+  margin-bottom: 20rpx;
+}
+
+.statisticalbox {
+  width: 700rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.xbox {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.xbox .xname {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.xbox .score {
+  font-size: 20rpx;
+  color: rgba(1, 1, 1, 1);
+  margin: 0 10rpx;
+}
+
+.xbox .scoreimg {
+  width: 24rpx;
+  height: 24rpx;
+  font-size: 18rpx;
+  color: #fff;
+  line-height: 22rpx;
+  text-align: center;
+}
+
+.searchbox {
+  padding: 0 30rpx 0 20rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  width: 600rpx;
+  height: 60rpx;
+  background: rgba(246, 245, 245, 1);
+  border-radius: 30rpx;
+  overflow: hidden;
+  padding-left: 20rpx;
+}
+
+.input input {
+  height: 100%;
+  text-align: left;
+  /* background: pink; */
+}
+
+.searico {
+  width: 30rpx;
+  height: 30rpx;
+  background: url('https://bnlnimg.bnln100.com/store_searchico.png') no-repeat center center;
+  background-size: 30rpx 30rpx;
+  margin-right: 20rpx;
+}

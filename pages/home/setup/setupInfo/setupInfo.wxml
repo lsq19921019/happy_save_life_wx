@@ -1,0 +1,45 @@
+<view class="lnfo">
+  <view class="content">
+    <textarea placeholder="个人说明" value="{{sendMsg}}" placeholder-style="color:#c2c2c2;" bindinput="inputMsg" maxlength="200">
+      <text>{{sendMsgLength}}/200</text>
+    </textarea>
+    <view class="qrCode clearfloat">
+      <image class="qrcode-img" bindtap="getPicture" src="{{uploadImg}}"></image>
+      <view class="qrcode-button" >
+        {{uploadImgIsbool}}
+        <!-- <p bindtap="getPicture">上传二维码</p> -->
+        <!-- <p style="background:#ed2d3c" bindtap="deleteCode" wx:if="{{uploadImgIsbool}}">删除二维码</p> -->
+        <!-- <p wx:elif="{{!uploadImgIsbool}}">删除二维码</p> -->
+      </view>
+      <!-- 问号 -->
+      <!-- <image class="ask-img" src="../../../../img/ask.png" bindtap="isJumpBox" /> -->
+    </view>
+  </view>
+  <view class='uploadQr' bindtap="isJumpBox">点击查看说明</view>
+  <view class="submit-buttom" bindtap="submit">
+    提交
+  </view>
+  <!-- 弹框 -->
+  <view class="jump-box" wx:if="{{jumpBox}}">
+    <view class="content-box">
+      <p>上传二维码说明</p>
+      <ul>
+        <li class="write">
+          <p>1、为什么要上传微信二维码</p>
+          为让名下用户更方便加你的微信与你进一步沟通，请正确上传你的微信二维码！如未上传微信二维码的则会显示官方的微信二维码
+        </li>
+        <li class="write">
+          <p>2、在哪里呈现我的微信二维码</p>
+          在个人中心,团队,如是城市合伙人，还会显示在其名下团队 页面的城市合伙人中。
+        </li>
+        <li class="write">
+          <p>3、如何正确上传微信二维码</p>
+          【我】-【个人信息】-【我的二维码】-右上角【保存图片】， 请把保存好的微信二维码图片上传即可。
+        </li>
+      </ul>
+      <view class="know" bindtap="isJumpBox">
+        我知道了
+      </view>
+    </view>
+  </view>
+</view>

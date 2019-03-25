@@ -1,0 +1,19 @@
+<!--pages/classify/classify.wxml-->
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+<import src="../../common/rank/rank.wxml" />
+
+
+<view class="page">
+
+  <!-- 排序 -->
+  <template is="rank" data="{{_num,arrange}}"></template>
+
+  <!-- 商品列表模板 -->
+  <view class='goodswrap'>
+    <template is="goodsList" data="{{goodslist,arrange,role}}"></template>
+  </view>
+  
+  <!-- 没有更多模板 -->
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+</view>

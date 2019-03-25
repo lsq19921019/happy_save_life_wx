@@ -1,0 +1,65 @@
+<import src="../../../utils/common.wxml" />
+
+<import src="../../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+<import src="../../common/rank/rank.wxml" />
+
+<view class='page'>
+  <view class='pagetop'>
+    <view class='imgbox'>
+      <view class='img' >
+      <image src="{{mallDetail.mallImg}}"></image></view>
+    </view>
+    <view class='storeinfo'>
+      <p class='stname'>{{mallDetail.mallName}}</p>
+      <view class='databox'>
+        <text>商品数量 {{mallDetail.goodsNun}}</text>
+        <text>{{mallDetail.salesTip}}</text>
+      </view>
+
+
+      <view class='statisticalbox' wx:if="{{mallDetail.ifHaveDes==1}}">
+        <view class='xbox' >
+          <text class='xname'>描述相符</text>
+          <text class='score'>{{mallDetail.avgDesc}}</text>
+           <view class='scoreimg' style="{{mallDetail.avgDescS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallDetail.avgDescS}}</view>
+        </view>
+        <view class='xbox'>
+          <text class='xname'>卖家服务</text>
+          <text class='score'>{{mallDetail.avgServ}}</text>
+           <view class='scoreimg' style="{{mallDetail.avgServS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallDetail.avgServS}}</view>
+        </view>
+        <view class='xbox'>
+          <text class='xname'>物流服务</text>
+          <text class='score'>{{mallDetail.avgLgst}}</text>
+           <view class='scoreimg' style="{{mallDetail.avgLgstS=='低'?'background: #1FAE3A':'background: #FF242D'}}">{{mallDetail.avgLgstS}}</view>
+        </view>
+      </view>
+
+      <view class='searchbox'>
+        <view class='input'>
+          <input placeholder='搜索店内商品' bindinput="bindBlur" bindconfirm="sendSeek"></input>
+        </view>
+        <view class='searico' bindtap="sendSeek"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排序 -->
+  <template is="rank" data="{{_num,arrange}}"></template>
+
+
+
+  <!-- 商品列表模板 -->
+  <view class='goodswrap'>
+    <template is="goodsList" data="{{goodslist,arrange,role}}"></template>
+  </view>
+
+
+  <!-- 没有更多模板 -->
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+
+
+
+  <!-- </view> -->
+</view>

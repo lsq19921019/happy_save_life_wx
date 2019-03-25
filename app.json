@@ -1,0 +1,93 @@
+{
+  "pages": [
+    "pages/index/index",  
+    "pages/bands/bands",
+    "pages/home/home",
+    "pages/hotlist/hotlist",
+    "pages/home/setup/setup",
+    "pages/home/setup/lookInfo/lookInfo",
+    "pages/home/setup/setupInfo/setupInfo",
+    "pages/home/setup/Alipay/Alipay",
+    "pages/home/profit/profit",
+    "pages/home/profit/order/order",
+    "pages/home/profit/cash/cash",
+    "pages/home/profit/bill/bill",
+    "pages/home/team/team",
+    "pages/home/team/myTeam/myteam",
+    "pages/home/team/levels/levels",
+    "pages/home/collect/collect",
+    "pages/home/deposit/deposit",
+    "pages/start/start",
+    "pages/details/details",
+    "pages/list/list",
+    "pages/seek/seek",
+    "pages/themed/themed",
+    "common/goodslist/goodslist",
+    "common/rank/rank",
+    "common/lodmore/lodmore",
+    "pages/classify/classify",
+    "pages/newfree/newfree"
+  ],
+  
+
+  "subPackages": [
+    {
+      "root": "package",
+      "pages": [
+        "pages/robDetails/robDetails",
+        "pages/robList/robList",
+        "pages/shop/shop",
+        "pages/pddpacket/pddpacket",
+        "pages/course/course",
+        "pages/yaoqing/yaoqing",
+        "pages/h5/h5"
+      ]
+    }
+  ],
+
+
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ff2b33",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#D0D0D0",
+    "selectedColor": "#ED2D3C",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/foot_m1.png",
+        "selectedIconPath": "img/foot_s1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/hotlist/hotlist",
+        "iconPath": "img/foot_m2.png",
+        "selectedIconPath": "img/foot_s2.png",
+        "text": "热搜"
+      },
+      {
+        "pagePath": "pages/bands/bands",
+        "iconPath": "img/foot_m3.png",
+        "selectedIconPath": "img/foot_s3.png",
+        "text": "发圈"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "img/foot_m4.png",
+        "selectedIconPath": "img/foot_s4.png",
+        "text": "我的"
+      }
+    ]
+  },
+  
+  "navigateToMiniProgramAppIdList": [
+    "wx32540bd863b27570",
+    "wx13e41a437b8a1d2e",
+    "wxca3957e5474b3670"
+  ]
+}

@@ -1,0 +1,187 @@
+<!-- 商品例表模版 -->
+<template name="glModel">
+  <!-- 开启砍价功能 ifNeedCut=1 -->
+  <navigator wx:if="{{ifNeedCut==1}}" class="goodsbox flex-box mode{{mode}}" bindtap='dateSel' url="/package/pages/robDetails/robDetails?id={{item.goodsId}}&platform={{item.platform}}">
+    <button form-type="submit" plain="true" class="clearbuttonIndex">
+      <view class="optShare">
+        <image wx:if="{{item.smallPic==''}}" class="noneimg" src="../../img/dj.png" lazy-load="true" />
+        <image wx:else class="img" src="{{item.smallPic}}" lazy-load="true" />
+        <!-- 选中 -->
+        <view class="opt"></view>
+      </view>
+      <template is="goodsList" data="{{item:item,mode:mode,role:role,user:user}}"></template>
+    </button>
+  </navigator>
+
+  <!-- 不开启砍价功能 ifNeedCut=0 -->
+  <navigator wx:else="{{ifNeedCut==0}}" class="goodsbox flex-box mode{{mode}}" bindtap='dateSel' url="/pages/details/details?id={{item.goodsId}}&platform={{item.platform}}">
+    <button form-type="submit" plain="true" class="clearbuttonIndex">
+      <image wx:if="{{item.smallPic==''}}" class="noneimg" src="../../img/dj.png" lazy-load="true" />
+      <image wx:else class="img" src="{{item.smallPic}}" lazy-load="true" />
+      
+      <!-- 选中  未选中   opt -->
+      <view class="optShare {{optArray[index]?'opt':''}}" hidden="{{optShare}}" catchtap="cutEvent" data-id="{{item.goodsId}}" data-sub="{{index}}"></view>
+      <template is="goodsList" data="{{item:item,mode:mode,role:role,user:user}}"></template>
+    </button>
+  </navigator>
+</template>
+
+
+
+<!-- 商品例表右侧信息 -->
+<template name="goodsList">
+  <view class="flex-one info">
+    <view class="title">{{item.goodsName}}</view>
+    <block wx:if="{{mode=='3-1-0-5'}}">
+      <view class="quanSales">
+
+        <!-- <span class='span'></span> -->
+         <block wx:if="{{item.platform==1||item.platform==3}}">
+            <span class="tao"></span>
+          </block>
+          <block wx:if="{{item.platform==2}}">
+            <span class="span"></span>
+          </block>
+          <block wx:if="{{item.platform==4}}">
+            <span class="moru"></span>
+          </block>
+          <block wx:if="{{item.platform==5}}">
+            <span class="jd"></span>
+          </block>
+
+        <view class="quan" wx:if="{{item.couponMoney!=0}}">
+          <span>券</span>
+          <span>￥{{item.couponMoney}}</span>
+        </view>
+        <view class="sales">销量: {{item.sales}} 件</view>
+        <view class="num clearfloat">
+          <p class="startPrice">原价￥{{item.price}}</p>
+          <span>￥{{item.endPrice}}</span>
+          <view wx:if="{{role!=0}}">
+            <span class="img"></span>
+            <text>赚￥{{item.commission}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{mode=='3-1-0-6'}}">
+      <view class="quanSales">
+        <!-- <span class='span'></span> -->
+        <block wx:if="{{item.platform==1||item.platform==3}}">
+            <span class="tao"></span>
+          </block>
+          <block wx:if="{{item.platform==2}}">
+            <span class="span"></span>
+          </block>
+          <block wx:if="{{item.platform==4}}">
+            <span class="moru"></span>
+          </block>
+          <block wx:if="{{item.platform==5}}">
+            <span class="jd"></span>
+          </block>
+
+        <view class="quan" wx:if="{{item.couponMoney!=0}}">
+          <span>券</span>
+          <span>￥{{item.couponMoney}}</span>
+        </view>
+        <view class="sales">销量：{{item.sales}}</view>
+      </view>
+      <view class="startPrice">原价￥{{item.price}}</view>
+      <view class="num clearfloat">
+        <span>￥
+          <span>{{item.endPrice}}</span>
+        </span>
+        <view wx:if="{{role!=0}}">
+          <span class="img"></span>
+          <text>赚￥{{item.commission}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+
+
+
+<!--排序  改  -->
+<template name="rank">
+  <!-- 排序 -->
+  <view class="selectList {{setflex}}">
+    <view class="{{_num==1?'noneSalse':''}} " data-style="1" bindtap='sendNetwork'>
+      综合
+    </view>
+    <view class="{{_num==2?'onArrowSales':'arrowSales'}}" data-style="2" bindtap='sendNetwork'>
+      销量
+    </view>
+    <view class="{{_num==3?arrow:'arrowComm'}}" data-style="3" bindtap='sendNetwork'>
+      券后价
+    </view>
+    <view class="{{_num==4?arrow:'arrowComm'}}" data-style="4" bindtap='sendNetwork' wx:if="{{seek!=1}}">
+      佣金
+    </view>
+    <block wx:if="{{mode=='3-1-0-6'}}">
+      <image class="change" bindtap='change' src='../../img/change_1.png'></image>
+    </block>
+    <block wx:elif="{{mode=='3-1-0-5'}}">
+      <image class="change" bindtap='Ochange' src='../../img/change.png'></image>
+    </block>
+  </view>
+</template>
+
+
+
+
+<!-- 收藏商品列表 -->
+<template name="ctModel">
+  <view class="goodsbox flex-box mode{{mode}}" bindtap='skip'  data-id="{{item.goodsId}}" data-platform="{{item.platform}}">
+    <image wx:if="{{item.smallPic==''}}" class="noneimg" src="../../img/dj.png" lazy-load="true" />
+    <image wx:else class="img" src="{{item.smallPic}}" lazy-load="true" />
+    <view class="flex-one info">
+      <view class="title">{{item.goodsName}}</view>
+      <block wx:if="{{mode=='3-1-0-5'}}">
+        <view class="quanSales">
+          <span class='span' wx:if="{{item.platform==2}}"></span>
+          <span class='moru' wx:if="{{item.platform==4}}"></span>
+          <span class='tao' wx:if="{{item.platform==1}}"></span>
+          <span class='jd' wx:if="{{item.platform==5}}"></span>
+          <view class="quan" wx:if="{{item.couponMoney!=0}}">
+            <span>券</span>
+            <span>￥{{item.couponMoney}}</span>
+          </view>
+          <view class="sales">销量: {{item.sales}} 件</view>
+          <view class="num clearfloat">
+            <p class="startPrice">原价￥{{item.price}}</p>
+            <span>￥{{item.endPrice}}</span>
+            <view wx:if="{{role!=0}}">
+              <span class="img"></span>
+              <text>赚￥{{item.commission}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      
+      <block wx:if="{{mode=='3-1-0-6'}}">
+        <view class="quanSales">
+          <span class='span' wx:if="{{item.platform==2}}"></span>
+          <span class='moru' wx:elif="{{item.platform==4}}"></span>
+          <span class='tao' wx:elif="{{item.platform==1}}"></span>
+          <span class='jd' wx:if="{{item.platform==5}}"></span>
+          <view class="quan" wx:if="{{item.couponMoney!=0}}">
+            <span>券</span>
+            <span>￥{{item.couponMoney}}</span>
+          </view>
+          <view class="sales">销量：{{item.sales}}</view>
+        </view>
+        <view class="startPrice">原价￥{{item.price}}</view>
+        <view class="num clearfloat">
+          <span>￥
+            <span>{{item.endPrice}}</span>
+          </span>
+          <view wx:if="{{role!=0}}">
+            <span class="img"></span>
+            <text>赚￥{{item.commission}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>

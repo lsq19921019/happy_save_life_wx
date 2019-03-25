@@ -1,0 +1,15 @@
+<!--pages/start/start.wxml-->
+
+<!-- <view class='bg' style="height:{{winHeight-428}}rpx"> -->
+<view class='logo_wrap'>
+  <view class='logo'>
+    <image src='{{logo}}'></image>
+  </view>
+  <text>{{title}}</text>
+</view>
+<!-- </view> -->
+
+
+<button class='login' open-type="getUserInfo" bindgetuserinfo="accreditLogin">
+  微信登录
+</button>

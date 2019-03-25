@@ -1,0 +1,9 @@
+<!--package/pages/pddpacket/pddpacket.wxml-->
+
+<view class='page'>
+  <view class='redpack'>
+    <navigator class='jump' target="miniProgram" hover-class="none" open-type="navigate" app-id="wx32540bd863b27570" path="{{page_path}}" extra-data='{{wxExtraData}}' version="release">
+    
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,499 @@
+
+.background{
+  background: rgba(255, 43, 51, 1);
+   /* background: -webkit-linear-gradient(left, #f65965, #f03b49);
+  background: -o-linear-gradient(left, #f65965, #f03b49);
+  background: -moz-linear-gradient(left, #f65965, #f03b49); 
+  background: linear-gradient(left, #f65965, #f03b49); 标准的语法 */
+}
+.addUp {
+  position: absolute;
+  bottom: 30rpx;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 26rpx;
+  
+}
+
+.askContent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  z-index:1000;
+}
+
+.askInfo {
+  position: absolute;
+  top: 300rpx;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, 0);
+  width: 74%;
+  border-radius: 12rpx;
+  border: 2rpx solid #f5f5f5;
+}
+.cut {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  height: 50rpx;
+  width: 50rpx;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+.info{
+  width: 100%;
+  text-align: center;
+  font-size:37rpx;
+  margin-bottom: 40rpx;
+  margin-top: 40rpx;
+  font-weight: bold;
+}
+.ins{
+  margin: 0;
+  padding: 0 40rpx 40rpx 40rpx;
+  text-align: left;
+  font-size: 30rpx;
+  white-space: pre-line;
+}
+.iok{
+  width: 100%;
+  height: 70rpx;
+  border:2rpx solid #f5f5f5;
+  line-height: 70rpx;
+  text-align: center;
+  color: #ed2c3d;
+  font-size: 32rpx;
+}
+.cut image {
+  height: 100%;
+  width: 100%;
+}
+.lostMoney {
+  position: absolute;
+  width: 100rpx;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+  top: 50%;
+  right:6rpx;
+  transform: translateY(-50%);
+}
+
+.lostMoney image {
+  height:40rpx;
+  width:40rpx;
+}
+
+/*  */
+
+.teamType {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  border-top: 2rpx solid #f5f5f5;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  z-index: 999;
+  margin: 20rpx 0 5rpx;
+}
+
+.teamState {
+  width: 50%;
+  text-align: center;
+  border-right: 1rpx solid lightgrey;
+}
+
+.teamList {
+  width: 50%;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+/* 余额 */
+
+.profit .balance {
+  width: 100%;
+  height: 360rpx;
+  padding: 40rpx 30rpx 0;
+  color: #fff;
+  position: relative;
+}
+
+.profit .balance .noneBalance {
+  font-size: 54rpx;
+  text-align: center;
+  margin-top: 80rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.profit .balance .nonewallet {
+  text-align: center;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.balance .money {
+  float: left;
+}
+
+.balance .money p:first-child {
+  font-size: 34rpx;
+  margin-left: 10rpx;
+  padding-bottom: 30rpx;
+}
+
+.balance .money p:last-child {
+  font-size: 52rpx;
+}
+
+.balance  .withdrawals {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.8);
+  float: right;
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  padding: 6rpx 28rpx;
+  border-radius: 50rpx;
+  position: relative;
+  top: 30rpx;
+  line-height: 32rpx;
+  background: none;
+}
+
+.color {
+  color: red;
+}
+
+.proItem {
+  width: 33%;
+  position: relative;
+  text-align: center;
+}
+
+.Item {
+  position: absolute;
+  bottom: -35rpx;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.writeColor {
+  color: #e84d74;
+}
+
+.order .box .date p {
+  float: left;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.order .box .date p:first-child {
+  border-right: 2rpx solid #dedede;
+}
+
+.order .box>p:nth-child(2) {
+  font-size: 28rpx;
+  color: #333;
+  padding-bottom: 38rpx;
+}
+
+.order .box .number view {
+  float: left;
+  font-size: 24rpx;
+  width: 33.3%;
+}
+
+.order .box .number view:first-child {
+  float: left;
+}
+
+.order .box .number view p:nth-child(1) {
+  font-size: 24rpx;
+  color: #333;
+  padding-bottom: 22rpx;
+}
+
+.order .box .number view p:nth-child(2) {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+/* 我的账单 */
+
+.bills {
+  font-size: 30rpx;
+  padding: 15rpx 0;
+  background: #fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAdCAYAAACjbey/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkEwQUEwNkNGRjQyNjExRTdBQ0JFREI4QjExOENENUI3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkEwQUEwNkQwRjQyNjExRTdBQ0JFREI4QjExOENENUI3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTBBQTA2Q0RGNDI2MTFFN0FDQkVEQjhCMTE4Q0Q1QjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTBBQTA2Q0VGNDI2MTFFN0FDQkVEQjhCMTE4Q0Q1QjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6f5a5SAAABjklEQVR42pSVzStFYRDG33soYSNCsUOykIWUhYUdRSRFQizchI2yIPKRdC2UNacb8rGxUsQtdZHclJV/QvkDbG4+n6nnrdPJufedqV/Ne2qeZt55Z07M9/2kMaYazII3o7RCMAaKQS3oBB8aAQ/M028Fr6BKKyAlTIAvUA/SoFIjIHYG4hRpBk+umViBX3AMZnhuBNegwlXA2gGYAp+gDTyAMo2A2CFbaljOMyjXCNhMJsE3aAL3UeV4ObI7AdP0W8ALKNEI2HLi9OvAbbjFnkOnjgJ30gEeQalG4Afs87EZ3kma8+MkYO0UzLHF7XxsRZ5y+PZAL/0GkNIKiNUE/HetwC47Y9iRUY1AAizw3s7BgF0o+awA7DBYLANGNG1cCQRfgq7wSsu17jbAKs8yD4OcD6eXuMZg2RUXoCccHJWB1LwFlnlOgWFuK+MisAiW6N+BPj5np30gNW/ze97gYAYx1rzOswxL9381R2UggZs8X4F+l2CbQTKwNG7AEMhqfm3j/J1l2OesZjj+BBgAiPFLlXA0f1kAAAAASUVORK5CYII=") no-repeat 95% 50%;
+  background-size: 16rpx 29rpx;
+  margin-top: 18rpx;
+}
+
+.bills image {
+  width: 25rpx;
+  height: 29rpx;
+  padding: 0 8rpx 6rpx 30rpx;
+}
+
+button {
+  text-align: left;
+  padding: 0;
+  line-height: 40rpx;
+}
+
+p {
+  line-height: 48rpx;
+  display: block;
+}
+
+.allset {
+  width: 100%;
+  height: 110rpx;
+  background-color:rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.allOrder {
+  text-align: center;
+  color: white;
+  font-size: 26rpx;
+  width: 33%;
+  height: 80%;
+  border-right: 1rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.lastmoon {
+  text-align: center;
+  color: white;
+  font-size: 26rpx;
+  width: 33%;
+  height: 80%;
+}
+
+.today {
+  width: 100%;
+  margin-bottom: 20rpx;
+  background-color: white;
+}
+
+.head {
+  width: 100%;
+  height: 76rpx;
+  border-bottom: 6rpx solid #f5f5f5;
+  position: relative;
+}
+
+/*Canvas  */
+
+.balance .wrap .top  .cir {
+  width: 300px;
+  height: 212px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-top: -118px;
+  margin-left: -156px;
+}
+
+.top {
+  text-align: center;
+}
+
+.profit .balance .wrap .remain {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 116rpx;
+  margin-left: -58rpx;
+  z-index: 10;
+}
+
+.profit .balance .wrap .sum {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 116rpx;
+  margin-left: -73rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.headTb {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 150rpx;
+}
+
+.earnings {
+  width: 50%;
+  height: 85%;
+  text-align: center;
+}
+
+.prenum {
+  font-size: 30rpx;
+  display: block;
+}
+
+.pre {
+  display: block;
+  padding: 22rpx 0 5rpx;
+}
+
+.headImg {
+  font-size: 30rpx;
+  padding: 15rpx 0;
+}
+
+.headImg image {
+  width: 30rpx;
+  height: 25rpx;
+  padding: 0 5rpx 6rpx 30rpx;
+}
+
+.todayE {
+  position: absolute;
+  top: 34rpx;
+  right: 164rpx;
+  font-size: 20rpx;
+  color: white;
+}
+
+.eLine {
+  border-top: 1rpx solid white;
+  padding: 10rpx 0 0;
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+.dayline {
+  position: absolute;
+  height: 2rpx;
+  width: 40rpx;
+  bottom: 32rpx;
+  left: -56%;
+  background-color: white;
+  transform: rotate(-20deg);
+}
+
+.yesterdayE {
+  position: absolute;
+  bottom: 100rpx;
+  left: 19%;
+  font-size: 20rpx;
+  color: white;
+}
+
+.yesterdayline {
+  position: absolute;
+  height: 2rpx;
+  width: 46%;
+  top: 34rpx;
+  right: -53%;
+  background-color: white;
+  transform: rotate(170deg);
+}
+
+.select {
+  color: red;
+  font-size: 36rpx;
+}
+
+
+
+
+/* 收益背景图 */
+.profit .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 470rpx;
+  z-index: -1;
+}
+
+.profit  .cash{
+   width:160rpx;
+   height:56rpx;
+   position:absolute;
+   right:0;
+   top:236rpx;
+   z-index:1000;
+}
+/*提现提醒  */
+.withdraw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+.withdraw .drawType{
+  text-align: left;
+  height: auto;
+  width: 620rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border-radius: 12rpx;
+}
+.withdraw .drawType .drawHead{
+   text-align: center;
+  font-size: 36rpx;
+  padding: 30rpx 0;
+}
+.withdraw .drawType .sysType{
+   text-align: left;
+  color: #666666;
+  font-size: 0;
+}
+.withdraw .drawType .system{
+  display: block;
+  padding: 10rpx 0;
+  padding-left: 10rpx;
+  font-size: 23rpx;
+  
+}
+.withdraw .drawType .sysTip .logoImg{
+  height: 30rpx;
+  width: 30rpx;
+}
+.withdraw .drawType .sysTip .logoImg image{
+  height: 100%;
+  width: 100%;
+}
+.withdraw .drawType .sysTip{
+
+   height: 30rpx; 
+  line-height: 30rpx;
+   font-size: 23rpx; 
+}
+.iknow{
+  height: 80rpx;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top: 2rpx solid #f5f5f5;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #ed2d3c;
+}

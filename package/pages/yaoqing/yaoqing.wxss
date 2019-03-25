@@ -1,0 +1,94 @@
+/* package/pages/yaoqing/yaoqing.wxss */
+
+page {
+  background: #fff;
+}
+
+.swiperClass {
+  margin: 0;
+}
+
+.slide-image {
+  width: 100%;
+  height: 694rpx;
+  border-radius: 10px;
+  position: relative;
+  /* background: pink; */
+  margin-top: 20rpx;
+}
+
+swiper-item image.active {
+  transform: none;
+  transition: all 0.2s ease-in 0s;
+}
+
+swiper-item image.quiet {
+  transform: scale(0.8333333);
+  transition: all 0.2s ease-in 0s;
+}
+
+.top {
+  width: 750rpx;
+  height: 784rpx;
+  background: rgba(246, 245, 245, 1);
+  padding-top: 10rpx;
+}
+
+.item {
+
+}
+
+.tittle {
+  font-size: 28rpx;
+  font-family: FZLTHK--GBK1-0;
+  font-weight: 400;
+  color: rgba(1, 1, 1, 1);
+  line-height: 36rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.btn_qu {
+  margin-top: 65rpx;
+}
+
+.btn_qu .btn {
+  width: 572rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border: 1px solid rgba(255, 43, 51, 1);
+  border-radius: 45rpx;
+  color: rgba(255, 43, 51, 1);
+  margin-bottom: 30rpx;
+  position: relative;
+  background: #fff;
+}
+
+.btn_qu .btn .text {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_qu .btn .text::before {
+  content: '';
+  width: 32rpx;
+  height: 32rpx;
+  display: block;
+  margin-right: 20rpx;
+  background: url('https://bnlnimg.bnln100.com/wx_share.png') center center no-repeat;
+  background-size: 32rpx 32rpx;
+}
+
+.btn_qu .btn.sel .text::before {
+  background: url('https://bnlnimg.bnln100.com/save_share.png') center center no-repeat;
+  background-size: 32rpx 32rpx;
+}
+
+.btn_qu .btn.sel {
+  background: linear-gradient(-90deg, rgba(255, 43, 51, 1), rgba(255, 94, 23, 1));
+  color: rgba(255, 255, 255, 1);
+}

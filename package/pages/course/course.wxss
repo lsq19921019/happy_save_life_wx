@@ -1,0 +1,10 @@
+/* package/pages/course/course.wxss */
+
+.banner{
+  width: 100%;
+  height: 300rpx;
+}
+
+.concent{
+   width: 100%;
+}

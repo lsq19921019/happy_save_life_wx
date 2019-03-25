@@ -1,0 +1,24 @@
+<!--pages/hotlist/hotlist.wxml-->
+
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+
+
+<view class='page'>
+  <view class='banner'>
+    <image src='https://bnlnimg.bnln100.com/topbanner .png'></image>
+  </view>
+  <view class='tap'>
+    <view class="{{tapindex==1?'active':''}}" bindtap='switch' data-index='1'>实时热销榜</view>
+    <view class="{{tapindex==2?'active':''}}" bindtap='switch' data-index='2'>今日榜单</view>
+  </view>
+
+  
+  <view class='goodswrap'>
+    <template is="goodsList" data="{{goodslist,arrange,hot,role}}"></template>
+  </view>
+
+
+  
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+</view>

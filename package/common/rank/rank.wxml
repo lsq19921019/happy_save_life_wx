@@ -1,0 +1,73 @@
+<!--common/rank/rank.wxml-->
+
+
+<!-- 排序 -->
+<template name="rank">
+  <view class='sortingbox'>
+    <view class='sort'>
+      <view class="num {{_num==0?'active':''}}" data-style="0" bindtap='sort'>
+        综合
+      </view>
+      <!-- <view class="num {{_num==1?'active':''}}" data-style="1" bindtap='sort'>
+        佣金比例
+      </view> -->
+      <view class="num {{_num==6?'active':''}}" data-style="6" bindtap='sort'>
+        销量
+      </view>
+      <view class="num {{_num==9||_num==10?'active':''}}" data-style="9" bindtap='sort'>
+        <text>券后价</text>
+
+        <block wx:if="{{_num==9}}">
+          <image class='arrow_ico' src='../../../img/sort2ico.png'></image>
+        </block>
+        <block wx:elif="{{_num==10}}">
+          <image class='arrow_ico' src='../../../img/sort1ico.png'></image>
+        </block>
+        <block wx:else>
+          <image class='arrow_ico' src='../../../img/sortico.png'></image>
+        </block>
+      </view>
+    </view>
+
+    <view class='style' bindtap='changestyle'>
+      <block wx:if="{{arrange==0}}">
+        <image src='../../../img/change.png'></image>
+      </block>
+      <block wx:else>
+        <image src='../../../img/change_1.png'></image>
+      </block>
+    </view>
+
+
+    <!-- <view class='filtrate' bindtap='filtrate'>
+      <text>筛选</text>
+      <image class='ico' src='../../img/filtrate.png'></image>
+    </view> -->
+
+    <!-- <view class='childconcent' wx:if='{{showfill}}'>
+      <view class='tittle'>价格区间（元）</view>
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class='selectqu'>
+          <view class='selbox' wx:for="{{['1-10','11-50','51-100','100以上']}}">
+            {{item}}
+          </view>
+        </view>
+
+        <view class='int_price'>
+          <view class='price'>
+            <input type='number' name='startprice' placeholder='最低价'></input>
+          </view>
+          <view class='line'></view>
+          <view class='price'>
+            <input type='number' name='endprice' placeholder='最高价'></input>
+          </view>
+        </view>
+
+        <button class='firm' form-type="submit">完成</button>
+      </form>
+    </view> -->
+
+
+  </view>
+
+</template>

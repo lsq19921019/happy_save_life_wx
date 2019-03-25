@@ -1,0 +1,71 @@
+<view class="drawer_box">
+  <view class='imgStylebg'>
+
+  <!-- 顶部 -->
+    <view class='userInfo'>
+      <block wx:if="{{qrcodeUrl!=''}}">
+        <image class='smallImg' src='{{opUser.point=="mySelf"?user.headImg:otUser.headImg}}'></image>
+      </block>
+
+      <block wx:else>
+        <view class='smallNone'>
+          <image src='../../../../img/dj.png'></image>
+        </view>
+      </block>
+
+      <view class='user'>
+      <!-- 个人昵称 -->
+        <block wx:if='{{opUser.point=="mySelf"}}'>
+          <view class='userName'>{{user.wxNickName}}
+          <block wx:if="{{qrcodeUrl!=''}}">
+            <image wx:if='{{user.sex==1}}' class="man" src='../../../../img/manBg.png' />
+            <image wx:elif='{{user.sex==2}}' class="woman" src='../../../../img/womanBg.png' />
+            </block>
+          </view>
+        </block>
+        <!-- 合伙人昵称-->
+        <block wx:else>
+          <view class='userName'>{{otUser.wxNickName}}
+          <block wx:if="{{qrcodeUrl!=''}}">
+            <image wx:if='{{user.sex==1}}' class="man" src='../../../../img/manBg.png' />
+            <image wx:elif='{{user.sex==2}}' class="woman" src='../../../../img/womanBg.png' />
+            </block>
+          </view>
+        </block>
+        <!-- 个人地区 -->
+        <block wx:if='{{opUser.point=="mySelf"}}'>
+          <view wx:if='{{user.city!=""}}' class='userAd'>{{user.city}}</view>
+          <view wx:else class='userAd'>未知地区</view>
+        </block>
+        <!-- 个人地区 -->
+        <block wx:else>
+          <view wx:if='{{user.city!=""}}' class='userAd'>{{otUser.city}}</view>
+          <view wx:else class='userAd'>未知地区</view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 二维码 -->
+    <view class="imgStyle" wx:if="{{qrcodeUrl!=''}}">
+      <image src="{{qrcodeUrl}}" bindtap='previewImage' mode="widthFix" />
+    </view>
+
+    <view wx:else class="imgnone">
+      <image src="../../../../img/official.png" mode="widthFix" />
+    </view>
+  </view>
+
+  <!-- 介绍 -->
+  <view class="recommend">
+    <view>
+      {{introduction}}
+    </view>
+  </view>
+
+  <view wx:if="{{showAmend}}" class="amend" bindtap='amend'>编辑</view>
+ 
+  <view wx:elif="{{!showAmend&&qrcodeUrl!=''}}" class="submit-buttom" bindtap="submit">
+    保存二维码
+  </view>
+
+</view>

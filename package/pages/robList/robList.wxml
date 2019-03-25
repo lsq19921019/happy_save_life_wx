@@ -1,0 +1,51 @@
+<import src="../../../utils/common.wxml" />
+
+<view>
+  <!-- <view class="topLoading">
+    <image src="../../../img/loading1.gif"></image>
+  </view> -->
+  <!-- 商品例表模版 -->
+  <block wx:for="{{goodsList}}" wx:key="key">
+    <navigator bindtap='dateSel' url="/package/pages/robDetails/robDetails?id={{item.goodsId}}" class="goodsbox flex-box mode3-1-0-6">
+      <view class="img">
+          <image src="{{item.img}}" mode="aspectFill" />
+      </view>
+      <view class="flex-one info">
+        <view class="title">{{item.goodsName}}</view>
+        <view class="quanSales">
+          <view class="quan" wx:if="{{item.couponMoney!=0}}">
+            <span>券</span>   
+            <span>￥{{item.couponMoney}}</span>
+          </view>
+          <view class="sales">销量：{{item.sales}}</view>
+        </view>
+        <view class="startPrice">原价￥{{item.price}}</view>
+        <view class="num clearfloat">
+          <span>￥
+            <span>{{item.endPrice}}</span>
+          </span>
+          <view class="circle">
+            <view class="circleProgress {{item.progress_image}}">
+               {{item.progress}}%  
+            </view>
+            {{item.cutNum}}人己砍,还差{{item.num-item.cutNum}}人
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <!-- 当查找内容为空时 -->
+  <view class="seekNull" wx:if="{{isShow}}" style="width:400rpx;">
+    亲,你暂没砍价的商品哦~
+  </view>
+  <!-- 加载图标 -->
+  <block wx:if="{{!noneData}}">
+    <view class="loading" hidden="{{floorstatus}}">
+      <image src="../../../img/loading1.gif"></image>
+    </view>
+  </block>
+  <!-- 没数据 -->
+  <view class="bottom" wx:if="{{noneData}}">----我是有底线的----</view>
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" hidden="{{floorstatus}}" backgroundColor="#ffffff"></view>
+</view>

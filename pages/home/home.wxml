@@ -1,0 +1,220 @@
+<view class="home">
+  <form report-submit="true" bindsubmit="formSubmit">
+    <view class="head">
+      <view class='head_bg'>
+        <view class="personalMsg clearfloat">
+          <view class="avatar">
+            <open-data type="userAvatarUrl" class="img"></open-data>
+            <view class='role'>
+              <image class='roleico' src='https://bnlnimg.bnln100.com/myrole.png'></image>
+              <text>{{user.roleName}}</text>
+            </view>
+          </view>
+          <view class="nameMsg">
+            <view class="name">
+              <open-data type="userNickName" class="userNickName"></open-data>
+            </view>
+            <view class='id'>ID:{{user.imUserId}}
+              <span class='copy' bindtap='copycon' data-concent="{{user.imUserId}}">复制</span>
+            </view>
+          </view>
+
+          <button class='setp' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{role==0}}">
+            <image class='setpico' src='https://bnlnimg.bnln100.com/mystep.png'></image>
+            <text>绑定手机</text>
+            <image class='arrow' src='https://bnlnimg.bnln100.com/my_rightrow.png'></image>
+          </button>
+
+          <button class='setp' bindtap='showphone' wx:if="{{role>0}}">
+            <image class='setpico' src='https://bnlnimg.bnln100.com/mystep.png'></image>
+            <block wx:if="{{user.wxAccount==''}}">
+              <text>绑定微信</text>
+            </block>
+            <block wx:if="{{user.wxAccount!=''}}">
+              <text>绑定成功</text>
+            </block>
+            <image class='arrow' src='https://bnlnimg.bnln100.com/my_rightrow.png'></image>
+          </button>
+
+        </view>
+
+        <!-- <button class="setUp" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{role==0}}">
+          手机授权
+        </button> -->
+
+      </view>
+      <view class='cock'>
+        <!--粉丝  -->
+        <block wx:if='{{role>0}}'>
+          <!--用户佣金信息  -->
+          <view class='userMoney'>
+            <view class='canMoney'>
+              累计结算收入：
+              <text class='mdetails'>{{wallet}}</text> 元
+              <view class='deposit' bindtap='godeposit'>提现</view>
+            </view>
+
+            <view class='total'>
+              <view class='totalItem'>
+                <view class='itemType'>￥{{user.todayInc}}</view>
+                <view class='itemNum'>今日收益</view>
+              </view>
+              <view class='totalItem'>
+                <view class='itemType'>￥{{user.yestodayInc}}</view>
+                <view class='itemNum'>昨日收益</view>
+              </view>
+              <view class='totalItem'>
+                <view class='itemType'>￥{{user.thisMInc}}</view>
+                <view class='itemNum'>本月收益</view>
+              </view>
+              <view class='totalItem'>
+                <view class='itemType'>￥{{user.pMInc}}</view>
+                <view class='itemNum'>上月收益</view>
+              </view>
+            </view>
+          </view>
+        </block>
+
+      </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+    <!-- after':'before 控制的是是否有banner的间距 -->
+    <view class="strip {{role>0?'after':'before'}}">
+
+      <block wx:if="{{role>=1}}">
+        <view class='wrap'>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="1">
+            <image src="https://bnlnimg.bnln100.com/my1.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>我的收益</text>
+          </button>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="2">
+            <image src="https://bnlnimg.bnln100.com/my2.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>我的订单</text>
+          </button>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="3">
+            <image src="https://bnlnimg.bnln100.com/my3.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>我的团队</text>
+          </button>
+
+
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="4">
+            <image src="https://bnlnimg.bnln100.com/my5.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>邀请好友</text>
+          </button>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="5">
+            <!-- <image src="https://bnlnimg.bnln100.com/my7_fb.png" /> -->
+            <image src="https://bnlnimg.bnln100.com/my7.png" />            
+            <text>收藏夹</text>
+          </button>
+          <button form-type="submit" plain="true" class="common"  open-type="contact">
+            <image src="https://bnlnimg.bnln100.com/my8.png" />
+            <text>客服消息</text>
+          </button>
+
+        </view>
+
+        <!-- <block wx:if="{{role==1}}">
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="4">
+            <image src="https://bnlnimg.bnln100.com/my4_new.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />       
+            <text>培养团长</text>
+          </button>
+        </block>
+        <block wx:if="{{role>1}}">
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="5">
+            <image src="https://bnlnimg.bnln100.com/my5.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>解锁特权</text>
+          </button>
+        </block> -->
+
+
+        <view class='list_box'>
+          <button form-type="submit" plain="true" class="list" bindtap="jump" data-type="3">
+            <image class='listico' src="https://bnlnimg.bnln100.com/my9.png" />
+            <text>距离下一特权，还差{{user.num}}成员</text>
+          </button>
+          <!-- <button form-type="submit" plain="true" class="list" bindtap="jump" open-type="contact">
+            <image class='listico' src="https://bnlnimg.bnln100.com/my8.png" />
+            <text>客服消息</text>
+          </button> -->
+        </view>
+      </block>
+
+
+      <block wx:if="{{role==0}}">
+        <view class='wrap'>
+          <button form-type="submit" plain="true" class="common" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            <image src='https://bnlnimg.bnln100.com/my6.png' style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
+            <text>加入合伙人</text>
+          </button>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" data-type="5">
+            <image src="https://bnlnimg.bnln100.com/my7.png" />
+            <text>收藏夹</text>
+          </button>
+          <button form-type="submit" plain="true" class="common" bindtap="jump" open-type="contact">
+            <image src="https://bnlnimg.bnln100.com/my8.png" />
+            <text>客服消息</text>
+          </button>
+        </view>
+      </block>
+
+    </view>
+
+  </form>
+</view>
+
+
+<!-- 客服 -->
+<!-- <button class=' Customer_service ' open-type="contact">
+  <image src='../../img/kefu.png '></image>
+</button> -->
+
+<block wx:if="{{role>0&&maskphone}}">
+  <view class='freemask' catchtouchmove='true' bindtap='exit'></view>
+  <view class='maskconcent'>
+
+    <block wx:if="{{user.wxAccount==''}}">
+      <p class='tittle'>手机号码已绑定</p>
+    </block>
+    <block wx:if="{{user.wxAccount!=''}}">
+      <p class='tittle'>微信号码已绑定</p>
+    </block>
+
+    <p class='futi'>为方便您的好友联系您，请设置您的微信号：</p>
+    <view class='inputbox'>
+      <input placeholder="再此填入您的微信号" bindinput="bindBlur" value='{{user.wxAccount}}'></input>
+    </view>
+    <view class='bottom'>
+      <view class='left' bindtap='exit'>暂不设置</view>
+      <view class='right' bindtap='firm'>确定</view>
+    </view>
+
+ 
+
+    <!-- <view class='freebox old' wx:if="{{showfree}}">
+      <view class='jump' catchtap='transred'></view>
+      <image class='hidefreemask' src='../../img/hide_ico.png' bindtap='sh_free'></image>
+    </view> -->
+  </view>
+
+</block>
+
+
+<view class='freemask' wx:if="{{showcourse1}}" catchtouchmove='true'>
+   <image class='course1_1' src='../../img/course1_1.png'></image>
+   <image bindtap='couse1ok' class='course1_3' src='../../img/course1_3.png'></image>
+</view>
+
+<view class='freemask' wx:if="{{showcourse2}}" catchtouchmove='true'>
+   <image class='course2_1' src='../../img/course2_1.png'></image>
+   <image bindtap='couse2ok' class='course2_2' src='../../img/course2_2.png'></image>
+</view>
+

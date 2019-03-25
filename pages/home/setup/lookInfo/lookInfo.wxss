@@ -1,0 +1,164 @@
+.drawer_box {
+  width: 100%;
+  height: 100%;
+  padding-top: 15rpx;
+}
+
+.userInfo {
+  width: 100%;
+  position: relative;
+  height: 100rpx;
+}
+
+.user {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+}
+
+.userName {
+  padding-top: 40rpx;
+  font-size: 26rpx;
+}
+
+.userAd {
+  font-size: 20rpx;
+  padding-top: 15rpx;
+  color: #c1c1c1;
+}
+
+.imgStylebg {
+  margin: 0 auto;
+  width: 92%;
+  background-color: white;
+}
+
+.drawer_box .imgStyle {
+  margin:0 auto;
+  width: 550rpx;
+  min-height: 625rpx;
+  margin-bottom: 16rpx;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10rpx;
+  text-align: center;
+  padding:38rpx 0;
+}
+
+.drawer_box .imgnone {
+  margin: 0 auto;
+  width: 550rpx;
+  min-height: 625rpx;
+  margin-bottom: 16rpx;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10rpx;
+  text-align: center;
+  padding: 20rpx 0;
+  margin-top: 20rpx;
+}
+
+.imgnone image {
+  height: 100%;
+  width: 100%;
+}
+
+.smallNone {
+  height: 100rpx;
+  width: 100rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  background-color: rgb(238, 238, 238);
+}
+
+.smallNone image {
+  height: 100%;
+  width: 100%;
+}
+
+.smallImg {
+  height: 100rpx;
+  width: 100rpx;
+  margin: 30rpx 10rpx 30rpx 30rpx;
+}
+
+.drawer_box .imgStyle image {
+  width: 100%;
+}
+
+.drawer_box .recommend {
+  background: #fff;
+  width: 92%;
+  height: 200rpx;
+  margin: 0 auto 20rpx;
+  padding: 32rpx 36rpx 12rpx;
+  color: #666;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.drawer_box .recommend view {
+  width: 100%;
+  height: 100%;
+  font-size: 26rpx;
+  overflow: scroll;
+}
+
+.drawer_box .noneImg {
+  text-align: center;
+  margin: 0 auto;
+  padding: 200rpx 0;
+  width: 660rpx;
+  margin-bottom: 16rpx;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10rpx;
+  color: #c1c1c1;
+  font-size: 30rpx;
+}
+
+.drawer_box .noneImg>image {
+  width: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.amend {
+  width:540rpx;
+  margin:50rpx auto 30rpx;
+  font-size:30rpx;
+  text-align: center;
+  color: white;
+  height: 80rpx;
+  line-height: 80rpx;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA28AAACECAMAAAAweuMSAAAASFBMVEVHcEz6UwL4cQP4dAT5aAP5aQP3eAT5aAP5ZwP5ZwL6WgL3ewT4aQP5YAP5XQL3fAT4bAP6VwL6VQL5ZAP5YgP4bgP5ZwP5ZgPYYK82AAAACnRSTlMA////u+H/XJQauMcybQAABEdJREFUeNrs2NFq4zAQQNHB0kgjZJBfnP7/n1aJG4jZJBunkmA394xLSwvt0+1MIm9KMZr3qkUL8DFU1XuLMckwKZovwGfzFtOI1lhowEa7Npciew3Y852SIzbgQXLtVxtnJPCIxqa1WQHwjCVqA/614mLJ5SUZ+H+NuSqjXv9U3qMz0FzOTYtLlgkKeK7kGkmDozJqZoEBL/n1ijNqAw5fmybvSJq32MLlA8Ad+0LKmSY5LG61hTo5EBzw2FZJnWty8Xhu119DbsCh5o4HZ7lcSyM34Jn9Ytq+LCYH+JADgKPyz6dS/JHcSgiZ5oDDtnByfjm4xHYD3nZsw23bDcDvvBicDwAGBWcck0ATOZv8RQwA2sglylOR7Qa0k58Gl0JwAUAD7hJTksc0AGhJ5SGrTbLggIYbLtuT90ocwzANp4pyV1IHoJlQx7msSe6xT/9XxDANZxPqY3JHrD8C0Nr9i5JrEuhD7603AJ0WHG+WAMOEJHvmAHQSTHaSA9DH9MeCs8t3AbQ2XR6TWzpNk5sAdFCDU7kRiQ3oxdXHxd16A9Bxvzm9XW8AurpZcH4C0JfJjzQB6MwlzklgmMg5CYziPOckME6Ss7gC6O7noLQVQH8mZ7oC6M6pVGkFMELi5Rsw9AWcLQBGMBHxC4D+1smLyLoAGGEVSQuAMZLEBcAYkd6AYSJvTwLDmPgZwBCLpzdgGC86AxhgmRelN2AYegPGWWQGMIjW3k4zgN5O55H5RHDAoOBqbwD6+zqd6A0YSEW/gO/2667FcRiGwvAJ2EgyJGC30P//TzedTNkundl+pPZN30f4VBfJTUHIwRjMGzBOVjoAGCMpnU4HACMk+QHACKeTyw4AxjDmDRjGFEcAY4R0OALob91vktIRwACHJMmPAEZwSXYEMIJJihnAAMfQKs8A+ss68xlAb8fZdWYzgP5M4gMOGCT0Jc0AeksSF0pgjMW0ibWfAXQV+pYWAH0lXdgCoKd5MekiLwA6KlliwQGDmK7MC4B+Zl3zBUA/rmvBggP6mUMsOGCEsq23azEXAF20HNK/rCwURXWoUkw3cvn0v4WiulTNumUFQA+mH3gB8HbV9ZPIpSyVoqg3VTmfkkM/slLXh8p2SJLcmfXrmH7hpdbyXZUkyV25nH+L61e5rI+UUkmS3J9rTVm/i6X+Vejp6Xf0a5Yl9B92fuhS9PT0r/WXqCbdHbjtbG/Q09M/398ft41XAG/RXHelCuAdksTAAUNMSY8IBg7YL4UeEqkB2GVKoUcxcMA+SU/wBuBVdXKJgQPGcD3JagPwimp6WuQG4Hk5tOFOCXQ2uV5keQLwjGx6WfgE4HEeOmPFASOW215WJwD3tNZMbxDOxAH3VA9JTBzQX7uZNr7jgD6yhd7MUpsA3EimHsLSBOBaslA3Yc7FEtg0t1BvYZ65WuKztewWGibMPKWcK5OHz9Fqzim5vTxqfwAuEck5Kt/gqwAAAABJRU5ErkJggg==);
+  background-size:100% 100%;
+
+}
+
+.man {
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.woman {
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.submit-buttom {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+  height: 100rpx;
+  background: #ed2d3c;
+  width: 100%;
+  color: #fff;
+  font-size: 30rpx;
+}

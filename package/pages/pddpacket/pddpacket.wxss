@@ -1,0 +1,34 @@
+/* package/pages/pddpacket/pddpacket.wxss */
+
+.page {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: url('https://bnlnimg.bnln100.com/pddpacketbg.png') center center no-repeat;
+  background-size: 100% 100%;
+}
+
+.redpack {
+  width: 532rpx;
+  height: 672rpx;
+  position: absolute;
+  background: url('https://bnlnimg.bnln100.com/pdd_router.png') center center no-repeat;
+  background-size: 532rpx 672rpx;
+  bottom: 195rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.jump{
+  /* background: rgba(0, 0, 0, 0.7); */
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

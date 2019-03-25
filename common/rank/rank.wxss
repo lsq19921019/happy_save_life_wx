@@ -1,0 +1,136 @@
+/* common/rank/rank.wxss */
+
+
+/* 排序筛选 --------------------------------------------------------------------*/
+.sortingbox {
+  width: 750rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  font-size: 30rpx;
+  color: rgba(51, 51, 51, 1);
+  display: flex;
+  flex-wrap: nowrap;
+  padding:0 66rpx;
+  align-items: center;
+  position: relative;
+}
+
+.sortingbox .sort {
+  display: flex;
+  height: 100rpx;
+  line-height: 100rpx;
+  flex-wrap: nowrap;
+}
+
+.sortingbox .sort .num {
+  margin-right:109rpx;
+  display: flex;
+  align-items: center;
+}
+
+.sortingbox .sort .num .arrow_ico {
+  width: 15rpx;
+  height: 32rpx;
+  margin-left: 14rpx;
+}
+
+.sortingbox .sort .num.active {
+  color: rgba(255, 43, 51, 1);
+}
+
+.sortingbox .style {
+  width: 35rpx;
+  height: 35rpx;
+  padding: 0;
+}
+
+.sortingbox .style image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.sortingbox .filtrate {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.sortingbox .filtrate .ico {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 5rpx;
+}
+
+.sortingbox .childconcent {
+  width: 100%;
+  height: 380rpx;
+  background: #fff;
+  position: absolute;
+  top: 80rpx;
+  left: 0;
+  border-top: 1px solid #ddd;
+  padding: 30rpx 33rpx;
+}
+
+.sortingbox .childconcent .tittle {
+  font-size: 24rpx;
+  font-family: FZLTHK--GBK1-0;
+  color: rgba(153, 153, 153, 1);
+}
+
+.sortingbox .childconcent .selectqu {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 20rpx 0 18rpx 0;
+}
+
+.sortingbox .childconcent .selectqu .selbox {
+  width: 154rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 4rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 1);
+}
+
+.sortingbox .childconcent .int_price {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sortingbox .childconcent .int_price .price {
+  width: 300rpx;
+  height: 54rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 4rpx;
+}
+
+.sortingbox .childconcent .int_price input {
+  text-align: center;
+  color: #000;
+}
+
+.sortingbox .childconcent .int_price .line {
+  width: 40rpx;
+  height: 2rpx;
+  background: rgba(144, 144, 144, 1);
+  margin: 0 21rpx;
+}
+
+.sortingbox .childconcent .firm {
+  width: 300rpx;
+  height: 80rpx;
+  background: rgba(255, 43, 51, 1);
+  border-radius: 40rpx;
+  color: #fff;
+  line-height: 80rpx;
+  margin-top: 50rpx;
+}
+

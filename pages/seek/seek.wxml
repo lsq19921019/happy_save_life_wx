@@ -1,0 +1,63 @@
+<import src="../../utils/common.wxml" />
+
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/rank/rank.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+
+<view class="commList seekResult">
+  <!-- 固定位置 -->
+  <view class="seekFixed  fixed {{local&&''}}">
+
+    <view class='seekbox'>
+      <view class="seekbug"></view>
+      <input class='inp_search' placeholder="请输入关键词" value="{{seekvalue}}" placeholder-class="placehold" bindinput="bindBlur">
+      <view wx:if="{{showDelCont}}" class="delete" bindtap="delCont"></view>
+      </input>
+      <view class="seekGo" bindtap="sendSeek">搜索</view>
+    </view>
+    
+    <!--仅显示优惠商品-->
+    <view class='discounts'>
+      <image src='../../img/disImg.png' class='disImg' style=''></image>
+      <text class='disText'>仅显示优惠商品</text>
+      <switch class='switch' checked='{{swiState}}' color='red' bindchange="switchChange" />
+    </view>
+
+
+    <template is="rank" data="{{_num,arrange}}"></template>
+
+    <!-- <template is="rank" data="{{_num,arrow,mode,seek:1}}"></template> -->
+  </view>
+
+  <view style='height:50rpx'></view>
+
+  <view class="topLoading">
+    <i></i>
+    <i></i>
+    <i></i>
+  </view>
+
+
+
+
+  <!-- 当查找内容为空时 -->
+  <view class="seekNull" wx:if="{{seekNull}}">
+    亲,暂无发现商品哦~
+  </view>
+
+  <!-- <block wx:for="{{goodsList}}" wx:key="*this">
+    <template is="glModel" data="{{item,mode,role,ifNeedCut:sysData.ifNeedCut,optShare:true,index}}"></template>
+  </block> -->
+
+  <!-- 商品列表模板 -->
+  <view class='goodswrap'>
+    <template is="goodsList" data="{{goodslist,arrange,role}}"></template>
+  </view>
+
+  <!-- 没有更多模板 -->
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+
+
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" hidden="{{floorstatus}}"></view>
+</view>

@@ -1,0 +1,23 @@
+<view class="bill">
+  <block wx:if="{{dataList.length>0}}">
+    <view wx:for="{{dataList}}" wx:key="{{key}}">
+      <view class="date">{{item.title}}</view>
+      <view class="trip clearfloat" wx:for="{{item.list}}" wx:key="{{key}}">
+        <view class="left">
+          <view class="title">{{item.ins}}</view>
+          <view class="time">{{item.createTime}}</view>
+        </view>
+        <view class="right">{{item.amount}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="none">
+      <image class="record-img" src="../../../../img/record.png" mode="widthFix" />
+      <view>暂无记录</view>
+    </view>
+  </block>
+
+  <view class="backTop" bindtap="backTop" wx:if="{{floorstatus}}"></view>
+  <view class="bottom" wx:if="{{isShow}}">----我是有底线的----</view>
+</view>

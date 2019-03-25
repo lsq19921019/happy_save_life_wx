@@ -1,0 +1,75 @@
+/* pages/newfree/newfree.wxss */
+
+page {
+  background: #ee161f;
+}
+
+.process {
+  width: 702rpx;
+  height: 277rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: FZLTHJW--GB1-0;
+  color: rgba(255, 31, 44, 1);
+  padding-top: 41rpx;
+}
+
+
+.process .tittle {
+  font-size: 36rpx;
+  font-family: FZLTHJW--GB1-0;
+  font-weight: bold;
+  color: rgba(238, 22, 31, 1);
+}
+
+.process .pro_img {
+  width: 584rpx;
+  height: 59rpx;
+  margin-top: 60rpx;
+}
+
+
+.process .textbox {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 20rpx;
+}
+
+.process .textbox text {
+  width: 25%;
+}
+
+.center {
+  color: rgba(255, 255, 255, 1);
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+}
+
+.center .top {
+  font-size: 36rpx;
+  font-family: FZLTHJW--GB1-0;
+  font-weight: bold;
+}
+.center .bottom{
+  color: rgba(255, 255, 255, 1);
+}
+
+/* .cirle {
+  width: 36rpx;
+  height: 31rpx;
+  background: linear-gradient(0deg, rgba(255, 62, 212, 1), rgba(255, 216, 0, 1), rgba(255, 150, 0, 1), rgba(255, 216, 0, 1), rgba(255, 210, 0, 1));
+  border-radius: 50%;
+} */
+
+
+.goodswrap .style2 .goodlist{
+  border-radius:10rpx;
+  overflow: hidden;
+}

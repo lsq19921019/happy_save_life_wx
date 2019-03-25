@@ -1,0 +1,925 @@
+/*团队  */
+
+.pie {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 999; */
+  border-radius: 100%;
+  background: -webkit-linear-gradient(right, #04a3e4, #2ee4a8); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #04a3e4, #2ee4a8); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #04a3e4, #2ee4a8); /* Firefox 3.6 - 15 */
+  background: linear-gradient(right, #04a3e4, #2ee4a8); /* 标准的语法 */
+}
+.goHome image{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 20rpx;
+  top: 80%;
+  /* background: #000; */
+}
+.pieCir6 {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+}
+
+.pieCirN5 {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+}
+
+.pieCir5 {
+  width: 85px;
+  height: 85px;
+  top: 60%;
+}
+
+.Size5 {
+  font-size: 23rpx;
+}
+
+.pieCirx {
+  width: 110px;
+  height: 110px;
+  top: 60%;
+}
+
+/* .getNum{ 
+  animation: getNum 1s forwards;
+} */
+
+/* @keyframes getNum {
+   0%{opacity: 0} 
+   25%{opacity: 0.25}
+   50%{opacity: 0.5}
+   75%{opacity: 0.75}
+   100%{opacity: 1}
+} */
+
+.pieImg {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.coverAllNum {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  font-size: 25rpx;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+/* .coverHeight5{
+  line-height: 90rpx;
+}
+.coverHeight6{
+  line-height: 110rpx;
+}
+.coverHeightx{
+  line-height: 110rpx;
+} */
+
+.coverNum {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  font-size: 25rpx;
+  color: white;
+}
+
+.color {
+  color: red;
+}
+
+.distribute {
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  position: absolute;
+  top: 0;
+  left: 20rpx;
+}
+
+/*屏幕比为2  */
+
+.lin5 {
+  width: 95%;
+  height: 5rpx;
+  background-color: #91f2de;
+  position: absolute;
+  left: 50%;
+  bottom: -5%;
+  transform: translateX(-50%);
+}
+
+/*屏幕比为3  */
+
+.lin6 {
+  width: 95%;
+  height: 5rpx;
+  background-color: #91f2de;
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  transform: translateX(-50%);
+}
+
+/*屏幕比为3.5  */
+
+.linx {
+  width: 95%;
+  height: 5rpx;
+  background-color: #91f2de;
+  position: absolute;
+  left: 50%;
+  bottom: -5%;
+  transform: translateX(-50%);
+}
+
+.bute {
+  padding-left: 20rpx;
+  font-size: 21rpx;
+  position: absolute;
+  top: 40rpx;
+  left: 20rpx;
+}
+
+.team .nonData {
+  font-size: 30rpx;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+
+.teamType {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  border-top: 2rpx solid #f5f5f5;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  background-color: white;
+  z-index: 20;
+}
+
+.teamState {
+  width: 50%;
+  text-align: center;
+  line-height: 38rpx;
+  font-size: 30rpx;
+}
+
+.teamList {
+  width: 100%;
+  text-align: center;
+  line-height: 38rpx;
+  font-size: 30rpx;
+}
+.teamList:nth-of-type(1) {
+  border-right: 1rpx solid #666;
+}
+
+/* 索搜框 */
+
+.seekbg {
+  height: 200rpx;
+  width: 100%;
+  background: #ff2b33;
+  padding-top: 30rpx;
+  margin-bottom: 80rpx;
+}
+
+.seekbg .seekBox {
+  background: #ececec;
+  width:665rpx;
+  height: 72rpx;
+  position: relative;
+  border-radius: 50rpx;
+  overflow: hidden;
+  margin:0 auto;
+
+}
+
+.Oactive {
+  background-color: #bab9b9;
+  height: 100%;
+}
+
+.seekbg .seekBox input {
+  width:464rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #bab9b9;
+  font-size: 28rpx;
+  margin-left: 40rpx;
+}
+
+.seekbg .seekBox .definite {
+  background: #fff;
+  position: absolute;
+  height: 100%;
+  width: 120rpx;
+  line-height: 64rpx;
+  text-align: center;
+  top: 0;
+  right: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seekbg .seekBox .definite image {
+  width: 44rpx;
+}
+
+.team {
+  width: 100%;
+  height: 100%;
+  /* margin-top: 80rpx; */
+  z-index: 999;
+}
+
+.distribution {
+  width: 100%;
+  height: 465rpx;
+  background-color: white;
+  position: relative;
+}
+
+.TeamType {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  border-top: 2rpx solid #f5f5f5;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  z-index: 999;
+}
+
+.today {
+  width: 100%;
+  margin-top: 5rpx;
+  background-color: white;
+}
+
+.head {
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.headTb {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 150rpx;
+}
+
+.earnings {
+  width: 50%;
+  height: 85%;
+  text-align: center;
+  /* border-right: 1rpx solid #f5f5f5; */
+}
+
+.prenum {
+  font-size: 35rpx;
+  display: block;
+}
+
+.select {
+  color: red;
+  font-size: 30rpx;
+}
+
+.pre {
+  display: block;
+  font-size: 20rpx;
+  padding: 30rpx 0 10rpx;
+}
+
+.headImg {
+  font-size: 30rpx;
+  padding: 24rpx 0;
+}
+
+.headImg image {
+  width: 25rpx;
+  height: 29rpx;
+  padding: 0 10rpx 6rpx 30rpx;
+}
+
+.seekbg .acting {
+  width: 680rpx;
+  height: 120rpx;
+  margin: 30rpx auto;
+  background: #fff;
+  box-shadow: 0 4rpx 10rpx #e9e9e9;
+  overflow: hidden;
+  border-radius: 12rpx;
+}
+
+.seekbg .acting .bgBox {
+  width: 33.3%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seekbg .acting .teamActive {
+  background: #f2f2f2;
+}
+
+.seekbg .acting .bgBox>view {
+  /* margin-top: 18rpx; */
+}
+
+.seekbg .acting view p:first-child {
+   padding-bottom: 8rpx; 
+}
+
+.seekbg .acting>view:nth-child(2) {
+  border-right: 2rpx solid #e9e9e9;
+  border-left: 2rpx solid #e9e9e9;
+}
+
+/* 团队人员 */
+
+.layer {
+  font-size: 26rpx;
+  color: #666;
+  background: #fff;
+  border-bottom: 2rpx solid #e9e9e9;
+  width: 100%;
+  padding: 14rpx 30rpx 14rpx;
+  height: 142rpx;
+}
+
+.layer>view {
+  float: left;
+}
+
+/* 头像 */
+
+.layer .avatar {
+  margin-right: 30rpx;
+}
+
+.layer .avatar image {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 14rpx;
+}
+
+/* 用户名 */
+
+.layer .userName {
+  font-size: 20rpx;
+  margin-right: 30rpx;
+  width: 24%;
+}
+
+.layer .userName p:nth-child(1) {
+  font-size: 28rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.layer .userName p:nth-child(2) {
+  border: 1rpx solid rgba(240, 140, 166, 0.5);
+  border-radius: 40rpx;
+  display: inline-block;
+  padding: 0rpx 16rpx;
+  line-height: 28rpx;
+  margin: 5rpx 0 4rpx;
+}
+
+.layer .userName p:nth-child(3) {
+  font-size: 20rpx;
+}
+
+/*人数 */
+
+.layer .people {
+  overflow: hidden;
+  margin-right: 24rpx;
+}
+
+.layer .people p {
+  line-height: 54rpx;
+  width: 192rpx;
+  overflow: hidden;
+  white-space: normal;
+}
+
+/* 加好友 */
+.layer .butState{
+  height:112rpx;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  /* background: pink; */
+}
+
+.layer  .butState  navigator,.layer  .butState .binding{
+  height:48rpx;
+  line-height:48rpx;
+  text-align:center;
+  font-size: 20rpx;
+  border-radius: 40rpx;
+}
+
+.layer .joinFirend {
+  border: 2rpx solid #fff;
+  color: white;
+  margin: 10rpx 0 0;
+  background-color: #ed2d3c;
+}
+
+.layer .check {
+  border: 2rpx solid #ed2d3c;
+  color: #ed2d3c;
+  padding: 0 10rpx;
+}
+.layer .bind {
+  border: 2rpx solid #ed2d3c;
+  color: #ed2d3c;
+  border-radius: 40rpx;
+  padding: 0 13rpx;
+  font-size: 20rpx;
+  float: right;
+}
+
+.none image {
+  width: 192rpx;
+  height: 151rpx;
+}
+
+.none button {
+  border: 2rpx solid #ed2d3c;
+  color: #ed2d3c;
+}
+
+.fanshaped {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 350rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.shaped {
+  width: 90%;
+  height: 90%;
+  position: relative;
+}
+
+.shapedTitle {
+  font-size: 25rpx;
+  color: #333;
+}
+
+.setCanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+}
+
+.TeamCan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 90%;
+}
+
+.maskCri {
+  background-color: white;
+  height: 75px;
+  width: 75px;
+  position: absolute;
+  top: 50%;
+  border-radius: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.can {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.underTeam .none {
+  margin-top: 0rpx;
+  margin-left: -120rpx;
+}
+
+.teamBox .none {
+  margin-top: -200rpx;
+  margin-left: -120rpx;
+}
+
+/*侧边栏  */
+
+.aslide {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.slide {
+  height: 100%;
+  width: 600rpx;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s;
+  z-index: 1000;
+}
+
+.headTop {
+  height: 68rpx;
+  width: 100%;
+  background-color: #f7f2ef;
+  line-height: 68rpx;
+  padding-left: 40rpx;
+  color: #909090;
+}
+
+.source {
+  width: 100%;
+  height: 350rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+  padding: 20rpx 30rpx;
+}
+
+.sourceItem {
+  width: 170rpx;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 12rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #666;
+}
+
+.times {
+  height: 180rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #f5f5f5;
+  padding: 20rpx 0 0 30rpx;
+}
+
+.date {
+  width: 170rpx;
+  height: 70rpx;
+  background-color: #f5f5f5;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 70rpx;
+  color: #666;
+  margin: 15rpx 0 20rpx;
+}
+
+.mouth {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mouthItem {
+  width: 170rpx;
+  height: 60rpx;
+  background-color: #f5f5f5;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  color: #666;
+}
+
+.mouthItemBg {
+  background-color: #ffeee6;
+  border: 2rpx solid #ed2d3c;
+}
+
+.btn {
+  width: 370rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  position: absolute;
+  bottom: 80rpx;
+  right: 30rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnImg {
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.btnImg image {
+  height: 100%;
+  width: 100%;
+}
+
+.funBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 26rpx;
+}
+
+.classify {
+  position: absolute;
+  top:51rpx;
+  right: 95rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.classify image {
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+}
+
+.showAsk {
+  position: absolute;
+  top: 4%;
+  right: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.showAsk image {
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+}
+
+.box {
+  width: 95%;
+  height: 260rpx;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 110rpx auto 0;
+}
+
+.bar {
+  width: 50rpx;
+  height: 1%;
+  background-color: #36849a;
+  position: relative;
+}
+
+.bar:nth-of-type(2) {
+  background-color: #51b495;
+}
+
+.bar:nth-of-type(3) {
+  background-color: #eba639;
+}
+
+.bar:nth-of-type(4) {
+  background-color: #91f2de;
+}
+
+.bar:nth-of-type(5) {
+  background-color: #e84848;
+}
+
+.bar:nth-of-type(6) {
+  background-color: #80619d;
+}
+
+.bar:nth-of-type(7) {
+  background-color: #eb8a39;
+}
+
+.bar:nth-of-type(8) {
+  background-color: #51b495;
+}
+
+.top {
+  height: 60rpx;
+  width: 100%;
+  position: absolute;
+  top: -65rpx;
+  left: 0;
+  font-size: 20rpx;
+  text-align: center;
+  pointer-events: none;
+}
+
+.baifen {
+  width: 100%;
+  border-bottom: 2rpx solid #000;
+  padding-bottom: 10rpx;
+}
+
+.level {
+  position: absolute;
+  left: 0;
+  bottom: -60rpx;
+  width: 100%;
+  height: 40rpx;
+  font-size: 25rpx;
+}
+/*弹窗  */
+.withdraw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+.withdraw .drawType{
+  height:auto;
+  width: 540rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border-radius: 12rpx;
+}
+.withdraw .drawType .drawHead{
+  text-align: center;
+  font-size: 36rpx;
+  padding: 30rpx 0;
+}
+.withdraw .drawType .sysType{
+  /* text-align: center; */
+  color: #666666;
+  font-size: 0;
+}
+.withdraw .drawType .system{
+  display: block;
+  padding: 10rpx 30rpx;
+  font-size: 24rpx;
+  letter-spacing: 5rpx;
+}
+.withdraw .drawType .sysTip .logoImg{
+  height: 30rpx;
+  width: 30rpx;
+}
+.withdraw .drawType .sysTip .logoImg image{
+  height: 100%;
+  width: 100%;
+}
+.withdraw .drawType .sysTip{
+
+   height: 30rpx; 
+  line-height: 30rpx;
+   font-size: 23rpx; 
+}
+.withdraw .drawType .iknow{
+  height: 80rpx;
+  width: 100%;
+  /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  border-top: 2rpx solid #f5f5f5;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #ed2d3c;
+  margin-top: 20rpx;
+}
+.after{
+  margin: 320rpx 30rpx 0;
+}
+.before{
+  margin: 120rpx 30rpx 0;
+}
+/*统计文案位置  */
+.levIns{
+  position: absolute;
+  top: 10rpx;
+  right: 35rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.levIns image{
+  height: 100%;
+  width: 100%;
+}
+.getFriend{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+.getFriend .friendCon{
+  width: 550rpx;
+  height: 365rpx;
+  border-radius: 12rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%,-50%)
+}
+.getFriend .friendCon .remind{
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 35rpx;
+}
+.getFriend .friendCon .content{
+     padding: 20rpx 40rpx ;
+     font-size: 26rpx;
+     text-align: center;
+
+}
+.getFriend .friendCon .btnFriend{
+  height: 80rpx;
+  border-top: 1rpx solid #f5f5f5;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.getFriend .friendCon .btnFriend .item{
+  width: 50%;
+  border-right: 1rpx solid #f5f5f5;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+.getFriend .friendCon .btnFriend .item:nth-child(2){
+   border:none;
+   color: #ed2d3c;
+}
+.reject{
+
+   color: #ed2d3c;
+}

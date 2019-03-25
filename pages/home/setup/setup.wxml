@@ -1,0 +1,11 @@
+<view class="setup">
+
+  <view class="strip clearfloat">
+    <text class="left">个人信息</text>
+  </view>
+  <view class="strip clearfloat">
+    <text class="left">支付宝</text>
+    <text class='right'>13207165382</text>
+  </view>
+
+</view>

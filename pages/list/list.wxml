@@ -1,0 +1,38 @@
+<!--pages/classify/classify.wxml-->
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+<import src="../../common/rank/rank.wxml" />
+
+
+<view class="page">
+<block wx:if='{{themeId!=1}}'>
+  <!-- <view class='banner'>
+    <block wx:if='{{themeId==10}}'>
+      <image src='https://bnlnimg.bnln100.com/listbanner1.png'></image>
+    </block>
+     <block wx:if='{{themeId==2}}'>
+      <image src='https://bnlnimg.bnln100.com/listbanner2.png'></image>
+    </block>
+     <block wx:if='{{themeId==3}}'>
+      <image src='https://bnlnimg.bnln100.com/listbanner3.png'></image>
+    </block>
+  </view> -->
+
+  </block>
+  <!-- 排序 -->
+  <block wx:if='{{themeId==3||themeId==1||themeId==10}}'>
+    <template is="rank" data="{{_num,arrange}}"></template>
+  </block>
+
+  <!-- 商品列表模板 -->
+  <view class='goodswrap'>
+    <template is="goodsList" data="{{goodslist,arrange,role,isbaokuan}}"></template>
+  </view>
+
+  <!-- 没有更多模板 -->
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+
+</view>
+<view class='goHome' bindtap='toHome' wx:if="{{ifRootPage}}">
+ <image src='../../img/return.png'></image>
+</view>

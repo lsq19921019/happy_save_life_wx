@@ -1,0 +1,212 @@
+<import src="../../../utils/common.wxml" />
+<view class="details"  wx:if="{{goodsInfo!='none'}}">
+  <block wx:if='{{!result}}'>
+    <!-- 视频播放 -->
+    <video wx:if="{{plays}}" bindfullscreenchange='exitVV' id="myVideo" class='videos' src="{{video}}" direction="0" controls="false" style="position:fixed;left:-1000px" />
+    <!-- 轮播，图片 -->
+    <view style="position:relative">
+      <swiper wx:if="{{goodsInfo.imgs.length!=0}}" indicator-dots="true" class="swiper" autoplay="true" interval="3000" duration="800" circular="true" bindtap="previewBanner">
+        <block wx:for="{{goodsInfo.imgs}}" wx:key="key">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" mode="widthFix" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <image wx:else src="{{goodsInfo.img}}" mode="widthFix" class="detailImage"></image>
+      <view class="hint" wx:if="{{goodsInfo.type==0}}">
+        <block wx:if="{{goodsInfo.num-goodsInfo.cutNum!=0}}">
+          {{goodsInfo.cutNum}}人己砍，还差{{goodsInfo.num-goodsInfo.cutNum}}人砍价，共需{{goodsInfo.num}}人砍价
+        </block>
+        <block wx:else>助力完成</block>
+      </view>
+      <image wx:if="{{video!=''}}" class='play' catchtap='playvideo' src="../../../img/icon_video.png"></image>
+    </view>
+    <view class="goods_info">
+      <view class="info">
+        <view class="title">
+          <span></span>
+          {{goodsInfo.goodsName}}
+        </view>
+        <view class="before">
+          原价:￥{{goodsInfo.price}}
+        </view>
+        <view class="num clearfloat">
+          <view class="quan">
+            <!-- 券后价 -->
+          </view>
+          <span class="present">
+            <span>￥</span>{{goodsInfo.endPrice}}</span>
+          <span class='buynum'>{{goodsInfo.sales}}人己买</span>
+        </view>
+        <view class='disTicket' wx:if="{{state==0&&goodsInfo.status==1}}">
+          <image src='https://bnlnimg.bnln100.com/disTicket.png'></image>
+          <text class='yuan'>{{goodsInfo.couponMoney}}元优惠券</text>
+          <text class='now' bindtap="download">立即领券</text>
+        </view>
+        <view class='disTicket' wx:else>
+          <image src='../../../img/robTicket.png'></image>
+          <text class='yuan'>{{goodsInfo.couponMoney}}元优惠券</text>
+          <text class='now'>砍价领券</text>
+        </view>
+      </view>
+
+      <!--推荐  -->
+      <view class="recom clearfloat" wx:if="{{goodsInfo.goodsDesc!=''}}">
+        <span>推荐词</span>
+        <span>
+          {{goodsInfo.goodsDesc}}
+        </span>
+      </view>
+
+      <!--店铺  -->
+      <navigator class='newDetails_info' url="/package/pages/shop/shop?shopname={{goodsInfo.mallName}}">
+        <text>{{goodsInfo.mallName}}</text>
+      </navigator>
+      <!-- 参与砍价-->
+      <view class="participant" wx:if="{{goodsInfo.type==0}}">
+        <p>参与砍价:</p>
+        <scroll-view class="pSwiper" scroll-x="true">
+          <view wx:for="{{joinCutUserList}}" wx:key="*this">
+            <image src="{{item.headImgs}}"></image>
+            <p>{{item.wxName}}</p>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- 先不做 
+      <block wx:if="{{goodsInfo.platform!=1}}">
+        <view class="detailImg {{n==1?'downArrow':''}}" bindtap="see">
+          查看宝贝详情
+        </view>
+      </block>
+      <block wx:for="{{detailsImg}}" wx:key="{{key}}">
+        <image style="width:100%" src="{{item}}" mode="widthFix" lazy-load="true"></image>
+      </block>-->
+
+      <!--猜你喜欢  -->
+       <block wx:if="{{showGuess}}"> 
+      <view class='guess'>
+        <image src='../../../img/guess.png' />
+      </view>
+      <block wx:for="{{goodsList}}" wx:key="*this">
+        <template is="glModel" data="{{item,mode,role,ifNeedCut:sysData.ifNeedCut}}"></template>
+      </block>
+       </block> 
+    </view>
+    <!-- 提示框 -->
+    <view class="bottom">----我是有底线的----</view>
+    <view style="height:110rpx;"></view>
+    <!-- 底部按钮 -->
+    <view wx:if="{{goodsInfo.num!=0}}" class="operation clearfloat">
+      <!-- 发起者状态-->
+      <block wx:if="{{state==0}}">
+        <!-- 未完成砍价 -->
+        <form wx:if="{{goodsInfo.status==0}}" report-submit="true" bindsubmit="formSubmit">
+          <!-- 用户是消费者 -->
+          <view wx:if="{{role==0}}" bindtap="consume" class="common">
+            邀请好友助力,领优惠券
+          </view>
+          <!-- 己发起砍价 -->
+          <button wx:elif="{{goodsInfo.type==0}}" plain="true" hover-class="none" open-type="share" class="common" data-cutgoods="2" form-type="submit">
+            邀请好友助力
+          </button>
+          <!-- 未发起砍价 -->
+          <button wx:elif="{{goodsInfo.type==1}}" plain="true" hover-class="none" open-type="share" class="common" data-cutgoods="1" form-type="submit">
+            邀请好友助力,领优惠券
+          </button>
+        </form>
+        <!-- 己完成砍价 -->
+        <block wx:elif="{{goodsInfo.status==1}}">
+          <navigator class='feedback' url="/pages/details/feedback/feddback">
+            <view class='feedbackImg'>
+              <image src='../../../img/feedback.png'></image>
+            </view>
+            <view class='feedbackFont'>
+              反馈
+            </view>
+          </navigator>
+          <view class="shareApp">
+            <button class="sa" open-type="share" plain="true">分享赚{{goodsInfo.tkCommission}}元</button>
+            <view class="sa" bindtap="download">领券自购</view>
+          </view>
+        </block>
+      </block>
+      <!-- 参与者状态-->
+      <block wx:elif="{{state==1}}">
+        <view wx:if="{{role==0}}"  class="help helpmargin clearfloat">
+          <image src="{{goodsInfo.headImgs}}"></image>
+          <text>{{goodsInfo.wxName}}</text>
+          <p bindtap="consume">助力好友</p>
+        </view>
+        <view wx:elif="{{goodsInfo.status==0}}" class="help  clearfloat">
+          <image src="{{goodsInfo.headImgs}}"></image>
+          <text>{{goodsInfo.wxName}}</text>
+          <p bindtap="helpBargain">助力好友</p>
+        </view>
+        <button wx:elif="{{goodsInfo.haveBargain}}" plain="true" hover-class="none" open-type="share" class="common" data-cutgoods="1" form-type="submit">
+          邀请好友助力,领优惠券
+        </button>
+        <view wx:elif="{{goodsInfo.status==1}}" class="common accomplish">己完成砍价</view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{!showGuess}}">
+      <view class='detailsNone'>
+        <view class='outLoadImg'>
+          <image src='../../../img/outLoad.png'></image>
+        </view>
+        <view class='outLoadInfo'>该商品已被抢完，看看其他商品吧</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='showGuess'>
+        <view class='showImg'>
+          <image src='../../../img/outLoad.png'></image>
+        </view>
+        <view class='showInfo'>该商品已被抢完，看看其他商品吧</view>
+      </view>
+      <view class='guess'>
+        <image src='../../../img/guess.png'></image>
+      </view>
+      <block wx:for="{{goodsList}}" wx:key="*this">
+        <template is="glModel" data="{{item,mode,role,ifNeedCut:sysData.ifNeedCut}}"></template>
+      </block>
+    </block>
+  </block>
+
+  <!-- 分享图+转发好友 -->
+  <canvas style="width: 300px; height: 500px;position:fixed;left:-1000px;" canvas-id="myCanvas"></canvas>
+  <view class="imgMark" wx:if="{{hbImgBl}}">
+    <image src="{{hbImg}}" bindtap='previewImage'></image>
+    <view>这张商品优惠券已自动保存到手机相册</view>
+    <view class='text_t'>快快分享给好友吧</view>
+    <button bindtap='hideMark'>我知道了</button>
+  </view>
+
+  <view class='detHint' bindtap='hidedetHint' wx:if="{{detHint}}">
+    <image src="../../../img/hint_bg.png"></image>
+  </view>
+  <view wx:if="{{isNav}}" bindtap='hidekjbg' class="kjbg"></view>
+
+
+  <button style="padding:0;color:none;border:none" class="kjnav" animation="{{animationData2}}" open-type="share" plain="true">
+    <view class="text">转发</view>
+    <image class="cicon" src="../../../img/icon_nav1.png"></image>
+  </button>
+  <view class="kjnav" animation="{{animationData3}}" bindtap="canvasFn">
+    <view class="text">分享</view>
+    <image class="cicon" src="../../../img/icon_nav2.png"></image>
+  </view>
+  <view class="kjnav" animation="{{animationData4}}" bindtap="index">
+    <view class="text">首页</view>
+    <image class="cicon" src="../../../img/icon_nav4.png"></image>
+  </view>
+  <view class="kjbut {{isNav?'close':''}}" bindtap="showKj">
+    <image class="cicon" src="../../../img/icon_nav5.png"></image>
+  </view>
+
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" hidden="{{isShow}}"></view>
+  <canvas style="width: 300px; height: 300px;position:fixed;left:-1000px;" canvas-id="shareCanvas"></canvas>
+</view>

@@ -1,0 +1,324 @@
+<!-- <template is="glModel" data="{{item,mode,role,ifNeedCut:sysData.ifNeedCut,optShare:true}}"></template> -->
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+<import src="../../common/rank/rank.wxml" />
+
+<view class="page">
+ <form report-submit="true" bindsubmit="formSubmit">
+  <view class='mask' bindtap='sh_up' wx:if='{{showup}}' style='top:0' catchtouchmove='true'></view>
+  <view class='mask mask1' bindtap='filtrate' wx:if='{{showfill}}' style='top:0' catchtouchmove='true'></view>
+
+
+  <!-- 搜索 111111111111111111111111111111111111111111111111-->
+  <view class='seach'>
+    <view class='inputbox' >
+      <image class='seach_ico' bindtap='sendSeek' src='../../img/seach1.png'></image>
+      <input  placeholder='输入关键词或粘贴宝贝标题' bindinput="bindBlur" bindconfirm="sendSeek"></input>
+    </view>
+  </view>
+
+  <!--分类 1111111111111111111111111111111111111111111111111-->
+  <view class='navBar'>
+    <scroll-view scroll-x="true" class='slide_view' scroll-with-animation="true" scroll-left="{{scrollPosition}}">
+
+      <view wx:for="{{catlist}}" class="swiperScroll   {{_active==index?'active':''}}" wx:key="{{index}}" data-catid="{{item.id}}" data-id="{{index}}" bindtap="cifyClick" data-catid='{{item.catId}}'>
+        {{item.catName}}
+      </view>
+    </scroll-view>
+    <view class='up' bindtap='sh_up'>
+      <image class='up_ico' src='../../img/drop-down.png'></image>
+    </view>
+
+    <view class='pop-up' wx:if='{{showup}}'>
+      <view class="pop {{_active==index?'active':''}}" wx:for="{{catlist}}" wx:key="{{index}}" bindtap='switch_cur' data-id="{{index}}" data-catid='{{item.catId}}'>
+        {{item.catName}}</view>
+    </view>
+  </view>
+
+  <!-- 精选时显示的子类别 111111111111111111111111111111111111111111111111111-->
+  <block wx:if="{{_active==0}}">
+    <!-- 轮播 -->
+    <view class="bannerAD" askInfoin>
+      <swiper autoplay="true" interval="4000" circular="true" class="swiper" indicator-color="rgba(255,255,255,0.8)" indicator-active-color="red" indicator-dots="true">
+        <block wx:for="{{themlist}}" wx:key="{{index}}">
+          <swiper-item>
+            <navigator class="u-row" url="/pages/themed/themed?themeId={{item.themeId}}&title={{item.name}}">
+              <image src="{{item.imageUrl}}" mode="widthFix" />
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <!-- 主题 -->
+    <view class='navlist'>
+
+      <!-- <navigator class='nav' target="miniProgram" hover-class="none" open-type="navigate" app-id="wx32540bd863b27570" path="{{page_path}}" extra-data='{{wxExtraData}}' version="release"> -->
+      <view class='nav' catchtap='transred'>
+        <view class='view'>
+           <button form-type="submit">
+          <image class='navimg' src='https://bnlnimg.bnln100.com/themIcon1.png'></image>
+          <text class="txt">多多红包</text>
+          </button>
+        </view>
+      </view>
+
+      <!-- </navigator> -->
+      <view class='nav' wx:key="{{index}}" wx:for="{{themIconList}}" bindtap='jump' data-index='{{item.themeId}}' data-title='{{item.name}}'>
+         <button form-type="submit">
+          <image class='navimg' src='{{item.icon}}'></image>
+          <text class="txt">{{item.name}}</text>
+        </button>
+      </view>
+
+    </view>
+
+
+    <!-- 装修店铺 -->
+    <block wx:if="{{modulelist.length!=0}}">
+      <view class='decorate' wx:for="{{modulelist}}" wx:key="{{index}}">
+        <block wx:if="{{item.styleType=='2-5-0'}}">
+          <view class="g-navbox1 clearfloat">
+            <block wx:for="{{item.cateInfoList}}">
+              <view class="mo_nav" data-params="{{item.params}}" data-title="{{item.title}}" data-link="{{item.link}}" bindtap='golist'>
+                <image src="{{item.img}}" alt="" />
+              </view>
+            </block>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-2-1'}}">
+          <view class='decorate_1'>
+            <block wx:for="{{item.cateInfoList}}" wx:key="{{index}}">
+              <view class='list' bindtap='go' data-concent='{{item}}'>
+                <image src='{{item.img}}'></image>
+              </view>
+            </block>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-3-1'}}">
+          <view class='decorate_2'>
+            <block wx:for="{{item.cateInfoList}}" wx:key="{{index}}">
+
+              <view class='list' bindtap='go' data-concent='{{item}}'>
+                <image src='{{item.img}}'></image>
+              </view>
+            </block>
+          </view>
+        </block>
+
+
+        <block wx:if="{{item.styleType=='2-4-1'}}">
+          <view class='decorate_3'>
+            <view class='leftlist' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+              <image src='{{item.cateInfoList[0].img}}'></image>
+            </view>
+            <view class='rightlist'>
+              <view class='list-ch-top' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+                <image src='{{item.cateInfoList[1].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+                <image src='{{item.cateInfoList[2].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[3]}}'>
+                <image src='{{item.cateInfoList[3].img}}'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-5-1'}}">
+          <view class='decorate_4'>
+            <view class='leftlist' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+              <image src='{{item.cateInfoList[0].img}}'></image>
+            </view>
+
+            <view class='rightlist'>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+                <image src='{{item.cateInfoList[1].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+                <image src='{{item.cateInfoList[2].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[3]}}'>
+                <image src='{{item.cateInfoList[3].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[4]}}'>
+                <image src='{{item.cateInfoList[4].img}}'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-1-2'}}">
+          <view class='decorate_5' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+            <image src='{{item.cateInfoList[0].img}}'></image>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-3-1-1'}}">
+          <view class='decorate_6'>
+            <view class='list leftlist' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+              <image src='{{item.cateInfoList[0].img}}'></image>
+            </view>
+            <view class='list rightlist'>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+                <image src='{{item.cateInfoList[1].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+                <image src='{{item.cateInfoList[2].img}}'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-4-1-1'}}">
+          <view class='decorate_7'>
+            <view class='list leftlist'>
+              <view class='list-ch big' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+                <image src='{{item.cateInfoList[0].img}}'></image>
+              </view>
+              <view class='list-ch small' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+                <image src='{{item.cateInfoList[1].img}}'></image>
+              </view>
+            </view>
+            <view class='list rightlist'>
+              <view class='list-ch small' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+                <image src='{{item.cateInfoList[2].img}}'></image>
+              </view>
+              <view class='list-ch big' bindtap='go' data-concent='{{item.cateInfoList[3]}}'>
+                <image src='{{item.cateInfoList[3].img}}'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-5-1-1'}}">
+          <view class='decorate_8'>
+            <view class='list leftlist'>
+              <view class='list-ch big' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+                <image src='{{item.cateInfoList[0].img}}'></image>
+              </view>
+
+              <view class='list-ch small' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+                <image src='{{item.cateInfoList[1].img}}'></image>
+              </view>
+            </view>
+            <view class='list rightlist'>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+                <image src='{{item.cateInfoList[2].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[3]}}'>
+                <image src='{{item.cateInfoList[3].img}}'></image>
+              </view>
+              <view class='list-ch' bindtap='go' data-concent='{{item.cateInfoList[4]}}'>
+                <image src='{{item.cateInfoList[4].img}}'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-4-1-2'}}">
+          <view class='decorate_9'>
+            <block wx:for="{{item.cateInfoList}}" wx:key="{{index}}">
+              <view class='list' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+                <image src='{{item.img}}'></image>
+              </view>
+            </block>
+          </view>
+        </block>
+
+        <block wx:if="{{item.styleType=='2-5-1-2'}}">
+          <view class='decorate_10'>
+            <view class='list top' bindtap='go' data-concent='{{item.cateInfoList[0]}}'>
+              <image src='{{item.cateInfoList[0].img}}'></image>
+            </view>
+            <view class='list top' bindtap='go' data-concent='{{item.cateInfoList[1]}}'>
+              <image src='{{item.cateInfoList[1].img}}'></image>
+            </view>
+            <view class='list bto' bindtap='go' data-concent='{{item.cateInfoList[2]}}'>
+              <image src='{{item.cateInfoList[2].img}}'></image>
+            </view>
+            <view class='list bto' bindtap='go' data-concent='{{item.cateInfoList[3]}}'>
+              <image src='{{item.cateInfoList[3].img}}'></image>
+            </view>
+            <view class='list bto' bindtap='go' data-concent='{{item.cateInfoList[4]}}'>
+              <image src='{{item.cateInfoList[4].img}}'></image>
+            </view>
+          </view>
+        </block>
+      </view>
+
+    </block>
+
+
+  </block>
+
+
+  <!-- 非精选的子类别 111111111111111111111111111111111111111111111111111111-->
+  <view class='floor1' style="{{showfill?'z-index:1000':''}}">
+    <block wx:if="{{_active!=0}}">
+      <view class='kong' style=' width: 100%;height: 10rpx;background-color:#f5f5f5;'></view>
+
+      <view class='navlist'>
+        <view class='nav' wx:key="{{index}}" wx:for="{{catlist[_active].list}}" bindtap='goclassify' data-catid='{{item.catId}}'>
+          <image class='navimg' src='{{item.img}}'></image>
+          <text>{{item.catName}}</text>
+        </view>
+      </view>
+
+      <view class='kong' style=' width: 100%;height: 10rpx;background-color:#f5f5f5;'></view>
+      <!-- 排序 -->
+      <template is="rank" data="{{_num,arrange}}"></template>
+
+    </block>
+  </view>
+
+
+  <!-- 商品列表模板 -->
+  <view class='goodswrap'>
+
+    <block wx:if="{{_active==0}}">
+      <template is="goodsList" data="{{goodslist,arrange:0,role}}"></template>
+    </block>
+    <block wx:else>
+      <template is="goodsList" data="{{goodslist,arrange,role}}"></template>
+    </block>
+
+  </view>
+
+
+  <!-- 没有更多模板 -->
+  <template is="loging_more" data="{{nomore,showloding}}"></template>
+
+  <!-- 新人免单 浮窗-->
+
+  <!-- <block wx:if="{{ifFree}}">
+    <view class='float-ico' wx:if="{{!showfree}}">
+      <image src='https://bnlnimg.bnln100.com/float_ico.png' bindtap='sh_free'></image>
+    </view>
+  </block> -->
+
+  <view class='float-ico' wx:if="{{!showfree}}">
+    <image src='https://bnlnimg.bnln100.com/float_ico1.png' bindtap='sh_free' style='height:119rpx;width:97rpx'></image>
+  </view>
+  </form>
+</view>
+
+
+<!-- 新人免单 弹框-->
+<view class='freemask' catchtouchmove='true' bindtap='sh_free' wx:if="{{showfree}}"></view>
+<!-- <block wx:if="{{ifFree}}">
+  <view class='freebox' wx:if="{{showfree}}">
+    <view class='btn' catchtap='jump' data-index='{{0}}' data-title="新人免单">立即领取</view>
+    <image class='hidefreemask' src='../../img/hide_ico.png' bindtap='sh_free'></image>
+  </view>
+</block> -->
+
+<!-- <block wx:if="{{!ifFree}}"> -->
+<view class='freebox old' wx:if="{{showfree}}">
+  <view class='jump' catchtap='transred'></view>
+  <image class='hidefreemask' src='../../img/hide_ico.png' bindtap='sh_free'></image>
+</view>
+<!-- </block> -->

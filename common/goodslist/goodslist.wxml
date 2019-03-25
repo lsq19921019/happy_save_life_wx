@@ -1,0 +1,111 @@
+<!-- 商品列表 1111111111111111111111111111111111111111111111111111111111111111-->
+<template name="goodsList">
+  <!-- 样式1 -->
+  <block wx:if="{{arrange==0}}">
+    <view class='style1'>
+    <form report-submit="true" bindsubmit="formSubmit">
+      <view class='goodlist' wx:for="{{goodslist}}" wx:key="{{index}}" bindtap='godetail' data-id='{{item.goodsId}}' data-platform='{{item.platform}}'>
+      <button form-type="submit" class='listbtn'>
+        <view class='img'>
+          <image src='{{item.goodsPic}}'></image>
+          <!-- 排行榜 s-->
+          <view wx:if="{{hot&&index<3}}">
+            <view class='toprank'>{{index+1}}</view>
+          </view>
+          <!-- 排行榜 e-->
+        </view>     
+        <view class='info'>
+          <view class='name'>
+            <block  wx:if="{{isbaokuan}}">
+              <span class='baokuan'>爆款</span>
+            </block>
+           
+            <text class="gname">{{item.goodsName}}</text>
+
+          </view>
+          <view class='bto'>
+            <!-- 店铺名 -->
+            <view class='top'>
+              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png'></image>
+              <view class='storename'>
+                {{item.mallName}}
+              </view>
+            </view>
+
+            <!-- 分享赚 -->
+            <view class='left'>
+              <p class='sale' style="{{role>=1?'line-height: 75rpx':'line-height: 155rpx'}}">{{item.sales}}人已买</p>
+              <view class='sharget' wx:if="{{role>=1}}">分享赚￥{{item.commission}}</view>
+            </view>
+
+       
+          </view>
+
+          <!-- 价格区 -->
+          <view class='pricebox'>
+            <text class='nowprice'>￥{{item.endPrice}}</text>
+            <text class='befprice'>原价￥{{item.price}}</text> 
+                 <!-- 优惠券 -->
+            <view class='right'>
+              <view class='coupons' wx:if="{{item.couponMoney>0}}">
+                {{item.couponMoney}}元券
+              </view>
+            </view>
+            </view>
+        </view>
+ </button>
+      </view>
+      </form>
+    </view>
+
+  </block>
+
+
+  <!-- 样式2 -->
+  <block wx:else>
+    <view class='style2'>
+      <view class='goodlist' wx:for="{{goodslist}}" wx:key="{{index}}" wx:key="{{index}}" bindtap='godetail' data-id='{{item.goodsId}}' data-platform='{{item.platform}}'>
+
+        <view class='img'>
+          <image src='{{item.goodsPic}}'></image>
+        </view>
+        <view class='info'>
+          <button form-type='submit'>
+          <view class='name'>
+            <block wx:if="{{isbaokuan}}">
+              <span class='baokuan'>爆款</span>
+            </block>
+            {{item.goodsName}}
+          </view>
+          </button>
+          <view class='bto'>
+            <view class='top'>
+              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png'></image>
+              <view class='storename'>
+                {{item.mallName}}
+              </view>
+            </view>
+
+            <view class='moddel'>
+              <view class='left'>
+                <p class='sale'>{{item.sales}}人已买</p>
+              </view>
+              <view class='right' wx:if="{{role==1}}">
+                <view class='coupons'  wx:if="{{item.couponMoney>0}}">
+                  {{item.couponMoney}}元券
+                </view>
+              </view>
+            </view>
+
+            <view class='sharget' wx:if="{{role==1}}">分享赚￥{{item.commission}}</view>
+          </view>
+
+          <view class='pricebox'>
+            <text class='nowprice'>￥{{item.endPrice}}</text>
+            <text class='befprice'>原价￥{{item.price}}</text> </view>
+        </view>
+
+      </view>
+    </view>
+  </block>
+</template>

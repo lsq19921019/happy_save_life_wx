@@ -1,0 +1,34 @@
+<!--pages/home/deposit/deposit.wxml-->
+
+<view class='page_warp'>
+
+
+  <block wx:if="{{success}}">
+    <view class='success'>
+      <view class='success-ico'>
+      <image src='https://bnlnimg.bnln100.com/success.png'></image></view>
+      <view class='tishi'>提现申请成功</view>
+      <view>将在24小时内收到款项，请留意支付宝！</view>
+      <view class='btn' bindtap='gohome'>谢主隆恩</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class='box'>
+      <view class='top'>
+        <view>到账支付宝：{{aliNo}}
+          <text class='change' bindtap='gochange'>修改</text>
+        </view>
+        <view>提现余额</view>
+
+        <view class='amount'>
+          <span>￥</span>
+          <input placeholder='请输入金额' placeholder-style='font-weight:0' bindinput="bindBlur" bindconfirm=""></input>
+        </view>
+      </view>
+      <view class='bottom'>可提现余额:￥{{wallet}}</view>
+    </view>
+
+    <view class='deposit-btn' bindtap='deposit'>提现</view>
+  </block>
+</view>

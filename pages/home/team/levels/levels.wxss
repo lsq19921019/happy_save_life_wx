@@ -1,0 +1,169 @@
+.levels {
+  height: 100%;
+  width: 95%;
+  margin: 30rpx auto 0;
+  border-radius: 12rpx;
+}
+
+.userBg {
+  height: 250rpx;
+  width: 100%;
+  position: relative;
+  background: #ff2b33;
+}
+
+.userBg image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: -11; */
+}
+
+.userInfo {
+  height: 140rpx;
+  width: 100%;
+}
+
+.userInfo .head {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  margin: 50rpx 0 0 50rpx;
+  display: inline-block;
+}
+
+.userInfo .head image {
+  height: 100%;
+  width: 100%;
+}
+
+.userName {
+  width: 560rpx;
+  height: 100%;
+  float: right;
+  color: white;
+  padding-right: 40rpx;
+  font-size: 23rpx;
+}
+
+.name {
+  float: left;
+  padding-top: 50rpx;
+  font-size: 30rpx;
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retime {
+  float: right;
+  padding-top: 50rpx;
+  font-size: 20rpx;
+}
+
+.phone {
+  float: left;
+  font-size: 20rpx;
+}
+
+.uptime {
+  float: right;
+  font-size: 20rpx;
+}
+
+.indeta::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.earn {
+  height: 110rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.earnItem {
+  width: 25%;
+  height: 80%;
+  text-align: center;
+  border-right: 2rpx dotted #f5f5f5;
+}
+
+.earnItem:nth-of-type(4) {
+  border-right: none;
+}
+
+.total {
+  font-size: 22rpx;
+  padding: 10rpx 0;
+}
+
+.type {
+  height: 320rpx;
+  width: 100%;
+  background-color: white;
+  border-bottom-right-radius: 12rpx;
+  border-bottom-left-radius: 12rpx;
+}
+
+.typeItem {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.typeItem:nth-of-type(1) {
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.item {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+}
+
+.item:nth-of-type(1) {
+  border-right: 2rpx double lightgray;
+}
+
+.genre {
+  padding: 10rpx 0 15rpx;
+}
+
+/*消费  */
+
+.mtype {
+  height: 320rpx;
+  width: 100%;
+  background-color: white;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+}
+
+/*挽回  */
+
+.save {
+  height: 160rpx;
+  width: 100%;
+  background-color: white;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+}
+
+.saveItem {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,0 +1,38 @@
+/* pages/start/start.wxss */
+page {
+  width: 100%;
+  background: url('https://bnlnimg.bnln100.com/star-bg.png');
+  background-size: 100%;
+ 
+}
+
+.logo_wrap {
+  width: 100%;
+  text-align: center;
+  margin-top: 170rpx;
+  font-size: 50rpx;
+  color: #505050;
+}
+
+.logo {
+  width: 165rpx;
+  height: 165rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+}
+
+.logo image {
+  width: 165rpx;
+  height: 165rpx;
+}
+
+.login {
+  width: 555rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #e8563d;
+  color: #fff;
+  border-radius: 90rpx;
+  margin-top: 385rpx;
+}

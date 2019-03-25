@@ -1,0 +1,81 @@
+<import src="../../../utils/common.wxml" />
+
+<import src="../../../common/goodslist/goodslist.wxml" />
+<import src="../../../common/lodmore/lodmore.wxml" />
+<view class="collect">
+
+  <!-- 导航栏 -->
+  <!--<view class='navBar'>
+    <view class="swiperScroll  {{_active==0?'active':''}}" id="dom_0" data-id="0" bindtap="cifyClick">
+      店铺
+    </view>
+    <view class="swiperScroll  {{_active==1?'active':''}}" id="dom_1" data-id="1" bindtap="cifyClick">
+      商品
+    </view>
+    <view class="navbar__slider" style="transform:translateX({{sliderOffset}}px);"></view>
+  </view>
+-->
+  <view class="scrollCntent">
+    <swiper current="{{activeIndex}}" duration="300" bindchange="bindChange">
+      <!-- 店铺 -->
+      <!--
+      <swiper-item class="store">
+        <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" bindscrolltolower="sDownLoad" scroll-with-animation='true' lower-threshold="200" bindscroll="sScroll">
+-->
+          <!-- 当查找内容为空时 -->
+          <!--
+          <view class="seekNull" wx:if="{{sNull}}">
+            亲,暂无发现收藏店铺哦~
+          </view>
+          <view></view>
+
+          <navigator class="storeList" wx:for="{{storeList}}" wx:key='*this' url="/package/pages/shop/shop?shopname={{item.shopName}}&mallId={{item.shopId}}&platform={{item.platform}}">
+
+            <image src="{{item.shopPic==''?'https://bnlnimg.bnln100.com/cir_pd.png':item.shopPic}}" />
+            <view>
+              {{item.shopName}}
+            </view>
+          </navigator>
+-->
+          <!-- 加载图标 -->
+          <!-- <block wx:if="{{!sNoData}}">
+            <view class="loading" hidden="{{sStatus}}">
+              <image src="../../../img/loading1.gif"></image>
+            </view>
+          </block> -->
+          <!-- 没数据 -->
+          <!-- <view class="bottom" wx:if="{{sNoData}}">----我是有底线的----</view> -->
+        <!-- </scroll-view> -->
+        <!-- 回到顶部按钮 -->
+        <!-- <view class="backTop" bindtap="backTop" hidden="{{sStatus}}"></view> -->
+      <!-- </swiper-item> -->
+
+      <!-- 商品 -->
+      <swiper-item class="goods">
+        <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" scroll-with-animation='true' lower-threshold="200" bindscroll="gScroll" bindscrolltolower="bindDownLoad">
+          <!-- 当查找内容为空时 -->
+          <view class="seekNull" wx:if="{{seekNull}}">
+            亲,暂无发现收藏商品哦~
+          </view>
+
+          <!-- 商品列表模板 -->
+          <template is="goodsList" data="{{goodslist,arrange:0,role}}"></template>
+
+          <!-- 加载图标 -->
+          <block wx:if="{{!noneData}}">
+            <view class="loading" hidden="{{gStatus}}">
+              <image src="../../../img/loading1.gif"></image>
+            </view>
+          </block>
+          <!-- 没数据 -->
+          <view class="bottom" wx:if="{{noneData}}">----我是有底线的----</view>
+
+
+        </scroll-view>
+        <!-- 回到顶部按钮 -->
+        <view class="backTop" bindtap="backTop" hidden="{{gStatus}}"></view>
+      </swiper-item>
+    </swiper>
+  </view>
+  
+</view>

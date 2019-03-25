@@ -1,0 +1,29 @@
+.date{
+  padding:20rpx 30rpx;
+  font-size:34rpx;
+}
+.trip{
+  background:#fff;
+  padding:20rpx 30rpx;
+  font-size:32rpx;
+  margin-bottom:2rpx;
+}
+.trip .left{
+  float:left;
+}
+.trip .left .time{
+   font-size:28rpx;
+   color:#9B9B9B;
+   margin-top:10rpx;
+}
+.trip .right{
+  float:right;
+  color:#FF3100;
+  line-height:90rpx;
+}
+.none .record-img{
+  width:163rpx;
+}
+.none{
+  margin-left:-80rpx;
+}
