@@ -71,11 +71,18 @@ image {
   position: absolute;
   left: 30rpx;
 }
+.clear_ico {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 30rpx;
+}
 
 .inputbox input {
   width: 100%;
   height: 100%;
   padding-left: 70rpx;
+  padding-right: 70rpx;
 }
 
 /* 分类 分类 分类 分类 分类 分类 分类 分类 分类 分类 分类 */

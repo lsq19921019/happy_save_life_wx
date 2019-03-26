@@ -128,6 +128,15 @@ Page({
     that.setData({
       sendMsg: sendMsg
     })
+    if (sendMsg == "") {
+      that.setData({
+        showclosebtn: false
+      })
+    }else{
+      that.setData({
+        showclosebtn: true
+      })
+    }
   },
 
   //查找跳转带上搜索的内容
@@ -144,6 +153,16 @@ Page({
     wx.navigateTo({
       url: '/pages/seek/seek?key=' + sendMsg
     })
+  },
+  //清空搜索的内容
+  clearSeek: function(e) {
+    var that = this;
+    // console.log(this.data.sendMsg);
+    that.setData({
+      sendMsg: '',
+      showclosebtn: false
+    })
+    // console.log(this.data.sendMsg);
   },
 
 
