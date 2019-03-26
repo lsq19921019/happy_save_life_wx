@@ -5,18 +5,22 @@
 
 
 <view class="page">
-<block wx:if='{{themeId!=1}}'>
-  <!-- <view class='banner'>
+<!-- <block wx:if='{{themeId!=1}}'> -->
+  <block>
+  <view class='banner'>
     <block wx:if='{{themeId==10}}'>
-      <image src='https://bnlnimg.bnln100.com/listbanner1.png'></image>
+      <image src='https://bnlnimg.bnln100.com/high.png'></image>
     </block>
      <block wx:if='{{themeId==2}}'>
-      <image src='https://bnlnimg.bnln100.com/listbanner2.png'></image>
+      <image src='https://bnlnimg.bnln100.com/rankings.png'></image>
     </block>
      <block wx:if='{{themeId==3}}'>
-      <image src='https://bnlnimg.bnln100.com/listbanner3.png'></image>
+      <image src='https://bnlnimg.bnln100.com/brand_good.png'></image>
     </block>
-  </view> -->
+     <block wx:if='{{themeId==1}}'>
+      <image src='https://bnlnimg.bnln100.com/1.9banner.png'></image>
+    </block>
+  </view>
 
   </block>
   <!-- 排序 -->

@@ -35,7 +35,8 @@ Page({
       title: options.title || '9.9'
     })
     that.setData({
-      title: options.title
+      title: options.title,
+      themeId: options.themeId
     });
     if (getCurrentPages().length < 2) {
       //从其他页面直接跳转过来的，如 分享,  模板消息
