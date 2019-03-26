@@ -51,9 +51,21 @@
     </view> -->
 
         <view class='goodsbox'>
-          <view class="title">
+
+
+
+
+          <view class="title" selectable='true' >
             {{goodsInfo.goodsName}}
+            <view bindtap="copyTitle" class="copy_text_btn">
+              复制标题
+            </view>  
           </view>
+
+          
+
+
+
           <block wx:if="{{collect==true}}">
             <view class='iscollection' bindtap="delStore" bindtap="delStore">
               <image class='colico' src='https://bnlnimg.bnln100.com/detail_yescol.png'></image>
@@ -68,7 +80,7 @@
           </block>
         </view>
 
-        <view class='describe tworow'>
+        <view class='describe {{desc_hide>0?"tworow":""}}}' data-hide="1" bindtap="showAllDesc" >
           {{goodsInfo.goodsDesc}}
         </view>
 

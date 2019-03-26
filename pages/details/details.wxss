@@ -539,4 +539,17 @@
   color: rgba(153, 153, 153, 1);
 }
 
+.copy_text_btn{
+  color: #fff;
+  background-color: #ff4900;
+  font-size: 20rpx;
+  width: 120rpx;
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 5rpx 5xp;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 12rpx;
+}
 /*服务说明结束  */

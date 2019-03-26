@@ -12,11 +12,11 @@
   <!-- 搜索 111111111111111111111111111111111111111111111111-->
   <view class='seach'>
     <view class='inputbox' >
-      <image class='seach_ico' bindtap='sendSeek' src='../../img/seach1.png'></image>
       
       <image wx:if='{{showclosebtn}}' class='clear_ico' bindtap='clearSeek' src='../../img/icon_search_close.png'></image>
       <input  placeholder='输入关键词或粘贴宝贝标题' bindinput="bindBlur" bindconfirm="sendSeek" value="{{sendMsg}}"></input>
     </view>
+      <image class='seach_ico' bindtap='sendSeek' src='../../img/seach1.png'></image>
   </view>
 
   <!--分类 1111111111111111111111111111111111111111111111111-->

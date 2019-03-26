@@ -46,6 +46,8 @@ Page({
     canvasImg: "", //下载的图片 用于生成海报
     hideTimer: false, //销毁定时器
     platform: '', //平台值  显示不同平台
+
+    desc_hide: 1,//是否隐藏商品描述
   },
 
 
@@ -442,10 +444,12 @@ Page({
       that.download();
 
       // 设置nav标题
+      // wx.setNavigationBarTitle({
+      //   title: res.data.goodsName || '商品详情'
+      // })
       wx.setNavigationBarTitle({
-        title: res.data.goodsName || '商品详情'
+        title: '商品详情'
       })
-
 
       // that.buyMsg(res.data.commission); //用户购买信息
 
@@ -838,6 +842,42 @@ Page({
       path: '/pages/details/details?userId=' + app.globalData.user.unionidF + '&id=' + that.data.spreadId + "&platform=" + that.data.platform
     }
   },
+  //显示/隐藏商品全部描述
+  showAllDesc: function(e){
+    // e.target.dataset.hide = '0';
+    let that = this;
+    console.log(that.data.desc_hide);
+    if(that.data.desc_hide){
+      that.setData({
+        desc_hide: 0
+      });
+    }else{
+      that.setData({
+        desc_hide: 1
+      });
+    }
+  },
 
+  //一键复制文本内容
+  copyTitle:function(e){
+    var self=this;
+    wx.setClipboardData({
+      data: self.data.goodsInfo.goodsName,
+      success: function(res) {
+        // self.setData({copyTip:true}),
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '复制成功',
+        //   success: function(res) {
+        //     if (res.confirm) {
+        //       console.log('确定')
+        //     } else if (res.cancel) {
+        //       console.log('取消')
+        //     }
+        //   }
+        // })
+      }
+    })
+  },
 
 })
