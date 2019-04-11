@@ -14,7 +14,7 @@
             <view class="name">
               <open-data type="userNickName" class="userNickName"></open-data>
             </view>
-            <view class='id'>ID:{{user.imUserId}}
+            <view class='id' style="font-size:24rpx;">ID：{{user.imUserId}}
               <span class='copy' bindtap='copycon' data-concent="{{user.imUserId}}">复制</span>
             </view>
           </view>
@@ -55,19 +55,19 @@
             </view>
 
             <view class='total'>
-              <view class='totalItem'>
+              <view class='totalItem' bindtap="jump" data-type="2">
                 <view class='itemType'>￥{{user.todayInc}}</view>
                 <view class='itemNum'>今日收益</view>
               </view>
-              <view class='totalItem'>
+              <view class='totalItem' bindtap="jump" data-type="2">
                 <view class='itemType'>￥{{user.yestodayInc}}</view>
                 <view class='itemNum'>昨日收益</view>
               </view>
-              <view class='totalItem'>
+              <view class='totalItem' bindtap="jump" data-type="2">
                 <view class='itemType'>￥{{user.thisMInc}}</view>
                 <view class='itemNum'>本月收益</view>
               </view>
-              <view class='totalItem'>
+              <view class='totalItem' bindtap="jump" data-type="2">
                 <view class='itemType'>￥{{user.pMInc}}</view>
                 <view class='itemNum'>上月收益</view>
               </view>
@@ -133,13 +133,15 @@
             <image src="https://bnlnimg.bnln100.com/my5.png" style="width:44rpx;height:44rpx;padding-right:16rpx;vertical-align:middle" />
             <text>解锁特权</text>
           </button>
-        </block> -->
+        </block> wx:elif="{{_num==10}}" -->
 
 
         <view class='list_box'>
           <button form-type="submit" plain="true" class="list" bindtap="jump" data-type="3">
             <image class='listico' src="https://bnlnimg.bnln100.com/my9.png" />
-            <text>距离下一特权，还差{{user.num}}成员</text>
+
+            <text wx:if="{{user.msg}}" >{{user.msg}}</text>
+            <text wx:else>距离下一特权，还差{{user.num}}成员</text>
           </button>
           <!-- <button form-type="submit" plain="true" class="list" bindtap="jump" open-type="contact">
             <image class='listico' src="https://bnlnimg.bnln100.com/my8.png" />

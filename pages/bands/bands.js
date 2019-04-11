@@ -290,9 +290,10 @@ Page({
   canvasFn: function(e) {
     let that = this;
     let goodsinfo = e.currentTarget.dataset.goodsinfo;
-
+console.log(goodsinfo);
     wx.downloadFile({
-      url: myUrl.mainUrl + 'share/loadFileByUrl?token=' + app.globalData.token + '&url=' + goodsinfo.goodsImg, //转换成二进制流
+      // url: myUrl.mainUrl + 'share/loadFileByUrl?token=' + app.globalData.token + '&url=' + goodsinfo.goodsImg, //转换成二进制流
+      url: myUrl.mainUrl + 'share/loadFileByUrl?url=' + goodsinfo.goodsImg, //转换成二进制流
       success: function(res) {
         that.data.canvasImg = res.tempFilePath; //把二进制图片图片保存下来，用于生成海报    
       },
@@ -549,6 +550,14 @@ Page({
         }
       })
     }
+  },
+
+
+
+  toTricksBag:function(){
+    wx.navigateTo({
+      url: '/pages/tricksBag/tricksBag',
+    })
   }
 
 })

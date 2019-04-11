@@ -19,14 +19,14 @@
             <block  wx:if="{{isbaokuan}}">
               <span class='baokuan'>爆款</span>
             </block>
-           
-            <text class="gname">{{item.goodsName}}</text>
+           {{item.goodsName}}
+            <!-- <text class="gname">{{item.goodsName}}</text> -->
 
           </view>
-          <view class='bto'>
+          <view class='bto' style="display:block;">
             <!-- 店铺名 -->
-            <view class='top'>
-              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png'></image>
+            <view class='top' style="padding-top:6rpx;">
+              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png' style="margin-right:10rpx;"></image>
               <view class='storename'>
                 {{item.mallName}}
               </view>
@@ -34,23 +34,30 @@
 
             <!-- 分享赚 -->
             <view class='left'>
-              <p class='sale' style="{{role>=1?'line-height: 75rpx':'line-height: 155rpx'}}">{{item.sales}}人已买</p>
+              <!-- <p class='sale' style="{{role>=1?'line-height: 75rpx':'line-height: 155rpx'}}">{{item.sales}}人已买</p> -->
+              <p class='sale' style="{{role>=1?'line-height: 45rpx':'line-height: 45rpx'}};text-align:left;">{{item.sales}}人已买</p>
               <view class='sharget' wx:if="{{role>=1}}">分享赚￥{{item.commission}}</view>
             </view>
-
+            
+            <view class='right'>
+              <view class='coupons' style="margin-top:45rpx;" wx:if="{{item.couponMoney>0}}">
+                {{item.couponMoney}}元券
+              </view>
+            </view>
        
           </view>
 
           <!-- 价格区 -->
           <view class='pricebox'>
-            <text class='nowprice'>￥{{item.endPrice}}</text>
-            <text class='befprice'>原价￥{{item.price}}</text> 
+            <text class='nowprice'><text style="font-size:30rpx;">￥</text>{{item.endPrice}}</text>
+            <!-- <text class='befprice'>原价￥{{item.price}}</text>  -->
+            <text class='befprice' style="text-decoration:line-through;font-size:22rpx;">拼多多价￥{{item.price}}</text> 
                  <!-- 优惠券 -->
-            <view class='right'>
+            <!-- <view class='right'>
               <view class='coupons' wx:if="{{item.couponMoney>0}}">
                 {{item.couponMoney}}元券
               </view>
-            </view>
+            </view> -->
             </view>
         </view>
  </button>
@@ -70,7 +77,7 @@
           <image src='{{item.goodsPic}}'></image>
         </view>
         <view class='info'>
-          <button form-type='submit'>
+          <button form-type='submit' style="padding:0 0;background-color:#fff;line-height:32rpx;">
           <view class='name'>
             <block wx:if="{{isbaokuan}}">
               <span class='baokuan'>爆款</span>
@@ -78,9 +85,9 @@
             {{item.goodsName}}
           </view>
           </button>
-          <view class='bto'>
-            <view class='top'>
-              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png'></image>
+          <view class='bto' style="display:block;">
+            <view class='top' style="padding-top:6rpx;">
+              <image class='store' src='https://bnlnimg.bnln100.com/store_ico.png' style="margin-right:10rpx;"></image>
               <view class='storename'>
                 {{item.mallName}}
               </view>
@@ -88,7 +95,8 @@
 
             <view class='moddel'>
               <view class='left'>
-                <p class='sale'>{{item.sales}}人已买</p>
+                <!-- <p class='sale'>{{item.sales}}人已买</p> -->
+                <p class='sale' style="line-height:45rpx;text-align:left;">{{item.sales}}人已买</p>
               </view>
               <view class='right' wx:if="{{role==1}}">
                 <view class='coupons'  wx:if="{{item.couponMoney>0}}">
@@ -101,8 +109,8 @@
           </view>
 
           <view class='pricebox'>
-            <text class='nowprice'>￥{{item.endPrice}}</text>
-            <text class='befprice'>原价￥{{item.price}}</text> </view>
+            <text class='nowprice'><text style="font-size:30rpx;">￥</text>{{item.endPrice}}</text>
+            <text class='befprice' style="text-decoration:line-through;font-size:22rpx;">拼多多价￥{{item.price}}</text> </view>
         </view>
 
       </view>

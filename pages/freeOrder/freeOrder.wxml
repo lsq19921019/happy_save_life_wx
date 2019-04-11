@@ -1,0 +1,202 @@
+
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+
+
+<view class="page" style="background-color:#F6F5F5;">
+  <view style="background-color:#F6F5F5;">
+    <view style="width:100%;height:472rpx;background-color:#F6F5F5;padding-bottom:150rpx;position:relative;">
+      <image src="../../img/freeOrder_banner.png" ></image>
+      <view style="position:absolute;bottom:0;left:5%;width:90%;text-align:center;background-color:#fff;border-radius:10rpx;padding:30rpx 0;">
+        <view style="font-size:28rpx;font-weight:bold;padding-bottom:30rpx;">- 先下单购买 后补贴返款 -</view> 
+        <view style="display:flex;">
+          <view style="flex:1">
+            <view >
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+            </view>
+            <view style="margin-top:10rpx;">分享给好友</view> 
+            </view>
+          <view style="flex:1">
+            <view >
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+            </view>
+            <view style="margin-top:10rpx;">下载邀请海报</view> 
+            </view>
+          <view style="flex:1">
+            <view >
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+            </view>
+            <view style="margin-top:10rpx;">我的订单</view> 
+            </view>
+          <view style="flex:1">
+            <view >
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;border-radius:50%;"></image>
+            </view>
+            <view style="margin-top:10rpx;">我的补贴</view> 
+            </view>
+        </view> 
+      </view>
+    </view>
+    <view style="width:90%;margin:0 auto;background-color:#fff;border-radius:10rpx;">
+      <view style="display: flex;justify-content: center;align-items: Center;height:100rpx;margin-top:30rpx;">
+        <view style="flex:1;text-align:center;">
+          免单快报
+        </view>
+        <view style="flex:3;border-left:1px solid #ccc;box-sizing:border-box;padding-left:20rpx;">
+            <!-- <swiper autoplay="true" interval="1000" circular="true" class="swiper" indicator-color="rgba(255,255,255,0.8)" indicator-active-color="red" indicator-dots="true">
+              <block wx:for="{{themlist}}" wx:key="{{index}}">
+                <swiper-item>
+                  <navigator class="u-row" url="/pages/themed/themed?themeId={{item.themeId}}&title={{item.name}}">
+                    <image src="{{item.imageUrl}}" mode="widthFix" />
+                  </navigator>
+                </swiper-item>
+              </block>
+            </swiper> -->
+            <swiper autoplay="true" interval="2000" circular="true" vertical="true" style="height:70rpx;">
+              <block>
+                <swiper-item>
+                  <view style="height:70rpx;overflow:hidden;padding:10rpx 0;">
+                    <image src="../../img/freeOrder_banner.png" style="width:50rpx;height:50rpx;border-radius:50%;float:left;">
+                    </image>
+                    <view style="height:50rpx;line-height:50rpx;display:inline-block;float:left;margin-left:10rpx;">
+                      666666
+                    </view> 
+                  </view>
+                </swiper-item>
+              </block>
+              <block>
+                <swiper-item>
+                  <view style="height:70rpx;overflow:hidden;padding:10rpx 0;">
+                    <image src="../../img/freeOrder_banner.png" style="width:50rpx;height:50rpx;border-radius:50%;float:left;">
+                    </image>
+                    <view style="height:50rpx;line-height:50rpx;display:inline-block;float:left;margin-left:10rpx;">
+                      666666
+                    </view> 
+                  </view>
+                </swiper-item>
+              </block>
+              <block>
+                <swiper-item>
+                  <view style="height:70rpx;overflow:hidden;padding:10rpx 0;">
+                    <image src="../../img/freeOrder_banner.png" style="width:50rpx;height:50rpx;border-radius:50%;float:left;">
+                    </image>
+                    <view style="height:50rpx;line-height:50rpx;display:inline-block;float:left;margin-left:10rpx;">
+                      666666
+                    </view> 
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+        </view>
+      </view>
+    </view>
+    <view style="width:90%;margin:0 auto;">
+      <view style="display:flex;text-align:center;font-size:30rpx;font-weight:bold;">
+        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==0?'c_red':''}}" data-type="0">
+          活动预告
+          <view wx:if="{{free_order_type==0}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
+        </view>
+        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==1?'c_red':''}}" data-type="1">
+          正在进行
+          <view wx:if="{{free_order_type==1}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
+        </view>
+        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==2?'c_red':''}}" data-type="2">
+          往期回顾
+          <view wx:if="{{free_order_type==2}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
+        </view>
+      </view>
+
+      <view style="box-sizing:border-box;display:flex;padding:.4rem .4rem;background-color:#fff;">
+        <view style="flex:2;height:250rpx;background-color:#ccc;border-radius:5rpx;"></view>
+        <view style="flex:3;box-sizing:border-box;padding-left:.4rem;">
+          <view style="font-weight:bold;" >【新用户专享】拍1支眉笔 韩妆防水防汗持久不脱色眉笔</view>
+          <view style="padding:10rpx 0;color:#888;overflow:hidden;"><text style="display:inline-block;padding-top:12rpx;">券后￥2.18</text><text style="float:right;">平台补贴<text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">2.18</text></text></view>
+          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;">到手价 <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">2.18</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 4000 件</text></view>
+          <view style="display:flex;">
+            <view style="flex:1;display: flex;justify-content: center;align-items: Center;">
+              <view style="border-radius:15rpx;height:30rpx;width:100%;overflow:hidden;background-color:#ffbeba;position:relative">
+                <view style="position:absolute;right:10rpx;top:0;color:#fff;font-size:24rpx;top:0">{{rate_amount}}%</view>
+                <view style="border-radius:15rpx;height:30rpx;{{progress_rate==1?'width:'+rate_amount+'%;':'width:'+rate_amount_+'%;'}}float:left;background-color:#ff2b33;"></view>
+              </view>
+            </view>
+            <view style="flex:1;overflow:hidden;">
+              <view style="background-color:#ff2c2b;color:#fff;padding:.4rem .4rem;border-radius:.9rem;width:4rem;text-align:center;float:right;">立即抢购</view> 
+            </view>
+          </view>
+        </view>
+      </view>
+      <view >
+        <view ></view>
+        <view ></view>
+      </view>
+
+      <view>
+        <view style="padding:20rpx 0;position:relative;padding-left:40rpx;">
+          <image src="../../img/freeOrder_banner.png" style="position:absolute;left:0;top:30rpx;width:30rpx;height:30rpx;border-radius:15rpx;"></image><text style="font-size:35rpx;font-weight:bold;">预告商品</text><text style="color:#545454;">(即将开始)</text>
+        </view>
+        <view style="border-radius:10rpx;">
+          <view style="border-radius:10rpx;height:20rpx;width:100%;overflow:hidden;background-color:#ffbeba;">
+            <view style="border-radius:10rpx;height:20rpx;{{progress_rate==1?'width:'+rate_amount+'%;':'width:'+rate_amount_+'%;'}}float:left;background-color:#ff2b33;"></view>
+          </view>
+        </view>
+        <view >
+          
+        </view>
+      </view>
+    </view>
+    
+    <view style="width:90%;margin:0 auto;background-color:#fff;border-radius:10rpx;padding:20rpx 20rpx;box-sizing:border-box;">
+      <view style="text-align:center;font-size:32rpx;">
+        —— 免单流程 ——
+      </view>
+      <view style="display:flex;text-align:center;padding-top:20rpx;">
+        <view style="flex:3;">
+            <view style="margin-bottom:10rpx;">
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;"></image>
+            </view>
+            <view >1.下单付款</view>
+        </view>
+        <view style="flex:1;">
+          <view style="height:100rpx;display: flex;justify-content: center;align-items: Center;">
+            <view style="width:10rpx;height:10rpx;background-color:#FFBEBA;border-radius:50%;"></view>
+          </view>
+          <view >
+          </view>
+        </view>
+        <view style="flex:3;">
+            <view style="margin-bottom:10rpx;">
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;"></image>
+            </view>
+            <view >2.确认收货</view>
+        </view>
+        <view style="flex:1;">
+          <view style="height:100rpx;display: flex;justify-content: center;align-items: Center;">
+            <view style="width:10rpx;height:10rpx;background-color:#FFBEBA;border-radius:50%;"></view>
+          </view>
+          <view >
+          </view>
+        </view>
+        <view style="flex:3;">
+            <view style="margin-bottom:10rpx;">
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;"></image>
+            </view>
+            <view >3.审核通过</view>
+        </view>
+        <view style="flex:1;">
+          <view style="height:100rpx;display: flex;justify-content: center;align-items: Center;">
+            <view style="width:10rpx;height:10rpx;background-color:#FFBEBA;border-radius:50%;"></view>
+          </view>
+          <view >
+            
+          </view>
+        </view>
+        <view style="flex:3;">
+            <view style="margin-bottom:10rpx;">
+              <image src="../../img/freeOrder_banner.png" style="width:100rpx;height:100rpx;"></image>
+            </view>
+            <view >4.补贴到账</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

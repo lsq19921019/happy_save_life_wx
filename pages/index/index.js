@@ -795,5 +795,10 @@ Page({
   fstest: function (e) {
    console.log("==》 run fs test")
   },
+  toFreeOrder: function () {  
+    wx.navigateTo({
+      url: "/pages/freeOrder/freeOrder"
+    });
+  }
 
 })

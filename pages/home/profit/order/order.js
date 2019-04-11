@@ -5,6 +5,7 @@ Page({
   //页面的初始数据
   data: {
     _num: 1,//初始页面 A级  B级
+    _num_: 6,
     p: 1,//页面
     dataList: [],
     floorstatus: false,
@@ -17,9 +18,11 @@ Page({
     lastNum: 0,
     sliderOffset: 600,//右侧弹框滑动效果
     changeNum: 1,//默认显示
-    month: '1',//月份
+    // month: '1',//月份
+    month: '',
     platform: '',//默认平台
     msg:'',//可挽回信息
+    status:''//订单状态
   },
 
 
@@ -49,7 +52,8 @@ Page({
       level: that.data._num,
       deviceId: "/mini",
       year: 2019,
-      month: '',
+      month: that.data.month,
+      status: that.data._num_==6?'':that.data._num_
     };
    
     util.request(myUrl.goodsUrl + 'order/r/list', pams, 'GET', page, function (res) {
@@ -79,6 +83,7 @@ Page({
       }
     })
   },
+  //团队、直属筛选切换tab
   sendNetwork: function (e) {
     let e_num = e.currentTarget.dataset.style;
     if (this.data._num == e_num) {
@@ -91,6 +96,44 @@ Page({
     } else if (e_num == 2) {
       this.setData({
         _num: 2,
+        p: 1
+      })
+    }
+    this.getData(0, 0);
+  },
+  //订单状态筛选切换tab
+  sendNetwork_: function (e) {
+    let e_num = e.currentTarget.dataset.style;
+    if (this.data._num_ == e_num) {
+      return
+    } else if (e_num == 0) {
+      this.setData({
+        _num_: 0,
+        p: 1
+      })
+    } else if (e_num == 2) {
+      this.setData({
+        _num_: 2,
+        p: 1
+      })
+    } else if (e_num == 3) {
+      this.setData({
+        _num_: 3,
+        p: 1
+      })
+    } else if (e_num == 4) {
+      this.setData({
+        _num_: 4,
+        p: 1
+      })
+    } else if (e_num == 5) {
+      this.setData({
+        _num_: 5,
+        p: 1
+      })
+    } else if (e_num == 6) {
+      this.setData({
+        _num_: 6,
         p: 1
       })
     }
@@ -151,6 +194,7 @@ Page({
       deviceId: "/mini",
       year: '',
       month: '',
+      status: that.data._num_==6?'':that.data._num_
     };
     util.request(myUrl.goodsUrl + 'order/r/list', pams, 'GET', "1", function (res) {
       console.log(res.data.list)
@@ -248,6 +292,7 @@ Page({
       year: 2019,
       month: that.data.month,
       platform: that.data.platform,
+      status: that.data._num_==6?'':that.data._num_
     };
     util.request(myUrl.goodsUrl + 'order/r/list', pams, 'GET', "1", function (res) {
       console.log(res.data.list)

@@ -1,0 +1,93 @@
+page {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+.page {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+.m_r{margin-right:10rpx;}
+
+.info_rows{display:flex;margin-bottom:10rpx;}
+
+.info_container_box{border-radius:10rpx;flex:1;background-color:#ffffff;box-sizing:border-box;position:relative;background-position:center center;background-size:cover;}
+
+.info_container_box_{border-radius:10rpx;width:49.5%;background-color:#ffffff;box-sizing:border-box;position:relative;background-position:center center;background-size:cover;}
+
+.info_container{color:#fff;padding:30rpx 20rpx;}
+
+.info_container_small{color:#fff;padding:12rpx 20rpx;}
+
+.info_line_title{font-weight:bolder;font-size:32rpx;}
+
+.info_line_content{font-size:22rpx;padding: 15rpx 0;}
+
+.info_line_content_small{font-size:16rpx;padding: 15rpx 0;}
+
+.info_line_btn{font-size:20rpx;padding: 5rpx 10rpx;background-color:#fff;width:100rpx;color:#E6282F;border-radius:20rpx;}
+
+/* 111111111111111111111111111111111111111111111111111111111111 */
+
+.imgMark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 21;
+  text-align: center;
+}
+
+.imgMark image {
+  width: 62%;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  top: 70rpx;
+  transform: translate(-50%, 0);
+}
+
+.imgMark>view {
+  color: #fff;
+  position: absolute;
+  /* top: 71%; */
+  width: 100%;
+  font-size: 14px;
+}
+
+.imgMark>.text_t {
+  top: 76%;
+}
+
+.imgMark .bottom {
+  width: 300rpx;
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.imgMark .bottom .text {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.share_text{
+  white-space:pre-wrap;text-align:left;color:#010101;background-color:#F5F5F5;border-radius:10rpx;font-size:30rpx;padding:10rpx 10rpx;
+}
+
+.share_url{
+  color:#FF2B33;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:300rpx;display:inline-block;line-height:32rpx;
+}
+
+.c_red{
+  color: #FF2B33;
+}

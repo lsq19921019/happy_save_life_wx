@@ -450,6 +450,7 @@ p {
   width: 620rpx;
   position: absolute;
   top: 50%;
+  /* top: 30%; */
   left: 50%;
   transform: translate(-50%,-50%);
   background-color: white;
@@ -469,8 +470,8 @@ p {
   display: block;
   padding: 10rpx 0;
   padding-left: 10rpx;
-  font-size: 23rpx;
-  
+  font-size: 28rpx;
+  white-space:initial;
 }
 .withdraw .drawType .sysTip .logoImg{
   height: 30rpx;

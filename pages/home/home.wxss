@@ -447,7 +447,7 @@ button::after {
   width:656rpx;
   height:524rpx;
   position: absolute;
-  bottom: 236rpx;
+  bottom: 315rpx;
   left: 24rpx;
 }
 

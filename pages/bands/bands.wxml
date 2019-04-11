@@ -3,6 +3,9 @@
 
 
 <view class='page'>
+  <view bindtap="toTricksBag" style="height:160rpx;box-sizing:border-box;padding:10rpx 10rpx;">
+    <image src="https://bnlnimg.bnln100.com/bannerpush.png"></image>
+  </view>
   <view class='navbox' wx:if="{{role!=0}}">
     <view class="nav {{navindex==0?'active':''}}" bindtap='qiehuan' data-index='0'>每日精选</view>
     <view class="nav {{navindex==1?'active':''}}" bindtap='qiehuan' data-index='1'>宣传素材</view>

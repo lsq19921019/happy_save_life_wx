@@ -15,6 +15,15 @@
       </view>
     </view>
 
+    <!--新增加订单状态搜索框  -->
+    <view class='teamType_'>
+      <view class="teamState_ {{_num_==6?'select':''}}" data-style="6" bindtap='sendNetwork_'>全部</view>
+      <view class="teamList_ {{_num_==0?'select':''}}" data-style="0" bindtap='sendNetwork_'>已付款</view>
+      <view class="teamList_ {{_num_==2?'select':''}}" data-style="2" bindtap='sendNetwork_'>已收货</view>
+      <view class="teamList_ {{_num_==3?'select':''}}" data-style="3" bindtap='sendNetwork_'>已审核</view>
+      <view class="teamList_ {{_num_==4?'select':''}}" data-style="4" bindtap='sendNetwork_'>已失效</view>
+      <view class="teamList_ {{_num_==5?'select':''}}" data-style="5" bindtap='sendNetwork_'>已结算</view>
+    </view>
     <!--新增加搜索框  -->
     <view class='teamType'>
       <view class="teamState {{_num==1?'select':''}}" data-style="1" bindtap='sendNetwork'>直属</view>
@@ -57,12 +66,24 @@
           <view class="viceTitle">
             {{item.name}}
           </view>
-          <view class="prediction">
-            ￥{{item.price}}
-          </view>
-          <view class="commission">
-            订单号:{{item.orderNo}}
+          <view class="prediction" style="position:relative;padding:0 0;padding-top:10rpx;">
+            付款金额 ￥{{item.price}}
             <block wx:if="{{item.ifGet==1}}">
+              <!-- <view class='reward'>奖励:￥ {{item.commission}}</view> -->
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block>
+            <block wx:if="{{item.ifGet==0}}">
+              <!-- <view class='reward'>丧失奖励:￥ {{item.commission}}</view> -->
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block>
+            <block wx:if="{{item.ifGet==(-1)}}">
+              <!-- <view class='reward'>奖励:￥ {{item.commission}}</view> -->
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block>
+          </view>
+          <view class="commission" style="padding-top:10rpx;">
+            订单号：{{item.orderNo}}
+            <!-- <block wx:if="{{item.ifGet==1}}">
               <view class='reward'>奖励:￥ {{item.commission}}</view>
             </block>
             <block wx:if="{{item.ifGet==0}}">
@@ -70,11 +91,11 @@
             </block>
             <block wx:if="{{item.ifGet==(-1)}}">
               <view class='reward'>奖励:￥ {{item.commission}}</view>
-            </block>
+            </block> -->
           </view>
           <view class='time clearfloat'>
             <text class='createtime'>{{item.createTime}}</text>创建
-            <text class='statusInfo'>{{item.statusInfo}}</text>
+            <text class='statusInfo {{item.status?"status_"+item.status:""}}'>{{item.statusInfo}}</text>
           </view>
           <view class='ifGet'>
             <block wx:if="{{item.ifGet==0}}">

@@ -1,0 +1,155 @@
+
+<import src="../../common/goodslist/goodslist.wxml" />
+<import src="../../common/lodmore/lodmore.wxml" />
+
+
+<view class="page">
+  <view class="make_money_trick_box" style="box-sizing:border-box;padding: 0 14rpx;padding-top:20rpx;border-bottom: 16rpx solid #F4F4F4;padding-bottom:28rpx;">
+    <view style="border-left:10rpx solid #E6282F;margin-bottom:20rpx;font-size:30rpx;text-indent:20rpx;">
+      赚钱锦囊
+    </view>
+    <view class="info_rows" style="">
+      <view class="info_container_box m_r" bindtap="canvasFn" data-channelType='10' style="background-image:url(https://bnlnimg.bnln100.com/share_redpack.png);">
+        <view class="info_container" style="">
+          <view class="info_line_title" style="">分享红包</view>
+          <view class="info_line_content" style="">你发红包 官方出钱</view>
+          <view class="info_line_btn" style="color:#E6282F;">立即分享</view>
+        </view>
+      </view>
+      <view class="info_container_box" bindtap="canvasFn" data-channelType='4' style="background-image:url(https://bnlnimg.bnln100.com/share_mall.png);">
+        <view class="info_container" style="">
+          <view class="info_line_title" style="">分享专属商城</view>
+          <view class="info_line_content" style="">拼多多百万好货全场低至一折</view>
+          <view class="info_line_btn" style="color:#FCA211;">立即分享</view>
+        </view>
+      </view>
+    </view>
+      <view class="info_container_box_" bindtap="canvasFn" data-channelType='11' style="background-image:url(https://bnlnimg.bnln100.com/share_rotate.png);">
+        <view class="info_container" style="">
+          <view class="info_line_title" style="">分享大转盘</view>
+          <view class="info_line_content" style="">抽免单 免费拿</view>
+          <view class="info_line_btn" style="color:#A01F8F;">立即分享</view>
+        </view>
+      </view>
+  </view>
+
+  
+  <view class="make_money_trick_box" style="box-sizing:border-box;padding: 0 14rpx;padding-top:20rpx;padding-bottom:28rpx;">
+    <view style="border-left:10rpx solid #E6282F;margin-bottom:20rpx;font-size:30rpx;text-indent:20rpx;">
+      精品频道
+    </view>
+    <view class="info_rows" style="">
+      <view class="info_container_box m_r" bindtap="canvasFn" data-channelType='1' style="background-image:url(https://bnlnimg.bnln100.com/today_hot.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">今日爆款</view>
+          <view class="info_line_content_small" style="">全网热销爆款 击破低价</view>
+          <view class="info_line_btn" style="color:#FF4D37;">立即分享</view>
+        </view>
+      </view>
+      <view class="info_container_box m_r" bindtap="canvasFn" data-channelType='2' style="background-image:url(https://bnlnimg.bnln100.com/brands_goods.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">品牌好货</view>
+          <view class="info_line_content_small" style="">官方旗舰店 低价买放心用</view>
+          <view class="info_line_btn" style="color:#A279FA;">立即分享</view>
+        </view>
+      </view>
+      <view class="info_container_box" bindtap="canvasFn" data-channelType='0' style="background-image:url(https://bnlnimg.bnln100.com/special_price.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">1.9特价</view>
+          <view class="info_line_content_small" style="">全网最低价 低至1.9还包邮</view>
+          <view class="info_line_btn" style="color:#2FB5F0;">立即分享</view>
+        </view>
+      </view>
+    </view>
+    <view class="info_rows" style="">
+      <view class="info_container_box m_r" bindtap="canvasFn" data-channelType='14' style="background-image:url(https://bnlnimg.bnln100.com/limit_kill.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">限时秒杀</view>
+          <view class="info_line_content_small" style="">超值好货 限时秒杀</view>
+          <view class="info_line_btn" style="color:#86CA54;">立即分享</view>
+        </view>
+      </view>
+      <view class="info_container_box m_r" bindtap="canvasFn" data-channelType='15' style="background-image:url(https://bnlnimg.bnln100.com/recharge_center.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">充值中心</view>
+          <view class="info_line_content_small" style="">全网话费流量 限时打折</view>
+          <view class="info_line_btn" style="color:#D154C3;">立即分享</view>
+        </view>
+      </view>
+      <view class="info_container_box" bindtap="canvasFn" data-channelType='16' style="background-image:url(https://bnlnimg.bnln100.com/appliances_special.png);">
+        <view class="info_container_small" style="">
+          <view class="info_line_title" style="">电器专场</view>
+          <view class="info_line_content_small" style="">数码家电低价购 正品保证</view>
+          <view class="info_line_btn" style="color:#FEA442;">立即分享</view>
+        </view>
+      </view>
+    </view>
+  </view>
+        <image wx:if="{{hbImgBl}}" src="../../img/icon_layer_close.png" style="width:50rpx;height:50rpx;position:fixed;right:20rpx;top:20rpx;z-index:30;" bindtap='hideMark'></image>
+      
+<view class="imgMark" wx:if="{{hbImgBl}}">
+      <image src="{{hbImg}}" bindtap='previewImage'></image>
+      <view style="bottom:0;">
+        <view style="background-color:#ffffff;box-sizing:border-box;padding:44rpx 66rpx;">
+          <view class="share_text" wx:if='{{shareType==10}}' style="">
+  {{shareTextList.s_10.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_10.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==4}}' style="">
+  {{shareTextList.s_4.text_1}}
+  {{shareTextList.s_4.text_2}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_4.text_3}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==11}}' style="">
+  {{shareTextList.s_11.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_11.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==1}}' style="">
+  {{shareTextList.s_1.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_1.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==2}}' style="">
+  {{shareTextList.s_2.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_2.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==0}}' style="">
+  {{shareTextList.s_0.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_0.text_2}}
+          </view>
+          <view class="share_text" wx:if="{{shareType==14}}" style="">
+  {{shareTextList.s_14.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_14.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==15}}' style="">
+  {{shareTextList.s_15.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_15.text_2}}
+          </view>
+          <view class="share_text" wx:if='{{shareType==16}}' style="">
+  {{shareTextList.s_16.text_1}}
+  点击链接 <text class="share_url" bindtap="toUrl" data-tourl="{{shareUrl}}" style="">{{shareUrl}}</text>   
+  {{shareTextList.s_16.text_2}}
+          </view>
+        </view>
+        
+      <view style="padding-bottom:44rpx;background-color:#fff;">
+        <view bindtap="saveImageToPhotosAlbum" style="background-color:#FF2B33;box-sizing:border-box;width:70%;margin:0 auto;padding:20rpx 0;border-radius:40rpx;position:relative;">
+          <image style="position:absolute;width:30rpx;height:30rpx;left:18%;top:30%;" src="../../img/icon_download_icon.png"></image>
+          复制文案并保存图片
+        </view>
+      </view>
+          
+      </view>
+      <!-- <view class='text_t'>快快分享给好友吧</view>
+      <view class='bottom'>
+        <text class='text' bindtap='hideMark'>我知道了</text>
+      </view> -->
+    </view>
+</view>

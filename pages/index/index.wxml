@@ -51,7 +51,10 @@
         </block>
       </swiper>
     </view>
-
+    <!-- 面单活动页面 -->
+    <view style="height:100rpx;width:100%;">
+      <image src="../../img/freeOrder_banner.png" bindtap="toFreeOrder"></image>
+    </view>
     <!-- 主题 -->
     <view class='navlist'>
 
@@ -74,7 +77,9 @@
       </view>
 
     </view>
-
+    <view style="">
+      <image src=''></image>
+    </view>
 
     <!-- 装修店铺 -->
     <block wx:if="{{modulelist.length!=0}}">

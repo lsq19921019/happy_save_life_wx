@@ -178,7 +178,8 @@ Page({
       sales: goodsInfo.sales,
       platform: that.data.platform,
       src: 0,
-      activatyId: goodsInfo.activatyId || ''
+      activatyId: goodsInfo.activatyId || '',
+      shopName: goodsInfo.mallName || ''
     }
     util.request(myUrl.mainUrl + 'userGoods/save', pamss, 'GET', 0, function(res) {
       console.log(res.data);
@@ -837,7 +838,7 @@ Page({
     let that = this;
     console.log('userId = ' + app.globalData.user.unionidF + ' & id=' + that.data.spreadId + "&platform=" + that.data.goodsInfo.platform);
     return {
-      title: that.data.goodsInfo.goodsName,
+      title: '【拼多多】'+that.data.goodsInfo.goodsName,
       imageUrl: that.data.shareimg,
       path: '/pages/details/details?userId=' + app.globalData.user.unionidF + '&id=' + that.data.spreadId + "&platform=" + that.data.platform
     }

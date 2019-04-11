@@ -28,6 +28,7 @@ Page({
     showMsg: '', //页面展示效果
     sm: false, //控制用户购习信息浮显
 
+    // showcourse1: true,
 
     sendMsg: '',
   },

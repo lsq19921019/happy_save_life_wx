@@ -63,6 +63,7 @@ Page({
       // let y = 8000;
       // res.data.totalCommission = 10.1544546464646461355489748
       res.data.totalCommission = res.data.totalCommission.toFixed(2)
+      // res.data.totalCommission = 5;
       ts.setData({
         stats: res.data,
         wallet: res.data.wallet
