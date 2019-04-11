@@ -120,7 +120,12 @@ Page({
     }).exec();
 
   },
-
+  toGetmoney: function(){
+    
+    wx.navigateTo({
+      url: '/pages/home/deposit/deposit'
+    })
+  },
   //键盘输入时获取搜索的值
   bindBlur: function(e) {
     var that = this;

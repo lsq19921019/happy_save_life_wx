@@ -14,7 +14,43 @@
   </block>
 
   <block wx:else>
-    <view class='box'>
+    <view style="background-color:#FF2B33;color:#fff;padding:2rem 1rem;">
+      <view style="display:flex;">
+        <view style="flex:1;box-sizing:border-box;padding-left:40rpx;position:relative;font-size:30rpx;height:30rpx;line-height:30rpx;overflow:hidden;"><image style="position:absolute;left:0;width:30rpx;height:30rpx;" src="../../../img/icon_rmb.png"/> 可提现金额(元)</view>
+        <view style="flex:1;text-align:right;">提现说明  ></view>
+      </view>
+      <view style="font-size:80rpx;padding-top:.3rem;">
+        {{wallet}}
+      </view>
+    </view>
+    <view style="display:flex;padding:1rem 0;background-color:#fff;margin-bottom:.5rem;">
+      <view style="flex:1;text-align:center;">
+      <view style="color:#FF2B33;font-size:36rpx;padding-bottom:.5rem;">6.66</view> 
+      <view >待结算收入(元)</view> 
+      </view>
+      <view style="flex:1;text-align:center;">
+      <view style="color:#FF2B33;font-size:36rpx;padding-bottom:.5rem;">0.00</view> 
+      <view >累计补贴提现(元)</view> 
+      </view>
+    </view>
+    <view style="display:flex;background-color:#fff;font-size:28rpx;padding:.7rem 0;margin-bottom:.5rem;">
+      <view style="flex:3;text-indent:1rem;height:1.4rem;line-height:1.4rem;">支付宝账号</view>
+      <view style="flex:5;height:1.4rem;line-height:1.4rem;">{{aliNo}}</view>
+      <view style="flex:2;height:1.4rem;line-height:1.4rem;" bindtap='gochange'>
+        <view style="color:#fff;background-color:#FF2B33;width:3.5rem;height:1.4rem;border-radius:.7rem;position:relative;text-indent:60rpx;">
+        <image src="../../../img/icon_edit_btn.png" style="width:28rpx;height:28rpx;position:absolute;left:20rpx;top:12rpx;"/>
+          修改
+        </view> 
+      </view>
+    </view>
+    <view style="display:flex;background-color:#fff;font-size:28rpx;padding:.7rem 0;margin-bottom:1.5rem;">
+      <view style="flex:3;text-indent:1rem;height:1.4rem;line-height:1.4rem;">提现金额</view>
+      <view style="flex:5;">
+          <input placeholder='最低提现金额1元' placeholder-style='font-weight:0;font-size:28rpx;' bindinput="bindBlur" bindconfirm=""></input>
+      </view>
+      <view style="flex:2;height:1.4rem;line-height:1.4rem;">元</view>
+    </view>
+    <!-- <view class='box'>
       <view class='top'>
         <view>到账支付宝：{{aliNo}}
           <text class='change' bindtap='gochange'>修改</text>
@@ -27,8 +63,9 @@
         </view>
       </view>
       <view class='bottom'>可提现余额:￥{{wallet}}</view>
-    </view>
+    </view> -->
 
-    <view class='deposit-btn' bindtap='deposit'>提现</view>
+    <view class='deposit-btn' bindtap='deposit'>提现到支付宝</view>
   </block>
+  <view style="position:absolute;bottom:0;text-align:center;padding:.4rem 0;text-align:center;color:#999999;width:100%;" bindtap="toIncomeList">查看收入明细  ></view>
 </view>

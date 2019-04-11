@@ -28,7 +28,8 @@
     "pages/classify/classify",
     "pages/newfree/newfree",
     "pages/tricksBag/tricksBag",
-    "pages/freeOrder/freeOrder"
+    "pages/freeOrder/freeOrder",
+    "pages/incomelist/incomelist"
   ],
   
 

@@ -12,6 +12,7 @@ Page({
     wallet: '',
     aliNo: '',
     success:false,
+    // success:true,
   },
 
   /**
@@ -21,7 +22,7 @@ Page({
     var that = this;
     console.log(options);  //上个页面带过来的余额跟号码
     that.setData({
-      wallet: options.wallet,
+      wallet: parseFloat(options.wallet).toFixed(2),
       aliNo: options.phone
     })
 
@@ -48,7 +49,7 @@ Page({
       console.log(res.data);
       if (res.data.result=='OK'){
         that.setData({
-          wallet: res.data.amount
+          wallet: parseFloat(res.data.amount).toFixed(2)
         })
       }
       
@@ -114,7 +115,12 @@ x
       url: '/pages/home/setup/Alipay/Alipay?beforeali=' + that.data.aliNo,
     })
   },
-
+  toIncomeList: function(){
+    
+    wx.navigateTo({
+      url: "/pages/incomelist/incomelist",
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

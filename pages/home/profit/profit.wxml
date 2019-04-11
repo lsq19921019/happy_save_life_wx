@@ -83,9 +83,9 @@
     </view>
   </view>
   <!--账单明细 -->
-  <navigator class="bills" url="/pages/home/profit/bill/bill">
+  <!-- <navigator class="bills" url="/pages/home/profit/bill/bill">
     <image src="../../../img/orderD.png" style='vertical-align: middle;' /> 账单明细
-  </navigator>
+  </navigator> -->
   <!--今日  -->
   <view class='teamType'>
     <view class="teamState {{_num==1?'select':''}}" data-style="1" bindtap='sendNetwork'>今日</view>
