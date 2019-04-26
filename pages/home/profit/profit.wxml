@@ -8,7 +8,7 @@
       <cover-view style='padding:0 20rpx;box-sizing:border-box;white-space:pre-wrap;'>
         <cover-view class='system'>1、账单明细：个人账户资金的流动记录</cover-view>
         <cover-view class='system'>2、本月收益预估：本月1号至月底创建的订单收入，该收入并非最终实际收入，如发生售后退款则对应收入会扣除。</cover-view>
-        <cover-view class='system'>3、上月收益结算：上月1号至月底确认到货的订单收入，将在本月21号后结算到可提现余额，该收入并非最终实际收入，请以扣除售后订单、服务费后的结算数据为准。</cover-view>
+        <cover-view class='system'>3、上月收益结算：上月1号至月底确认到货的订单收入，将在本月22号后结算到可提现余额，该收入并非最终实际收入，请以扣除售后订单、服务费后的结算数据为准。</cover-view>
         <cover-view class='system'>4、成交预估：指买家付款的订单收入，该收入并非最终实际收入，如发生售后退款则扣除对应收入。</cover-view>
         <cover-view class='system'>5、结算预估：指买家购买的订单已确认收货，该收入并非最终实际收入，如发生售后退款则扣除对应收入。</cover-view>
       </cover-view>

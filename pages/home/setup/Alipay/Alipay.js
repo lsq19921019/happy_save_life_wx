@@ -239,6 +239,18 @@ Page({
     })
   },
 
+  onPullDownRefresh: function() {
+    // var that = this;
+    // that.setData({
+    //   page: 1,
+    //   nomore: false,
+    //   stop: false, //是否停止下拉刷新
+    // })
+    // that.getData(1, 1);
+    setTimeout(()=>{
+      wx.stopPullDownRefresh();
+    },300);
+  },
   // 支付账号
   inputAlipay: function(e) {
     var that = this;

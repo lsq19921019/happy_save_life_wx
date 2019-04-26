@@ -1,16 +1,29 @@
+<wxs src='filter.wxs' module='filter' />
 <view style="display:flex;text-align:center;background-color:#fff;padding:.2rem 0;position:fixed;top:0;left:0;width:100%;">
-    <view style="flex:1;" class="{{_num==1?'selected':''}}" data-style="1" bindtap='tabSwitch'>
+    <view style="flex:1;" class="{{_type==0?'selected':''}}" data-style="0" bindtap='tabSwitch'>
         <view style="display: flex;justify-content: center;align-items: Center;height:1.6rem;">提现记录</view> 
-        <view wx:if="{{_num==1}}" style="background-color:#FF2B33;margin:0 auto;width:1rem;height:.2rem;"></view>
+        <view wx:if="{{_type==0}}" style="background-color:#FF2B33;margin:0 auto;width:1rem;height:.2rem;"></view>
     </view>
-    <view style="flex:1;" class="{{_num==2?'selected':''}}" data-style="2" bindtap='tabSwitch'>
+    <view style="flex:1;" class="{{_type==1?'selected':''}}" data-style="1" bindtap='tabSwitch'>
         <view style="display: flex;justify-content: center;align-items: Center;height:1.6rem;">结算记录</view> 
-        <view wx:if="{{_num==2}}" style="background-color:#FF2B33;margin:0 auto;width:1rem;height:.2rem;"></view>
+        <view wx:if="{{_type==1}}" style="background-color:#FF2B33;margin:0 auto;width:1rem;height:.2rem;"></view>
     </view>
 </view>
-    <view wx:if="{{_num==1}}" style="padding-top:90rpx;height:100%;width:100%;">
+    <view wx:if="{{_type==0}}" style="padding-top:90rpx;height:100%;width:100%;">
         <view wx:if="{{page_num>0}}">
-            <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;padding:20rpx;">
+            <view wx:for="{{data_list}}" wx:key="{{index}}" style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;padding:20rpx;">
+                <view style="float:left;">
+                    <view style="font-size:30rpx;">￥{{item.amount}}</view> 
+                    <view style="font-size:24rpx;margin-top:.3rem;">提现金额</view> 
+                </view>
+                <view style="float:right;">
+                    <view style="overflow:hidden;">
+                        <view class="{{item.status==2?'not_active':'active'}}" style="color:#fff;float:right;height:1.5rem;width:3.5rem;border-radius:.75rem;display: flex;justify-content: center;align-items: Center;">{{filter.getStatus(item.status)}}</view> 
+                    </view> 
+                    <view style="color:#999999;margin-top:.3rem;">{{filter.formatDate(item)}}</view> 
+                </view>
+            </view>
+            <!-- <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;padding:20rpx;">
                 <view style="float:left;">
                     <view style="font-size:30rpx;">￥9.90</view> 
                     <view style="font-size:24rpx;margin-top:.3rem;">提现金额</view> 
@@ -21,19 +34,7 @@
                     </view> 
                     <view style="color:#999999;margin-top:.3rem;">2019-03-08 00:17</view> 
                 </view>
-            </view>
-            <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;padding:20rpx;">
-                <view style="float:left;">
-                    <view style="font-size:30rpx;">￥9.90</view> 
-                    <view style="font-size:24rpx;margin-top:.3rem;">提现金额</view> 
-                </view>
-                <view style="float:right;">
-                    <view style="overflow:hidden;">
-                        <view style="background-color:#3ECB63;color:#fff;float:right;height:1.5rem;width:3.5rem;border-radius:.75rem;display: flex;justify-content: center;align-items: Center;">提现完成</view> 
-                    </view> 
-                    <view style="color:#999999;margin-top:.3rem;">2019-03-08 00:17</view> 
-                </view>
-            </view>
+            </view> -->
         </view>
         <view wx:else style="height:100%;width:100%;display: flex;justify-content: center;align-items: Center;">
             <view >
@@ -48,28 +49,28 @@
     </view>
     <view wx:else style="padding-top:90rpx;height:100%;width:100%;">
         <view wx:if="{{page_num>0}}">
-            <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;">
-                <view style="overflow:hidden;padding:20rpx;border-bottom:1px solid #ccc;">
+            <view wx:for="{{data_list}}" wx:key="{{index}}" style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;">
+                <view style="overflow:hidden;padding:20rpx;">
                     <view style="float:left;">
-                        <view style="font-size:30rpx;">￥9.90</view> 
+                        <view style="font-size:30rpx;">￥{{filter.toFixed(item.amount)}}</view> 
                         <view style="font-size:24rpx;margin-top:.3rem;">提现金额</view> 
-                        <view style="color:#999999;margin-top:.3rem;">2019-03-08 00:17</view> 
+                        <view style="color:#999999;margin-top:.3rem;">{{filter.formatDate(item)}}</view> 
                     </view>
                     <view style="float:right;">
-                        <view style="font-size:30rpx;">+￥9.90</view> 
-                        <view style="font-size:24rpx;margin-top:.3rem;">实际到账金额</view> 
+                        <view style="font-size:30rpx;">￥{{item.pddCousumeAmount}}</view> 
+                        <view style="font-size:24rpx;margin-top:.3rem;">{{item.ins}}</view> 
                     </view>
                 </view>
-                <view style="overflow:hidden;padding:20rpx;">
+                <!-- <view style="overflow:hidden;padding:20rpx;">
                     <view style="float:left;color:#999999;">
                         备注: 免单结算（190217-203480106230603）
                     </view>
                     <view style="float:right;color:#999999;">
                         结算成功
                     </view>
-                </view>
+                </view> -->
             </view>
-            <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;">
+            <!-- <view style="overflow:hidden;background-color:#fff;margin-bottom:10rpx;">
                 <view style="overflow:hidden;padding:20rpx;border-bottom:1px solid #ccc;">
                     <view style="float:left;">
                         <view style="font-size:30rpx;">￥9.90</view> 
@@ -90,7 +91,7 @@
                         结算成功
                     </view>
                 </view>
-            </view>
+            </view> -->
         </view>
         <view wx:else style="height:100%;width:100%;display: flex;justify-content: center;align-items: Center;">
             <view >

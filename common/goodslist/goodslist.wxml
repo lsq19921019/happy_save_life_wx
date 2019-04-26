@@ -98,14 +98,14 @@
                 <!-- <p class='sale'>{{item.sales}}人已买</p> -->
                 <p class='sale' style="line-height:45rpx;text-align:left;">{{item.sales}}人已买</p>
               </view>
-              <view class='right' wx:if="{{role==1}}">
+              <view class='right' wx:if="{{role>0}}">
                 <view class='coupons'  wx:if="{{item.couponMoney>0}}">
                   {{item.couponMoney}}元券
                 </view>
               </view>
             </view>
 
-            <view class='sharget' wx:if="{{role==1}}">分享赚￥{{item.commission}}</view>
+            <view class='sharget' wx:if="{{role>0}}">分享赚￥{{item.commission}}</view>
           </view>
 
           <view class='pricebox'>

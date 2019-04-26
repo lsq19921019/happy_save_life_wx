@@ -18,7 +18,7 @@
     <button class='btn' open-type='share'>
       <view class='text' >分享小程序给好友</view>
     </button>
-    <button class='btn sel' bindtap='savehb'>
+    <button class='btn sel' bindtap='get_img'>
       <view class='text'>一键保存专属海报</view>
     </button>
   </view>

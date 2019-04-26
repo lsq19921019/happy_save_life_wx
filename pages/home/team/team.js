@@ -145,6 +145,11 @@ Page({
 
 
   },
+  toInvite:function () {
+    wx.navigateTo({
+      url: '/package/pages/yaoqing/yaoqing'
+    })
+  },
   //返回首页
   toHome: function () {
     wx.reLaunch({

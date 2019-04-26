@@ -84,8 +84,9 @@
     <block wx:else="{{teamList.length==0}}">
       <view class="none">
         <image src="../../../img/TeamNone.png" />
-        <view>您还没有发展团队</view>
-        <button open-type="share" plain="true">前往邀请</button>
+        <view>您的团队还没有成员</view>
+        <!-- <button open-type="share" plain="true">前往邀请</button> -->
+      <button bindtap="toInvite" plain="true">立即前往邀请</button>
       </view>
     </block>
     <!-- 加载图标 -->
@@ -177,8 +178,9 @@
     </view>
     <view wx:elif="{{teamState.firsts==0}}" class="none">
       <image src="../../../img/TeamNone.png" />
-      <view>您还没有发展团队</view>
-      <button open-type="share" plain="true">前往邀请</button>
+      <view>您的团队还没有成员</view>
+      <!-- <button open-type="share" plain="true">前往邀请</button> -->
+      <button bindtap="toInvite" plain="true">立即前往邀请</button>
     </view>
   </view>
 

@@ -82,7 +82,8 @@
           <block wx:if="{{navindex==0}}">
             <!-- 按钮区域-->
             <view class='bottom'>
-              <view class='l_btn' wx:if="{{role==1}}">预计赚￥{{circlelist[index].tkCommission}}</view>
+              <!-- <view class='l_btn' wx:if="{{role==1}}">预计赚￥{{circlelist[index].tkCommission}}</view> -->
+              <view class='l_btn' wx:if="{{role>0}}">预计赚￥{{circlelist[index].tkCommission}}</view>
               <view class='r_btn' bindtap="canvasFn" data-goodsinfo='{{circlelist[index]}}'>保存小程序码</view>
             </view>
 

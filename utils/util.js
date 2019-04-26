@@ -28,8 +28,10 @@ function request(url, data, method, load, callback, options) {
 
   //每个接口都要加partnerId和签名,
   data.partnerId = getApp().globalData.partnerId;
+  if(url.indexOf('pddPromotion')>-1){
+console.log(data);
+  }
   data.sign = czParms(data);
-
   wx.request({
     url: url,
     data: data,
@@ -69,7 +71,9 @@ function request(url, data, method, load, callback, options) {
 function czParms(pams) {
   // 参数以key键和val值重组
   let Zpams = JSON.stringify((pams)) //JOSN对象转换JSON字符串
-  Zpams = Zpams.replace("{", "").replace("}", "") //去掉空格   
+  Zpams = Zpams.replace("{", "").replace("}", "") //去掉空格  
+  // Zpams = Zpams.replace(/%/g, '%25'); //去掉空格  
+  Zpams = Zpams.replace(/%/g, ''); //去掉空格
   Zpams = Zpams.replace(/\"/g, "") //去掉双引号
   // console.log(Zpams)
   var Apams = []; //定义一数组

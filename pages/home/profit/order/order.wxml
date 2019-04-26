@@ -37,7 +37,7 @@
       <view class="goodsbox flex-box {{item.ifGet!=1?'noget':''}}" bindtap='checkGet' data-index="{{index}}">
         <image wx:if="{{item.goodsImg==''}}" class="img" src="../../../../img/dj.png" alt="" lazy-load="true"></image>
         <image wx:else class="img" src="{{item.goodsImg}}" alt="" lazy-load="true"></image>
-        <view class="flex-one info">
+        <view bindtap="handleCopy"  data-orderno="{{item.orderNo}}" class="flex-one info">
           <!--来源标识  1: ,2拼多多,3: ,4:蘑菇街,5:京东 -->
           <block wx:if="{{item.platform==1}}">
             <view class='MRoom'>
@@ -114,7 +114,8 @@
   <view wx:else class="none">
     <image src="../../../../img/friend.png" />
     <view>你还没有订单奖励明细</view>
-    <button open-type="share" plain="true">立刻去推荐好友吧</button>
+    <!-- <button open-type="share" plain="true">立刻去推荐好友吧</button> -->
+    <button bindtap="toHome" plain="true">去首页逛逛</button>
   </view>
 
 

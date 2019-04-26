@@ -25,7 +25,6 @@ Page({
     status:''//订单状态
   },
 
-
   onLoad: function (options) {
     //判断是否登录
     options = util.isLogin(this, app);
@@ -351,4 +350,28 @@ onPullDownRefresh:function(){
     this.getData(99, 0)  //区分分页方法，就是传个参数过去，如果是99，就是分页，没传99，就是普通方法
   },
 
+  handleCopy(e){
+    
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.orderno,
+      success: function(res) {
+        // self.setData({copyTip:true}),
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '复制成功',
+        //   success: function(res) {
+        //     if (res.confirm) {
+        //       console.log('确定')
+        //     } else if (res.cancel) {
+        //       console.log('取消')
+        //     }
+        //   }
+        // })
+            wx.showToast({
+              title: '订单号已复制！',
+              icon: 'none'
+            })
+      }
+    })
+  },
 })

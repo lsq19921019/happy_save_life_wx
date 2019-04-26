@@ -12,6 +12,12 @@ Page({
     wallet: '',
     aliNo: '',
     success:false,
+    aliNo: '',
+    aliname: '',
+    waitDeal: '',
+    amount_: '',
+    balance: '',
+    show_info_box_mod:false,
     // success:true,
   },
 
@@ -55,7 +61,26 @@ Page({
       
     });
   },
-
+//获取支付宝账号
+getWdInfo: function () {
+  var that = this;
+  var pams = {
+    token: wx.getStorageSync('token'),
+  }
+  util.request(myUrl.mainUrl + 'user/r/getWdInfo', pams, 'GET', 0, function (res) {
+    console.log(res.data);
+    if (res.data.result == 'OK') {
+      
+      that.setData({
+        aliNo: res.data.bean.aliAccount,
+        aliname: res.data.bean.name,
+        waitDeal: res.data.bean.wd,
+        amount_: res.data.bean.amount,
+        balance: res.data.bean.balance,
+      })
+    }     
+  });
+},
   //获取支付宝账号
   getaliNo: function () {
     var that = this;
@@ -65,19 +90,33 @@ Page({
     util.request(myUrl.mainUrl + 'user/r/getAli', pams, 'GET', 0, function (res) {
       console.log(res.data);
       if (res.data.result == 'OK') {
-        that.setData({
-          aliNo: res.data.aliAccount,
-          aliname: res.data.name
-        })
+        // that.setData({
+        //   aliNo: res.data.aliAccount,
+        //   aliname: res.data.name,
+        //   waitDeal: res.data.wd,
+        //   amount: res.data.amount,
+        //   balance: res.data.balance,
+        // })
       }     
     });
   },
   
-
-
+  close_info_box(){
+    let that = this;
+    that.setData({
+      show_info_box_mod:false,
+    })
+  },
+  open_info_box(){
+    let that = this;
+    that.setData({
+      show_info_box_mod:true,
+    })
+  },
   //提现
   deposit: function() {
-    var that = this;
+    let that = this;
+    let reg_num = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
     if (that.data.amount == '') {
       wx.showToast({
         title: '提现金额不能为空！',
@@ -85,6 +124,22 @@ Page({
       })
       return;
     }
+
+    if (!reg_num.test(that.data.amount)) {
+      wx.showToast({
+        title: '提现金额格式错误！必须为>0的金额，精确到小数点后2位！',
+        icon: 'none'
+      })
+      return;
+    }
+    if ((that.data.amount)<1) {
+      wx.showToast({
+        title: '最低提现金额1元！',
+        icon: 'none'
+      })
+      return;
+    }
+    // return;
     var pams = {
       token: wx.getStorageSync('token'),
       amount: that.data.amount,
@@ -105,7 +160,6 @@ Page({
         })
       }
     });
-x
   },
 
   //去修改
@@ -132,7 +186,8 @@ x
    * 生命周期函数--监听页面显示
    */
   onShow: function(options) {
-    this.getaliNo();
+    // this.getaliNo();
+    this.getWdInfo();
     this.getwallet();
   },
   gohome:function(){

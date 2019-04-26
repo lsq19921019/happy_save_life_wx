@@ -112,7 +112,9 @@ Page({
       ifFree: that.data.ifFree || ''
     };
 
-    that.data.e == '' ? pams.token = app.globalData.token : pams.e = that.data.e
+    that.data.e == '' ? pams.token = app.globalData.token : pams.e = that.data.e;
+    console.log(myUrl.goodsUrl);
+    // return;
     util.request(myUrl.goodsUrl + 'share/pddPromotion', pams, 'GET', 0, function(res) {
       if (res.data.result != "OK") {
         // wx.showToast({

@@ -37,10 +37,12 @@ Page({
     var pams = {
       token: app.globalData.token,
       wxAppid: app.globalData.APPID,
+      // index:0
       index:0
     }
 
-    util.request(myUrl.mainUrl + 'share/createPostersByMini?', pams, 'GET', 1, function(res) {
+    // util.request(myUrl.mainUrl + 'share/createPostersByMini?', pams, 'GET', 1, function(res) {
+      util.request(myUrl.mainUrl + 'share/getPosters?', pams, 'GET', 1, function(res) {
       if (res.data.result != "OK") {
         wx.showToast({
           title: res.data.result,
@@ -126,14 +128,43 @@ Page({
 
     }
   },
+  get_img:function(){
+    let that = this;
+    console.log(6666);
+    var pams = {
+      token: app.globalData.token,
+      wxAppid: app.globalData.APPID,
+      // index:0
+      index:that.data.swiperIndex
+    }
 
-  savehb: function() {
+    // util.request(myUrl.mainUrl + 'share/createPostersByMini?', pams, 'GET', 1, function(res) {
+      util.request(myUrl.mainUrl + 'share/getUserPosterUrl?', pams, 'GET', 1, function(res) {
+      if (res.data.result != "OK") {
+        wx.showToast({
+          title: res.data.result,
+          mask: "true",
+          icon: 'none',
+          duration: 3000
+        })
+        return;
+      }
+      // console.log(res.data);
+      // return;
+      that.savehb(res.data.userPosterUrl);
+
+    })
+  },
+  savehb: function(img_url) {
     // var imgarr = e.currentTarget.dataset.imgarr;
     // let count = 0;
 
-    let that = this;
+    // let that = this;
+    // console.log(that.data.imgUrls[that.data.swiperIndex].posterUrl+'======='+that.data.swiperIndex);
+    // return;
     wx.downloadFile({
-      url: that.data.imgUrls[that.data.swiperIndex].posterUrl,
+      // url: that.data.imgUrls[that.data.swiperIndex].posterUrl,
+      url: img_url,
       success: function(res) {
         console.log(res)
         console.log(res.tempFilePath);

@@ -249,7 +249,8 @@
         </block>
       </view>
 
-      <block wx:if="{{role==1}}">
+      <!-- <block wx:if="{{role==1}}"> -->
+      <block wx:if="{{role&&role>0}}">
         <view class="shareBottom">
           <view class="shareApp">
             <navigator class='newShare newShare1' target="miniProgram" hover-class="none" open-type="navigate" app-id="{{jupappid}}" path="{{path}}" extra-data='{{wxExtraData}}' version="release">
