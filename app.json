@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",  
+    "pages/index/index",
     "pages/bands/bands",
     "pages/home/home",
     "pages/hotlist/hotlist",
@@ -28,8 +28,6 @@
     "pages/classify/classify",
     "pages/newfree/newfree"
   ],
-  
-
   "subPackages": [
     {
       "root": "package",
@@ -44,8 +42,6 @@
       ]
     }
   ],
-
-
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ff2b33",
@@ -84,10 +80,10 @@
       }
     ]
   },
-  
   "navigateToMiniProgramAppIdList": [
     "wx32540bd863b27570",
     "wx13e41a437b8a1d2e",
     "wxca3957e5474b3670"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }
