@@ -800,7 +800,16 @@ Page({
   fstest: function (e) {
    console.log("==》 run fs test")
   },
-  toFreeOrder: function () {  
+  toFreeOrder: function (e) {  
+    if(!e.currentTarget.dataset.isfree){
+      wx.showToast({
+        title: '亲，免单活动已经结束， 期待下次哦！',
+        mask: "true",
+        icon: 'none',
+        duration: 3000
+      })
+      return;
+    }
     wx.navigateTo({
       url: "/pages/freeOrder/freeOrder"
     });

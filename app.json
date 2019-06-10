@@ -29,6 +29,10 @@
     "pages/newfree/newfree",
     "pages/tricksBag/tricksBag",
     "pages/freeOrder/freeOrder",
+    "pages/freeOrder/orderList/order",
+    "pages/freeOrder/incomelist/incomelist",
+    "pages/freeOrder/deposit/deposit",
+    "pages/freeOrder/ruleFreeOrder/ruleFreeOrder",
     "pages/incomelist/incomelist"
   ],
   "subPackages": [

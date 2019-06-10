@@ -396,7 +396,14 @@ Page({
       platform: options.platform
     };
 
-
+    
+    wx.showLoading({
+      mask: true,
+      title: '加载中'
+    });
+    setTimeout(()=>{
+      wx.hideLoading();
+    },1500);
     util.request(myUrl.goodsUrl + 'pdd/goods/detail', pams, 'GET', 1, function(res) {
       //后台报错
       if (res.data.result != "OK") {
@@ -699,9 +706,11 @@ Page({
     let len = goodsForward.price.toString().length;
     let OriginalPricewidth = 26 + len * 12 * 0.5;
     let linewidths = 48 + OriginalPricewidth;
+    console.log((new Date()).getTime());
     wx.downloadFile({
       url: myUrl.mainUrl + 'share/loadFileByUrl?token=' + app.globalData.token + '&url=' + goodsForward.goodsGalleryUrls[0],  //转换成二进制流
       success: function(res) {
+      console.log((new Date()).getTime());
         console.log(res.tempFilePath);
         that.data.canvasImg = res.tempFilePath;  //把二进制图片图片保存下来，用于生成海报
         ctx.drawImage(that.data.canvasImg, 0, 0, 400, 320);

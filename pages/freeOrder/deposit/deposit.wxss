@@ -1,0 +1,99 @@
+/* pages/home/deposit/deposit.wxss */
+
+.box {
+  width: 95%;
+  margin: 30rpx auto;
+  background: #fff;
+  border-radius: 15rpx;
+  padding: 0 20rpx;
+}
+
+.top {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0;
+  line-height: 60rpx;
+}
+
+.top .change {
+  color: #ec0402;
+  margin-left: 10rpx;
+}
+
+.amount {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 35rpx;
+  
+}
+.amount span{
+  font-weight: bold;
+  margin-right: 10rpx;
+}
+
+.amount input {
+  height: 80rpx;
+}
+.placeholder{
+  font-weight: 0;
+}
+
+.bottom {
+  text-align: left;
+  line-height: 60rpx;
+  margin: 0;
+  font-size: 25rpx;
+}
+
+.deposit-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 80rpx;
+  color: #fff;
+  font-size: 35rpx;
+  text-align: center;
+  background: linear-gradient(to right, #fe531b, #ec0402);
+  background: -webkit-linear-gradient(left, #fe531b, #ec0402);
+  background: -o-linear-gradient(right, #fe531b, #ec0402);
+  background: -moz-linear-gradient(right, #fe531b, #ec0402);
+}
+
+.success{
+  width: 100%;
+  text-align: center;
+}
+
+.success-ico{
+  width: 250rpx;
+  height: 250rpx;
+  background: #00b515;
+  border-radius: 50%;
+  margin: 100rpx auto;
+}
+.success-ico image{
+  width: 100%;
+  height: 100%;
+}
+.tishi{
+  font-size: 45rpx;
+  color: #323232;
+  margin-bottom: 30rpx;
+}
+
+.btn{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 35rpx;
+  text-align: center;
+  background: #ec0402;
+  margin-top: 50rpx;
+}
+

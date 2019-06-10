@@ -1,0 +1,6 @@
+var toRate = function(v){
+  return parseInt((v.surplusNum/v.num)*100);
+}
+  module.exports = {
+    toRate:toRate,
+  };

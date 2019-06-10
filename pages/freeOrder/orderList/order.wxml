@@ -1,0 +1,195 @@
+
+<wxs src='filter.wxs' module='filter' />
+<view class="order">
+  <view class='setTop'>
+    <!-- <view class='boxBg'>
+      <view class='inp_box'>
+        <view class='seekbox'>
+          <image class='Img' src='../../../../img/seekbox.png' bindtap="sendSeek" style="vertical-align:middle" />
+          <input class='inp_search'  placeholder="请输入订单号" bindinput="bindBlur" />
+          <view class='seaBtn' bindtap="sendSeek">搜索</view>
+        </view>
+        <view class='classify' bindtap='showSlide'>
+          <image src='../../../../img/classify.png'></image>
+        </view>
+      </view>
+    </view> -->
+
+    <!--新增加订单状态搜索框  -->
+    <!-- <view class='teamType_'>
+      <view class="teamState_ {{_num_==6?'select':''}}" data-style="6" bindtap='sendNetwork_'>全部</view>
+      <view class="teamList_ {{_num_==0?'select':''}}" data-style="0" bindtap='sendNetwork_'>已付款</view>
+      <view class="teamList_ {{_num_==2?'select':''}}" data-style="2" bindtap='sendNetwork_'>已收货</view>
+      <view class="teamList_ {{_num_==3?'select':''}}" data-style="3" bindtap='sendNetwork_'>已审核</view>
+      <view class="teamList_ {{_num_==4?'select':''}}" data-style="4" bindtap='sendNetwork_'>已失效</view>
+      <view class="teamList_ {{_num_==5?'select':''}}" data-style="5" bindtap='sendNetwork_'>已结算</view>
+    </view> -->
+    <!--新增加搜索框  -->
+    <!-- <view class='teamType'>
+      <view class="teamState {{_num==1?'select':''}}" data-style="1" bindtap='sendNetwork'>直属</view>
+      <view class="teamList {{_num==2?'select':''}}" data-style="2" bindtap='sendNetwork'>团队</view>
+    </view> -->
+  </view>
+
+  <!--订单详情  -->
+  <view class="orderGoods" wx:if="{{dataList.length>0}}">
+    <block wx:for="{{dataList}}" wx:key="*this">
+      <view class="goodsbox flex-box {{item.ifGet!=1?'noget':''}}" bindtap='checkGet' data-index="{{index}}">
+        <image wx:if="{{item.goodsPic==''}}" class="img" src="../../../../img/dj.png" alt="" lazy-load="true"></image>
+        <image wx:else class="img" src="{{item.goodsPic}}" alt="" lazy-load="true"></image>
+        <view bindtap="handleCopy"  data-orderno="{{item.orderNo}}" class="flex-one info">
+          <!--来源标识  1: ,2拼多多,3: ,4:蘑菇街,5:京东 -->
+          <block wx:if="{{item.platform==1}}">
+            <view class='MRoom'>
+              <image src='../../../../img/tb.png'></image>
+            </view>
+          </block>
+          <block wx:elif="{{item.platform==2}}">
+            <span class='spa'></span>
+          </block>
+          <block wx:elif="{{item.platform==3}}">
+            <view class='MRoom'>
+              <image src='../../../../img/tm.png'></image>
+            </view>
+          </block>
+          <block wx:elif="{{item.platform==4}}">
+            <view class='MRoom'>
+              <image src='../../../../img/mr.png'></image>
+            </view>
+          </block>
+          <block wx:elif="{{item.platform==5}}">
+            <view class='MRoom'>
+              <image src='../../../../img/jd.png'></image>
+            </view>
+          </block>
+          
+          <view class="viceTitle">
+            {{item.goodsName}}
+          </view>
+          <view class="prediction" style="position:relative;padding:0 0;padding-top:10rpx;">
+            免单金额 ￥{{item.amount}}
+            <!-- <block wx:if="{{item.ifGet==1}}">
+              <view class='reward'>奖励:￥ {{item.commission}}</view>
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block>
+            <block wx:if="{{item.ifGet==0}}">
+              <view class='reward'>丧失奖励:￥ {{item.commission}}</view>
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block>
+            <block wx:if="{{item.ifGet==(-1)}}">
+              <view class='reward'>奖励:￥ {{item.commission}}</view>
+              <view class='reward'><view style="display:inline-block;font-size:30rpx;">预估收入 </view>￥<view style="display:inline-block;">{{item.commission}}</view></view>
+            </block> -->
+          </view>
+          <view class="commission" style="padding-top:10rpx;">
+            订单号：{{item.orderNo}}
+            <!-- <block wx:if="{{item.ifGet==1}}">
+              <view class='reward'>奖励:￥ {{item.commission}}</view>
+            </block>
+            <block wx:if="{{item.ifGet==0}}">
+              <view class='reward'>丧失奖励:￥ {{item.commission}}</view>
+            </block>
+            <block wx:if="{{item.ifGet==(-1)}}">
+              <view class='reward'>奖励:￥ {{item.commission}}</view>
+            </block> -->
+          </view>
+          <view class='time clearfloat'>
+            <text class='createtime'>{{filter.formatDate(item.createTime)}}</text>创建
+            <text class='statusInfo {{item.status?"status_"+item.status:""}}'>{{filter.getOrderStatus(item.status)}}</text>
+          </view>
+          <view class='ifGet'>
+            <block wx:if="{{item.ifGet==0}}">
+              <image src='../../../../img/get.png'></image>
+            </block>
+            <block wx:if="{{item.ifGet==(-1)}}">
+              <image src='../../../../img/noGet.png'></image>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+  <view wx:else class="none">
+    <image src="../../../../img/friend.png" />
+    <view>你还没有订单奖励明细</view>
+    <!-- <button open-type="share" plain="true">立刻去推荐好友吧</button> -->
+    <button bindtap="toHome" plain="true">去首页逛逛</button>
+  </view>
+
+
+  <!-- 回到顶部按钮 -->
+  <view class="backTop" bindtap="backTop" wx:if="{{floorstatus}}"></view>
+</view>
+
+
+
+
+
+
+
+
+
+
+<!--侧边栏  -->
+<view class='aslide' hidden="{{showSlide}}" bindtap='hideSlide'></view>
+<view class='slide' style="transform:translateX({{sliderOffset}}px)">
+
+  <!-- <view class='headTop'>
+    筛选
+  </view> -->
+
+  <!--来源  -->
+  <!-- <view class='source'>
+    <view class='sourceItem {{changeNum==1?"mouthItemBg":""}}' bindtap='change' data-num='1' data-type='5'>京东 </view>
+    <view class='sourceItem {{changeNum==2?"mouthItemBg":""}}' bindtap='change' data-num='2' data-type='2'>拼多多 </view>
+    <view class='sourceItem {{changeNum==3?"mouthItemBg":""}}' bindtap='change' data-num='3' data-type='4'> 微选</view>
+    <view class='sourceItem {{changeNum==4?"mouthItemBg":""}}' bindtap='change' data-num='4' data-type='9'> 其他</view>
+  </view> -->
+  
+  <!--选择时间段  -->
+  <view class='times'>
+    <text style='padding-left:20rpx;display:block'>当前时间：</text>
+    <view class='date mouthItemBg'>
+      2019年
+    </view>
+  </view>
+  <!--月份  -->
+  <view class='mouth'>
+    <block wx:for="{{mouthList}}" wx:key="{{key}}">
+      <view class='mouthItem {{item.state==1?"mouthItemBg":""}}' bindtap='addBg' data-item="{{item.month}}" data-add='{{index}}'>
+        {{item.month}}月
+      </view>
+    </block>
+  </view>
+  <!--按钮  -->
+  <view class='btn'>
+    <view class='btnImg'  bindtap='reset'>
+      <image src='../../../../img/reset.png'></image>
+      <text class='funBtn'>重置</text>
+    </view>
+    <view class='btnImg' bindtap='confirm'>
+      <image src='../../../../img/confirm.png'></image>
+      <text class='funBtn' >确定</text>
+    </view>
+  </view>
+</view>
+
+<!--提示框  -->
+<block wx:if="{{showGet}}">
+  <view class='tipBg'>
+    <view class='tooltip'>
+      <text class='tit'>说明</text>
+      <view class='conTit'>{{msg}}</view>
+      <view class='comeon'>加油挽回吧~</view>
+      <view class='iknow' bindtap="showTip">
+        朕知道了
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class='goHome' bindtap='toHome' wx:if="{{ifRootPage}}">
+ <image src='/img/return.png'></image>
+</view>

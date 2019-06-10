@@ -24,6 +24,14 @@ function request(url, data, method, load, callback, options) {
       mask: true,
       title: '加载中'
     })
+  }else if(load == 2){
+    wx.showLoading({
+      mask: true,
+      title: '加载中'
+    });
+    setTimeout(()=>{
+      wx.hideLoading();
+    },1500);
   }
 
   //每个接口都要加partnerId和签名,

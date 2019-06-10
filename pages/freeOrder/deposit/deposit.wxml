@@ -1,0 +1,106 @@
+<!--pages/home/deposit/deposit.wxml-->
+
+<view class='page_warp'>
+  <view class="info_box_mod" wx:if="{{show_info_box_mod}}" style="background-color: rgba(0,0,0,0.2);height:100%;width:100%;position:fixed;top:0;left:0;z-index:90;display:flex;justify-content: center;align-items: Center;">
+    <view style="z-index:2;background-color:#fff;padding:1rem 1rem;width:80%;box-sizing:border-box;border-radius:10rpx;position:relative;">
+      <view class="info_close" bindtap="close_info_box" style="font-weight:bold;font-size:50rpx;position:absolute;right:20rpx;top:10rpx;">×</view>
+      <view style="text-align:center;font-size:30rpx;font-weight:bold;margin-bottom:.5rem;">提现说明</view>
+      <!-- <view style="padding:10rpx 0;">1、每月21号可以提现上月确认收货且没有售后的订单；</view>
+      <view style="padding:10rpx 0;">2、订单结算额外扣除10%服务费率；</view>
+      <view style="padding:10rpx 0;">3、每月21号后任意时间都可提现上月结算金额。</view>
+      <view style="padding:10rpx 0;">4、每月22号后任意时间都可以提现上月结算余额</view> -->
+      <view style="padding:10rpx 0;">1、请务必保证提现到账的支付宝账户正确</view>
+      <view style="padding:10rpx 0;">2、每月22号可以提现上个月确认收货且没有售后的订单</view>
+      <view style="padding:10rpx 0;">3、订单结算额外扣除10%服务费率</view>
+      <view style="padding:10rpx 0;">4、每月22号后任意时间都可以提现上月结算余额</view>
+      <view style="padding:10rpx 0;">5、单笔提现最低￥1</view>
+    </view>
+    <view style="position:absolute;top:0;left:0;width:100%;height:100%;" bindtap="close_info_box"></view>
+  </view>
+
+  <block wx:if="{{success}}">
+    <view class='success'>
+      <view class='success-ico'>
+      <image src='https://bnlnimg.bnln100.com/success.png'></image></view>
+      <view class='tishi'>提现申请成功</view>
+      <view>将在24小时内收到款项，请留意支付宝！</view>
+      <view class='btn' bindtap='gohome'>谢主隆恩</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view style="background-color:#FF2B33;color:#fff;padding:2rem 1rem;">
+      <view style="display:flex;">
+        <view style="flex:1;box-sizing:border-box;padding-left:40rpx;position:relative;font-size:30rpx;height:30rpx;line-height:30rpx;overflow:hidden;"><image style="position:absolute;left:0;width:30rpx;height:30rpx;" src="../../../img/icon_rmb.png"/> 可提现金额(元)</view>
+        <!-- <view bindtap="open_info_box" style="flex:1;text-align:right;">提现说明  ></view> -->
+      </view>
+      <view style="font-size:80rpx;padding-top:.3rem;">
+        {{freeWallet}}
+      </view>
+    </view>
+    <view style="display:flex;padding:1rem 0;background-color:#fff;margin-bottom:.5rem;">
+      <view style="flex:1;text-align:center;">
+      <view style="color:#FF2B33;font-size:36rpx;padding-bottom:.5rem;">{{balance}}</view> 
+      <view >已结算收入(元)</view> 
+      </view>
+      <view style="flex:1;text-align:center;">
+      <view style="color:#FF2B33;font-size:36rpx;padding-bottom:.5rem;">{{no_balance}}</view> 
+      <view >待结算收入(元)</view> 
+      </view>
+    </view>
+    <view wx:if="{{toAli}}" bindtap="toAliPage" style="border-radius:20rpx;;margin-bottom:.5rem;padding:0 30rpx;width:100%;box-sizing:border-box;">
+      <view style="background-color:#fff;border-radius:10rpx;height:200rpx;display:flex;justify-content: center;align-items: Center;">
+        <view>
+          <view style="border-bottom:1px solid #ccc;padding:20rpx 0;">
+            <input placeholder='最低提现1元' disabled="{{true}}" style="text-align:center;" placeholder-style='font-weight:0;font-size:28rpx;text-align:center;color:#aaa;' bindinput="bindBlur" bindconfirm=""></input>
+          </view> 
+          <view style="text-align:center;padding:20rpx 0;color:#aaa;">说明:  你尚未绑定支付宝，点击前往设置</view> 
+        </view> 
+      </view>
+    </view>
+    <view wx:else style="border-radius:20rpx;;margin-bottom:.5rem;padding:0 30rpx;width:100%;box-sizing:border-box;">
+      <view style="background-color:#fff;border-radius:10rpx;height:200rpx;display:flex;justify-content: center;align-items: Center;">
+        <view>
+          <view style="border-bottom:1px solid #ccc;padding:20rpx 0;">
+            <input placeholder='最低提现1元' disabled="{{false}}" style="text-align:center;" placeholder-style='font-weight:0;font-size:28rpx;text-align:center;color:#aaa;' bindinput="bindBlur" bindconfirm=""></input>
+          </view> 
+          <view style="text-align:center;padding:20rpx 0;color:#aaa;">说明: 提现将到账支付宝（{{aliAccount?aliAccount:''}}）</view> 
+        </view> 
+      </view>
+    </view>
+    <!-- <view style="display:flex;background-color:#fff;font-size:28rpx;padding:.7rem 0;margin-bottom:.5rem;">
+      <view style="flex:3;text-indent:1rem;height:1.4rem;line-height:1.4rem;">支付宝账号</view>
+      <view style="flex:5;height:1.4rem;line-height:1.4rem;">{{aliNo}}</view>
+      <view style="flex:2;height:1.4rem;line-height:1.4rem;" bindtap='gochange'>
+        <view style="color:#fff;background-color:#FF2B33;width:3.5rem;height:1.4rem;border-radius:.7rem;position:relative;font-size:24rpx;display: flex;justify-content: center;align-items: Center;">
+          <image src="../../../img/icon_edit_btn.png" style="width:28rpx;height:28rpx;"/>
+          <view style="margin-left:10rpx;">修改</view>
+        </view> 
+      </view>
+    </view>
+    <view style="display:flex;background-color:#fff;font-size:28rpx;padding:.7rem 0;margin-bottom:1.5rem;">
+      <view style="flex:3;text-indent:1rem;height:1.4rem;line-height:1.4rem;">提现金额</view>
+      <view style="flex:5;">
+          <input placeholder='最低提现金额1元' placeholder-style='font-weight:0;font-size:28rpx;' bindinput="bindBlur" bindconfirm=""></input>
+      </view>
+      <view style="flex:2;height:1.4rem;line-height:1.4rem;">元</view>
+    </view> -->
+    <!-- <view class='box'>
+      <view class='top'>
+        <view>到账支付宝：{{aliNo}}
+          <text class='change' bindtap='gochange'>修改</text>
+        </view>
+        <view>提现余额</view>
+
+        <view class='amount'>
+          <span>￥</span>
+          <input placeholder='请输入金额' placeholder-style='font-weight:0' bindinput="bindBlur" bindconfirm=""></input>
+        </view>
+      </view>
+      <view class='bottom'>可提现余额:￥{{wallet}}</view>
+    </view> -->
+
+    <view class='deposit-btn' bindtap='deposit'>提现到支付宝</view>
+  </block>
+  <view style="position:absolute;bottom:0;text-align:center;padding:.4rem 0;text-align:center;color:#999999;width:100%;" bindtap="toIncomeList">查看收入明细  ></view>
+</view>

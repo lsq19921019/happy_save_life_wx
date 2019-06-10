@@ -1,0 +1,58 @@
+
+  var getDates = function(time){
+    var time = time;
+  
+    var date =getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+    var hours = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    return y+'-'+addZero(M)+'-'+addZero(d)+' '+addZero(hours)+':'+addZero(min)+':'+addZero(sec);
+};
+function addZero(o){
+    if(o<10){
+        return '0'+o;
+    }else{
+        return o;
+    }
+
+}
+var getOrderStatus = function(status){
+    console.log(status);
+    switch (status) {
+            case 0:
+            return '已支付';
+            break;
+            
+            case 1:
+            return '待结算';
+            break;
+    
+            case 2:
+            return '已结算';
+            break;
+    
+            case 3:
+            return '已结算';
+            break;
+    
+            case 4:
+            return '失效';
+            break;
+    
+            case 5:
+            return '已结算';
+            break;
+        default:
+                return '666';
+            break;
+    }
+};
+module.exports = {
+  formatDate: getDates,
+  getOrderStatus:getOrderStatus,
+//   getStatus: getStatus,
+//   toFixed:toFixed,
+};

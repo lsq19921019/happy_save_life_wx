@@ -1,0 +1,53 @@
+<wxs src='filter.wxs' module='filter' />
+<view style="background-color:#fff;box-sizing:border-box;padding:0 20rpx;margin-bottom:20rpx;">
+    <view class="title">
+        一、免单规则
+    </view>
+    <view class="title_">
+        1、下单流程：
+    </view>
+    <view class="content">
+        (1)获取免单权限；<view></view>
+        (2)确认券后价跟免单款一致（原件付款不免单）下单并付款；<view></view>
+        (3)查看订单状态；<view></view>
+        (4)确认收货五星好评；<view></view>
+        (5)等待系统审核订单；<view></view>
+        (6)审核通过；<view></view>
+        (7)全额补贴提现到支付宝；      <view></view>
+    </view>
+    <view class="title_">
+        2、参与条件：合伙人专属福利
+    </view>
+    <view class="title_">
+        3、注意事项：
+    </view>
+    <view class="content">
+        (1)因商品库存有限，先到先得，抢完即止，如优惠券已被领完，请不要原件付款；<view></view>
+        (2)免单是平台补贴行为，与商家、拼多多无关，有问题请咨询客服解决；<view></view>
+        (3)禁止咨询商家免单，禁止评价中提及 “返款”“免单” 字眼；<view></view>
+        (4)请不要使用任何平台现金券付款面单商品；<view></view>
+    </view>
+</view>
+<view style="background-color:#fff;box-sizing:border-box;padding:0 20rpx;">
+    <view class="title">
+        二、常见问题
+    </view>
+    <view class="title_">
+        1、如何免单？
+    </view>
+    <view class="content">
+        答：先付款下单，平台会自动统计好订单，收到商品点击确认到货后即可提现免单款。       
+    </view>
+    <view class="title_">
+        2、为什么确认收货后还不能提现？
+    </view>
+    <view class="content">
+        答：订单确认收货时间超过7天，即可提现到支付宝。如果提前确认收货或确认收货后再退款，将会被平台拉黑后续无法参与活动
+    </view>
+    <view class="title_">
+        3、如何提现、需要手续费吗?
+    </view>
+    <view class="content">
+        答：订单审核通过后，免单款会增加到可提现余额中，不需要手续费 即可马上提现到支付宝。
+    </view>
+</view>

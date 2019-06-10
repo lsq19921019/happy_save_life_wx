@@ -1,0 +1,14 @@
+page{
+    height: 100%;
+    width: 100%;
+}
+.selected{
+    color:#FF2B33;
+    /* font-size:32rpx; */
+}
+.active{
+    background-color:#3ECB63;
+}
+.not_active{
+    background-color:rgb(150, 150, 150);
+}
