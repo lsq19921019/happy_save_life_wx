@@ -4,7 +4,7 @@ const util = require('../../../utils/util.js');
 Page({
   //页面的初始数据
   data: {
-    _type: 0,//初始页面 A级  B级
+    _type: 3,//初始页面 A级  B级
     page_num: 0,
     data_list:'',
     page_size: 0,
@@ -21,16 +21,28 @@ Page({
   },
   getList: function(p_size,type_){
     var that = this;
-    var pams = {
-      token: wx.getStorageSync('token'),
-      type: type_,
-      p: p_size
+    var pams = null
+    let url_ = '';
+    if(type_==3){
+      pams = {
+        token: wx.getStorageSync('token'),
+        type: type_,
+        p: p_size
+      }
+      url_ = 'user/r/getRecord';
+    }else if(type_==1){
+      pams = {
+        token: wx.getStorageSync('token'),
+        // type: type_,
+        page: p_size
+      }
+      url_ = 'pdd/free/findOrderClearTime';
     }
-    util.request(myUrl.mainUrl + 'user/r/getRecord', pams, 'GET', 0, function (res) {
+    util.request(myUrl.mainUrl + url_, pams, 'GET', 0, function (res) {
       console.log(res.data);
       if (res.data.result == 'OK') {
         that.setData({
-          page_num:res.data.list.length,
+          // page_num:res.data.list.length,
           data_list: res.data.list,
           page_size: p_size+1
         });
@@ -86,12 +98,12 @@ Page({
     let e_num = e.currentTarget.dataset.style;
     if (this.data._type == e_num) {
         return
-      } else if (e_num == 0) {
+      } else if (e_num == 3) {
         this.setData({
-          _type: 0,
+          _type: 3,
           page_size: 0
         })
-        this.getList(this.data.page_size,0);
+        this.getList(this.data.page_size,3);
       } else if (e_num == 1) {
         this.setData({
           _type: 1,
@@ -102,8 +114,8 @@ Page({
   },
   toHomePage:function(){
     console.log(666666666);
-    wx.switchTab({
-      url: '/pages/index/index'
+    wx.navigateTo({
+      url: '/pages/freeOrder/freeOrder'
     })
   }
 });

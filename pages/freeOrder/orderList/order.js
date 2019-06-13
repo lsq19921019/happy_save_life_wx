@@ -144,7 +144,7 @@ Page({
   //返回首页
   toHome: function () {
     wx.reLaunch({
-      url: '/pages/index/index',
+      url: '/pages/freeOrder/freeOrder',
     })
   },
   //回到顶部

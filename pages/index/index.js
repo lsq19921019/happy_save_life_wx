@@ -811,7 +811,7 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: "/pages/freeOrder/freeOrder"
+      url: "/pages/freeOrder/freeOrder?fromhome=1"
     });
   }
 

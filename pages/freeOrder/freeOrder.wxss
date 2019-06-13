@@ -46,8 +46,8 @@ page {
 }
 
 .imgMark image {
-  width: 62%;
-  height: 50%;
+  width: 80%;
+  height: 65%;
   position: absolute;
   left: 50%;
   top: 200rpx;

@@ -103,7 +103,7 @@ Page({
   toHomePage:function(){
     console.log(666666666);
     wx.switchTab({
-      url: '/pages/index/index'
+      url: '/pages/freeOrder/freeOrder'
     })
   }
 });

@@ -15,7 +15,7 @@ Page({
     role: user.role, //用户角色
     arrange: 0, //商品显示样式
     goodslist: [],
-    free_order_type: 0,
+    free_order_type: 1,
     progress_rate: 1,
     rate_amount_:60,
     rate_amount:80,
@@ -33,13 +33,36 @@ Page({
     pid:'',
     noData:true,
     show_layer:false,
-    end_time_list:''
+    end_time_list:'',
+    user_msg:user,
+    ifHavaFree:'',
+    showHomeBtn:true,
+    showShareInfo:true,
+    share_name:'暂无信息',
+    share_head_img:'暂无信息',
+    share_user_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options);
+    if(options.userId){
+      this.setData({
+        share_user_id:options.userId
+      });
+      this.getShareInfo(options.userId);
+    }
+    if(options.fromhome){
+      this.setData({
+        showHomeBtn:false
+      });
+      this.setData({
+        showShareInfo:false
+      });
+    }
+    this.clearCountTime();
     wx.setNavigationBarTitle({ title: '免单活动'});// title名
     
     // 重写方法，自定义格式化日期
@@ -273,13 +296,13 @@ Page({
    */
   onShow: function() {
     let that = this;
-    
-    wx.showToast({
-      title: app.globalData.role+'======666666666666666666666',
-      icon: 'none',
-      mask: 'true',
-      duration: 3000,
-    });
+    console.log("roleeeeeeeeeeeee==========="+app.globalData.role+"===========roleeeeeeeeeeeee");
+    // wx.showToast({
+    //   title: app.globalData.role+'======666666666666666666666',
+    //   icon: 'none',
+    //   mask: 'true',
+    //   duration: 3000,
+    // });
     console.log(wx);
     if(app.globalData.role===""||app.globalData.role==0){
       // console.log(app.globalData.role);0:粉丝;1:合伙人;
@@ -346,7 +369,7 @@ Page({
     let that = this;
     // console.log('userId = ' + app.globalData.user.unionidF + ' & id=' + that.data.spreadId + "&platform=" + that.data.goodsInfo.platform);
     return {
-      title: '免单活动',
+      title: '拼多多免单活动，火热秒杀中！速来~',
       imageUrl: "https://duoyidian.hzinterconn.cn/share_freeorder.png",
       path: '/pages/freeOrder/freeOrder?userId=' + app.globalData.user.unionidF + '&id=' + that.data.spreadId + "&platform=" + that.data.platform
     }
@@ -441,12 +464,28 @@ Page({
 
     }
   },
-
+// http://129.204.138.152:8093/user/r/getFatherInfo?token=mu_65467097-8c8d-4251-93bf-4d54d15958d0&userId=oeWJc1LNZD12o-CNm909be6ssGMQ
+  getShareInfo:function(id_){
+    let that = this;
+    let pams = {token:app.globalData.token, userId:id_}
+    util.request(myUrl.mainUrl + 'user/r/getFatherInfo?', pams, 'GET', 1, function(resp) {
+      console.log(resp);
+      if(resp.data.result==='OK'){
+        that.setData({
+          share_head_img:resp.data.headImg?resp.data.headImg:'暂无信息',
+          share_name:resp.data.nickName?resp.data.nickName:'暂无信息'
+        });
+      }
+    });
+  },
   toRules:function(){
     wx.navigateTo({
       url: '/pages/freeOrder/ruleFreeOrder/ruleFreeOrder',
     });
   },
+  // get_dataList:function(){
+  //   setTimeout
+  // }
   getData:function(type,p_num){
     // token: app.globalData.token
     let that = this;
@@ -459,7 +498,7 @@ Page({
     //   });
     // },1200);
     that.stepFn().then(function(){
-      // that.clearCountTime()
+      that.clearCountTime()
       console.log('next');
     }).then(function(){
             if(that.data.notice_list&&that.data.notice_list.length>0){
@@ -479,6 +518,10 @@ Page({
             util.request(myUrl.mainUrl + 'pdd/free/index?', pams, 'GET', 1, function(resp) {
               console.log(resp);
               if(resp.data.result==='OK'){
+                that.setData({
+                  ifHavaFree:resp.data.ifHavaFree
+                });
+                
                 if(that.data.notice_list&&that.data.notice_list.length>0){
                   that.setData({
                     data_list:resp.data.list,
@@ -498,41 +541,62 @@ Page({
                     noData: true
                   });
                 }
-                if(that.data.free_order_type==1&&!that.data.end_time_list){
+                if(that.data.free_order_type==1){
                   // let count = 0;
                     let list_time = []; 
-                          if(that.data.data_list&&that.data.data_list.length>0){
-                            that.data.data_list.forEach((ele,index)=>{
-                              list_time.push(that.data.data_list[index].endTime);
-                              let time_tmp = null;
-                              let timers = setInterval(function(){
-                                let end_time='data_list['+index+'].endTime';
-                                
-                                let sec='data_list['+index+'].sec';
-                                let min='data_list['+index+'].min';
-                                let hour='data_list['+index+'].hour';
-                                let days='data_list['+index+'].days';
-                                
-                                let t_fun='data_list['+index+'].t_fun';
-                                
-                                that.setData({
-                                  [end_time]:that.data.data_list[index].endTime-1000,
-                                  [t_fun]:timers
-                                });
-                                
-                                that.setData({
-                                  [sec]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60),
-                                  [min]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60),
-                                  [hour]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24),
-                                  [days]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)
-                                });
-                                console.log(that.data.data_list[index].hour+":"+that.data.data_list[index].min+":"+that.data.data_list[index].sec);
-                              },1000);
-                            });
-                            that.setData({
-                              end_time_list: list_time
-                            });
-                          }
+                    if(that.data.data_list&&that.data.data_list.length>0){
+                      that.data.data_list.forEach((ele,index)=>{
+                        list_time.push(that.data.data_list[index].endTime);
+                        let time_tmp = null;
+                        let end_time='data_list['+index+'].endTime';
+                        
+                        let sec='data_list['+index+'].sec';
+                        let min='data_list['+index+'].min';
+                        let hour='data_list['+index+'].hour';
+                        let days='data_list['+index+'].days';
+                        
+                        let t_fun='data_list['+index+'].t_fun';
+                        
+                        that.setData({
+                          [end_time]:that.data.data_list[index].endTime-1000,
+                          [t_fun]:timers
+                        });
+                        
+                        that.setData({
+                          [sec]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60),
+                          [min]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60),
+                          [hour]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24),
+                          [days]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)
+                        });
+                        let timers = setInterval(function(){
+                          let end_time='data_list['+index+'].endTime';
+                          
+                          let sec='data_list['+index+'].sec';
+                          let min='data_list['+index+'].min';
+                          let hour='data_list['+index+'].hour';
+                          let days='data_list['+index+'].days';
+                          
+                          let t_fun='data_list['+index+'].t_fun';
+                          
+                          that.setData({
+                            [end_time]:that.data.data_list[index].endTime-1000,
+                            [t_fun]:timers
+                          });
+                          
+                          that.setData({
+                            [sec]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000)%60),
+                            [min]:parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60)<10?'0'+parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60):parseInt(((that.data.data_list[index].endTime-that.data.time_now)/1000/60)%60),
+                            [hour]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)%24),
+                            [days]:parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)<10?'0'+parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24):parseInt((((that.data.data_list[index].endTime-that.data.time_now)/1000)/3600)/24)
+                          });
+                          console.log(that.data.data_list[index].hour+":"+that.data.data_list[index].min+":"+that.data.data_list[index].sec);
+                          
+                        },1000);
+                      });
+                      that.setData({
+                        end_time_list: list_time
+                      });
+                    }
                 }else{
                   return;
                 }
@@ -601,28 +665,29 @@ Page({
       url: '/pages/index/index'
     })
   },
-  showOn: function(e){
-    let that = this;
+  // showOn: function(e){
+  //   let that = this;
 
-    //用户取消手机授权直接返回
-    if (e.detail.iv == undefined && e.detail.encryptedData == undefined) {
-      return;
-    }
+  //   //用户取消手机授权直接返回
+  //   if (e.detail.iv == undefined && e.detail.encryptedData == undefined) {
+  //     return;
+  //   }
 
-    console.log('升级用的session_key' + that.data.session_key)
+  //   console.log('升级用的session_key' + that.data.session_key)
 
-    let param = {
-      token: app.globalData.token,
-      encryptedData: e.detail.encryptedData,
-      sessionKey: that.data.session_key,
-      iv: e.detail.iv,
-      type: 1
-    }
+  //   let param = {
+  //     token: app.globalData.token,
+  //     encryptedData: e.detail.encryptedData,
+  //     sessionKey: that.data.session_key,
+  //     iv: e.detail.iv,
+  //     type: 1
+  //   }
 
-    util.request(myUrl.mainUrl + 'user/updateMobile', param, 'GET', 1, function (res) {
-      that.upgrad(res)
-    })
-  },
+  //   util.request(myUrl.mainUrl + 'user/updateMobile', param, 'GET', 1, function (res) {
+  //     console.log(res);
+  //     that.upgrad(res);
+  //   })
+  // },
 
 
   //升级代理
@@ -752,6 +817,9 @@ Page({
     });
     //用户取消手机授权直接返回
     if (e.detail.iv == undefined && e.detail.encryptedData == undefined) {
+      // that.setData({
+      //   showInfo:true
+      // });
       return;
     }
 
@@ -789,9 +857,14 @@ Page({
     // });
     that.stepFn().then(function(msg){
       console.log(msg);
-      // that.clearCountTime();
+      that.clearCountTime();
     }).then(function(){
-      that.getData(e.currentTarget.dataset.type,1);
+      // that.setData({
+      //   data_list:[]
+      // });
+      // setTimeout(()=>{
+        that.getData(e.currentTarget.dataset.type,1);
+      // },1000);
     }).then(function(){
       // setTimeout(function(){
       //   that.setData({
@@ -810,8 +883,16 @@ Page({
       if(that.data.data_list&&that.data.data_list.length>0){
         that.data.data_list.forEach((ele,index)=>{
           // let t_fun='data_list['+index+'].t_fun';
-          clearInterval(that.data.data_list[index].t_fun)
+          if(that.data.data_list[index].t_fun){
+            clearInterval(that.data.data_list[index].t_fun)
+          }
         });
+        // setTimeout(()=>{
+        //   that.data.data_list.forEach((ele,index)=>{
+        //     // let t_fun='data_list['+index+'].t_fun';
+        //       clearInterval(that.data.data_list[index].t_fun)
+        //   });
+        // });
       }
   },
   getTime(time,type){
@@ -862,118 +943,243 @@ Page({
   },
 
 
-
-  //海报生成
-  canvasFn: function() {
-    // console.time("canvas")
+  canvasFn: function(e) {
     let that = this;
-    wx.showLoading({
-      title: '正在生成海报',
-    })
-
-    let ctx = wx.createCanvasContext('myCanvas'); //生成画布
-    let miniCode = "" //判断小程序是否己经下载完毕
-
-
-    //下载小程序码
-    let pamss = {
-      type: 2,
-      ifNew: 1,
-      deviceId: "/mini",
-      // token: app.globalData.token,
+    
+    let pams = {
       token: app.globalData.token,
-      userId: app.globalData.user.unionidF,
-      goodsId: '',
+      // channelType: channelType,
       wxAppid: app.globalData.APPID,
-      platform: ''
     }
-    // console.log(pamss);
-    // return;
-    var path = '';
-    app.globalData.ext ? path = 'share/getJWMiniCode' : path = 'share/getMiniCode';
-    util.request(myUrl.mainUrl + path, pamss, 'GET', 0, function(res) {
-      console.log(res);
-      if (res.data.result != "OK") {
-        wx.showToast({
-          title: res.data.result,
-          icon: 'none',
-          duration: 3000,
+    util.request(myUrl.mainUrl + 'share/getFreePosterUrl?', pams, 'GET', 1, function(resp) {
+      console.log(resp);
+      if(resp.data.result==='OK'){
+        that.setData({
+          hbImgBl: true,
+          // shareUrl: resp.data.url,
+          imageUrl: resp.data.img,
+
+          // hbImg: resp.data.img,
         })
-        return;
-      }
-
-      wx.downloadFile({
-        url: res.data.img,
-        success: function(res) {
-          miniCode = res.tempFilePath
-        }
-      })
-    })
-
-// return;
-    // let len = that.data.goodsInfo.price.toString().length; //原价长度
-    // let OriginalPrice = Number(this.data.goodsInfo.price); //原价改为number类型
-    // let OriginalPricewidth = 26 + len * 12 * 0.5; //原价的宽度
-    // let linewidths = 135 + OriginalPricewidth; //横线
-
-    ctx.setFillStyle('#FFFFFF') //设置填充色
-    ctx.setLineWidth("1") //设置线条的宽度
-    ctx.fillRect(0, 0, 375, 500) //填充一个矩形
-
-    ctx.setFillStyle("#333333")
-    ctx.setFontSize(16)
-    ctx.lineWidth = 1;
-    // let str = this.data.goodsInfo.goodsName
-    // if (str.length > 32) {
-    //   str = str.substring(0, 32) + '...'
-    // }
-
-    // that.canvasTextAutoLine('addwwd', ctx, 15, 326, 20) //文字自动调行
-
-    // ctx.drawImage("../../img/icon_quan.png", 10, 370, 45, 15)
-    // ctx.setFillStyle("#e84d74")
-    // ctx.setFontSize(16)
-    // ctx.fillText('￥' + '', 60, 384)
-    // ctx.setFillStyle("#666666")
-    // ctx.setFontSize(12)
-    // ctx.fillText('原价￥' + '', 130, 383)
-    // ctx.moveTo(130, 378)
-    // ctx.lineTo(0, 378)
-    // ctx.stroke()
-
-    // ctx.setFillStyle("#666666")
-    // ctx.setFontSize(12)
-    // ctx.fillText('限时限量', 240, 383)
-
-    ctx.drawImage("https://duoyidian.hzinterconn.cn/freeorder_poster.png", 0, 0, 375, 500)
-
-    // ctx.setFontSize(22)
-    // ctx.setFillStyle("#ffffff")
-    // ctx.fillText('' + '元优惠券', 54, 445)
-
-    // ctx.setFillStyle("#ffffff")
-    // ctx.setFontSize(14)
-    // ctx.fillText('微信内长按二维码领优惠券', 25, 472)
-    ctx.draw(); //画之前清除以前的（清除）
-
-    let time = setInterval(function() {
-      if (miniCode != '') {
-        clearTimeout(time) //清空定时器
-        if (that.data.canvasImg != '') {
-          ctx.drawImage(that.data.canvasImg, 0, 0, 300, 300) //下载海报
-        }
-        ctx.drawImage(miniCode, 153, 380, 70, 70) //小程序码
-
-        ctx.draw(true)
         setTimeout(function() {
-          that.hbImg();
+          that.saveImageToPhotosAlbum(resp.data.img);
           // console.timeEnd("canvas")
         }, 500)
       }
-    }, 150)
+    });
+  },
+
+  //海报生成
+  canvasFn_: function(e) {
+    
+    // let that = this;
+    // let channelType = e.currentTarget.dataset.channeltype;
+    // let pams = {
+    //   token: app.globalData.token,
+    //   // channelType: channelType,
+    //   wxAppid: app.globalData.APPID,
+    // }
+    // util.request(myUrl.mainUrl + 'share/getFreePosterUrl?', pams, 'GET', 1, function(resp) {
+    //   console.log(resp);
+    //   if(resp.data.result==='OK'){
+    //     that.setData({
+    //       // shareType: parseInt(e.currentTarget.dataset.channeltype),
+    //       hbImgBl: true,
+    //       shareUrl: resp.data.url,
+    //       imageUrl: resp.data.img,
+
+    //       hbImg: resp.data.img,
+    //     })
+    //       // wx.showLoading({
+    //       //   title: '正在生成海报',
+    //       // })
+    //   }
+    // });
+    // console.time("canvas")
+//     let that = this;
+//     wx.showLoading({
+//       title: '正在生成海报',
+//     })
+
+//     let ctx = wx.createCanvasContext('myCanvas'); //生成画布
+//     let miniCode = "" //判断小程序是否己经下载完毕
+
+
+//     //下载小程序码
+//     let pamss = {
+//       type: 2,
+//       ifNew: 1,
+//       deviceId: "/mini",
+//       // token: app.globalData.token,
+//       token: app.globalData.token,
+//       userId: app.globalData.user.unionidF,
+//       goodsId: '',
+//       wxAppid: app.globalData.APPID,
+//       platform: ''
+//     }
+//     // console.log(pamss);
+//     // return;
+//     var path = '';
+//     app.globalData.ext ? path = 'share/getJWMiniCode' : path = 'share/getMiniCode';
+//     util.request(myUrl.mainUrl + path, pamss, 'GET', 0, function(res) {
+//       console.log(res);
+//       if (res.data.result != "OK") {
+//         wx.showToast({
+//           title: res.data.result,
+//           icon: 'none',
+//           duration: 3000,
+//         })
+//         return;
+//       }
+
+//       wx.downloadFile({
+//         url: res.data.img,
+//         success: function(res) {
+//           miniCode = res.tempFilePath
+//         }
+//       })
+//     })
+
+//     wx.downloadFile({
+//       url: "https://bnlnimg.bnln100.com/freeorder_poster.png",
+//       success: function(res) {
+//         that.setData({
+//           canvasImg: res.tempFilePath
+//         })
+        
+//       }
+//     })
+// // return;
+//     // let len = that.data.goodsInfo.price.toString().length; //原价长度
+//     // let OriginalPrice = Number(this.data.goodsInfo.price); //原价改为number类型
+//     // let OriginalPricewidth = 26 + len * 12 * 0.5; //原价的宽度
+//     // let linewidths = 135 + OriginalPricewidth; //横线
+
+//     ctx.setFillStyle('#FFFFFF') //设置填充色
+//     ctx.setLineWidth("1") //设置线条的宽度
+//     ctx.fillRect(0, 0, 375, 500) //填充一个矩形
+
+//     ctx.setFillStyle("#333333")
+//     ctx.setFontSize(16)
+//     ctx.lineWidth = 1;
+//     // let str = this.data.goodsInfo.goodsName
+//     // if (str.length > 32) {
+//     //   str = str.substring(0, 32) + '...'
+//     // }
+
+//     // that.canvasTextAutoLine('addwwd', ctx, 15, 326, 20) //文字自动调行
+
+//     // ctx.drawImage("../../img/icon_quan.png", 10, 370, 45, 15)
+//     // ctx.setFillStyle("#e84d74")
+//     // ctx.setFontSize(16)
+//     // ctx.fillText('￥' + '', 60, 384)
+//     // ctx.setFillStyle("#666666")
+//     // ctx.setFontSize(12)
+//     // ctx.fillText('原价￥' + '', 130, 383)
+//     // ctx.moveTo(130, 378)
+//     // ctx.lineTo(0, 378)
+//     // ctx.stroke()
+
+//     // ctx.setFillStyle("#666666")
+//     // ctx.setFontSize(12)
+//     // ctx.fillText('限时限量', 240, 383)
+
+//     // ctx.drawImage("https://duoyidian.hzinterconn.cn/freeorder_poster.png", 0, 0, 375, 500)
+//     ctx.drawImage(that.data.canvasImg, 0, 0, 375, 500)
+    
+//     // ctx.setFontSize(22)
+//     // ctx.setFillStyle("#ffffff")
+//     // ctx.fillText('' + '元优惠券', 54, 445)
+
+//     // ctx.setFillStyle("#ffffff")
+//     // ctx.setFontSize(14)
+//     // ctx.fillText('微信内长按二维码领优惠券', 25, 472)
+//     ctx.draw(); //画之前清除以前的（清除）
+
+//     let time = setInterval(function() {
+//       if (miniCode != '') {
+//         clearTimeout(time) //清空定时器
+//         if (that.data.canvasImg != '') {
+//           ctx.drawImage(that.data.canvasImg, 0, 0, 300, 300) //下载海报
+//         }
+//         ctx.drawImage(miniCode, 153, 380, 70, 70) //小程序码
+
+//         ctx.draw(true)
+//         setTimeout(function() {
+//           that.hbImg();
+//           // console.timeEnd("canvas")
+//         }, 500)
+//       }
+//     }, 150)
 
   },
 
+  //保存图片到相册
+  saveImageToPhotosAlbum:function(img){
+    wx.showLoading({
+      title: '加载中',
+    });
+    let that = this;
+    // that.copyTitle();
+    wx.downloadFile({
+      // url: myUrl.mainUrl + 'share/loadFileByUrl?token=' + app.globalData.token + '&url=' + goodsinfo.goodsImg, //转换成二进制流
+      url: that.data.imageUrl, //转换成二进制流
+      success: function(res) {
+        console.log(res);
+        that.setData({
+          hbImgBl: true,
+          hbImg: res.tempFilePath,
+        })
+                  wx.saveImageToPhotosAlbum({
+                    filePath: res.tempFilePath,
+                    success: function() {
+                      wx.hideLoading();
+                      wx.showToast({
+                        title: '分享图已保存',
+                        icon: "success",
+                        duration: 3000
+                      })
+                    },
+                    fail: function() {
+                      wx.hideLoading();
+                      wx.getSetting({
+                        success: (getSetRes) => {
+                          if (!getSetRes.authSetting["scope.writePhotosAlbum"]) {
+                            wx.showModal({
+                              title: '授权提示',
+                              content: '您未授权小程序,将图片保存在你的相册，请点击确定按钮重新授权',
+                              success: (showRes) => {
+                                if (!showRes.confirm) {
+                                  return;
+                                }
+                                wx.openSetting({
+                                  success: () => {
+                                    wx.saveImageToPhotosAlbum({
+                                      filePath: res.tempFilePath,
+                                      success: function() {
+                                        wx.showToast({
+                                          title: '分享图已保存至相册',
+                                          icon: "success",
+                                          duration: 3000
+                                        })
+                                      }
+                                    })
+                                  }
+                                })
+                              }
+                            })
+                          }
+                        }
+                      })
+                    }
+                  })
+      },
+      fail: function() {
+        console.log("安全域名问题失败了")
+      }
+    });
+    
+  },
   // canvas文字自动调行
   canvasTextAutoLine: function(str, ctx, initX, initY, lineHeight) {
     // var lineWidth = 0;
@@ -1053,6 +1259,11 @@ Page({
     })
   },
 
+  toHome: function (e) {
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
+  },
 
 
 })

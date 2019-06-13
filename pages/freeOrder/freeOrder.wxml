@@ -44,8 +44,8 @@
     </view>
     <view style="width:90%;margin:0 auto;background-color:#fff;border-radius:10rpx;">
       <view style="display: flex;justify-content: center;align-items: Center;display: flex;justify-content: center;align-items: Center;height:100rpx;margin-top:30rpx;">
-        <view style="flex:1;text-align:center;color:red;">
-          免单快报
+        <view style="flex:1;text-align:center;color:red;box-sizing:border-box;padding:0 1rem;">
+          <image src="https://duoyidian.hzinterconn.cn/freeorder_news.png" mode="widthFix"/>
         </view>
         <view style="flex:3;border-left:1px solid #ccc;box-sizing:border-box;padding-left:20rpx;">
             <!-- <swiper autoplay="true" interval="1000" circular="true" class="swiper" indicator-color="rgba(255,255,255,0.8)" indicator-active-color="red" indicator-dots="true">
@@ -96,34 +96,43 @@
       </view>
     </view>
     <view style="width:90%;margin:0 auto;">
-      <view style="display:flex;text-align:center;font-size:30rpx;font-weight:bold;">
-        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==0?'c_red':''}}" data-type="0">
+      <view style="display:flex;text-align:center;font-size:36rpx;font-weight:bold;">
+        <view style="flex:1;padding:30rpx 0;" bindtap="switchTab" class="{{free_order_type==0?'c_red':''}}" data-type="0">
           活动预告
           <view wx:if="{{free_order_type==0}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
         </view>
-        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==1?'c_red':''}}" data-type="1">
+        <view style="flex:1;padding:30rpx 0;" bindtap="switchTab" class="{{free_order_type==1?'c_red':''}}" data-type="1">
           正在进行
           <view wx:if="{{free_order_type==1}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
         </view>
-        <view style="flex:1;padding:20rpx 0;" bindtap="switchTab" class="{{free_order_type==2?'c_red':''}}" data-type="2">
+        <view style="flex:1;padding:30rpx 0;" bindtap="switchTab" class="{{free_order_type==2?'c_red':''}}" data-type="2">
           往期回顾
           <view wx:if="{{free_order_type==2}}" style="width:30rpx;border:1px solid #ff2b33;margin:0 auto;" ></view>
         </view>
       </view>
-      <view wx:if="{{noData}}" style="display: flex;justify-content: center;align-items: Center;height:300rpx;width:100%;"> 
+      <view wx:if="{{ifHavaFree==0}}" style="display: flex;justify-content: center;align-items: Center;height:300rpx;width:100%;"> 
         <view>
           <view style="display: flex;justify-content: center;align-items: Center;">
             <image src="https://duoyidian.hzinterconn.cn/nodata_freeorder.png" style="width:130rpx;height:130rpx;"></image>
           </view>
           <!-- <view style="text-align:center;">暂时没有商品哦</view> -->
-           <view style="text-align:center;">免单活动尚未开启，敬请期待</view>
+           <view style="text-align:center;color:#aaa;">免单活动尚未开启，敬请期待</view>
+        </view>
+      </view>
+      <view wx:elif="{{noData}}" style="display: flex;justify-content: center;align-items: Center;height:300rpx;width:100%;"> 
+        <view>
+          <view style="display: flex;justify-content: center;align-items: Center;">
+            <image src="https://duoyidian.hzinterconn.cn/nodata_freeorder.png" style="width:130rpx;height:130rpx;"></image>
+          </view>
+          <!-- <view style="text-align:center;">暂时没有商品哦</view> -->
+           <view style="text-align:center;color:#aaa;">暂时没有商品哦</view>
         </view>
       </view>
 <block wx:if="{{free_order_type==1&&data_list.length>0}}" wx:for="{{data_list}}" wx:key="{{index}}" >
-      <view style="padding:20rpx 0;position:relative;padding-left:40rpx;padding-top:0;overflow:hidden;">
-        <image src="https://duoyidian.hzinterconn.cn/icon_freeorder_small.png" style="position:absolute;left:0;top:10rpx;width:30rpx;height:30rpx;border-radius:15rpx;"></image><text style="font-size:35rpx;font-weight:bold;float:left;">剩余时间</text>
+      <view style="padding:40rpx 0;position:relative;padding-left:50rpx;padding-top:0;overflow:hidden;">
+        <image src="https://duoyidian.hzinterconn.cn/icon_freeorder_small.png" style="position:absolute;left:0;top:5rpx;width:40rpx;height:40rpx;border-radius:15rpx;"></image><text style="font-size:35rpx;font-weight:bold;float:left;">剩余时间</text>
         <view style="display: flex;justify-content: center;align-items: Center;float:left;height:52rpx;margin-left:.1rem;">
-          <text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.days}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">天</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.hour}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">:</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.min}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">:</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.sec}}</text>
+          <text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1.5rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.days}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">天</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1.5rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.hour}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">:</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1.5rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.min}}</text><text style="color:red;display:inline-block;display: flex;justify-content: center;align-items: Center;margin:0 .1rem;">:</text><text style="color:#545454;display:inline-block;background-color:red;color:#fff;width:1.5rem;border-radius:.1rem;text-align:center;display: flex;justify-content: center;align-items: Center;">{{item.sec}}</text>
         </view>
       </view>
       <view style="margin-bottom:.5rem;box-sizing:border-box;display:flex;padding:.4rem .4rem;background-color:#fff;">
@@ -136,7 +145,7 @@
         <view style="flex:3;box-sizing:border-box;padding-left:.4rem;">
           <view style="font-weight:bold;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;" >{{item.goodsName}}</view>
           <view style="padding:10rpx 0;color:#888;overflow:hidden;"><text style="display:inline-block;padding-top:12rpx;">券后￥{{item.endPrice}}</text><text style="float:right;">平台补贴<text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.freePrice}}</text></text></view>
-          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;">到手价 <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.num}} 件</text></view>
+          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;"><text style="color:#F93E41">到手价</text> <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.surplusNum}} 件</text></view>
           <view style="display:flex;">
             <view style="flex:1;display: flex;justify-content: center;align-items: Center;">
               <view style="border-radius:15rpx;height:30rpx;width:100%;overflow:hidden;background-color:#ffbeba;position:relative">
@@ -159,14 +168,19 @@
           <view wx:if="{{item.freeType==1}}" style="z-index:1;position:absolute;border-bottom-right-radius:30rpx;left:0;top:0;color:#fff;background-color:#51b5ff;width:3.5rem;">新人免单</view>
           <view wx:if="{{item.freeType==2}}" style="z-index:1;position:absolute;border-bottom-right-radius:30rpx;left:0;top:0;color:#fff;background-color:#ff7d3b;width:3.5rem;">全员福利</view>
           <view style="display: flex;justify-content: center;align-items: Center;position:absolute;top:0;left:0;height:100%;width:100%;background:#888;opacity:.8;">
-            <view style="display: flex;justify-content: center;align-items: Center;background-color:#000;color:#fff;height:70%;width:70%;border-radius:100%;font-size:30rpx;">即将开抢</view>
+            <view style="display: flex;justify-content: center;align-items: Center;background-color:#000;color:#fff;height:70%;width:70%;border-radius:100%;font-size:30rpx;">
+              <view style="font-size:24rpx;">
+                <view style="border-bottom:1px solid #fff;">{{filter.getTime_(item.startTime)}}</view>
+                <view>{{filter.getDate_(item.startTime)}}</view>
+              </view>
+            </view>
           </view>
           <image src="{{item.goodsPic}}" style="width:100%;"/>
         </view>
         <view style="flex:3;box-sizing:border-box;padding-left:.4rem;">
           <view style="font-weight:bold;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;" >{{item.goodsName}}</view>
           <view style="padding:10rpx 0;color:#888;overflow:hidden;"><text style="display:inline-block;padding-top:12rpx;">券后￥{{item.endPrice}}</text><text style="float:right;">平台补贴<text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.freePrice}}</text></text></view>
-          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;">到手价 <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.num}} 件</text></view>
+          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;"><text style="color:#F93E41">到手价</text> <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.num}} 件</text></view>
           <view style="display:flex;">
             <view style="flex:1;overflow:hidden;">
               <view style="background-color:#ddd;color:#fff;padding:.4rem .4rem;border-radius:.1rem;width:100%;box-sizing:border-box;text-align:center;float:right;">即将开始</view> 
@@ -187,7 +201,7 @@
         <view style="flex:3;box-sizing:border-box;padding-left:.4rem;">
           <view style="font-weight:bold;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;" >{{item.goodsName}}</view>
           <view style="padding:10rpx 0;color:#888;overflow:hidden;"><text style="display:inline-block;padding-top:12rpx;">券后￥{{item.endPrice}}</text><text style="float:right;">平台补贴<text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.freePrice}}</text></text></view>
-          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;">到手价 <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.num}} 件</text></view>
+          <view style="padding-bottom:10rpx;color:#888;overflow:hidden;"><text style="color:#F93E41">到手价</text> <text style="color:#F93E41">￥</text><text style="color:#F93E41;font-size:1rem;">{{item.price-item.price}}</text>    <text style="float:right;display:inline-block;padding-top:12rpx;">剩余 {{item.num}} 件</text></view>
           <view style="display:flex;">
             <view style="flex:1;overflow:hidden;">
               <view style="background-color:#ddd;color:#fff;padding:.4rem .4rem;border-radius:.1rem;width:100%;box-sizing:border-box;text-align:center;float:right;">已结束</view> 
@@ -213,7 +227,7 @@
       </view> -->
     </view>
     
-    <view style="width:90%;margin:0 auto;margin-top:1rem;background-color:#fff;border-radius:10rpx;padding:20rpx 20rpx;box-sizing:border-box;">
+    <view style="width:90%;margin:0 auto;margin-top:2rem;background-color:#fff;border-radius:10rpx;padding:20rpx 20rpx;box-sizing:border-box;">
       <view style="text-align:center;font-size:32rpx;">
         —— 免单流程 ——
       </view>
@@ -268,7 +282,7 @@
     </view>
   <view wx:if="{{showInfo}}" style="z-index:2;background-color:rgba(0,0,0,.6);width:100%;height:100%;position:fixed;top:0;left:0;display: flex;justify-content: center;align-items: Center;">
     <view style="background-color:rgb(255,255,255);border-radius:10rpx;overflow:hidden;">
-      <view style="border-bottom:1px solid #ccc;border-sizing:border-box;padding:60rpx 30rpx;">需要加入会员才能领取免单，现 在是否加入？</view>
+      <view style="border-bottom:1px solid #ccc;border-sizing:border-box;padding:60rpx 30rpx;">需要加入会员才能领取免单，现在是否加入？</view>
       <view style="display:flex;">
         <view bindtap="showOff" style="flex:1;">
           <button style="border:0;padding:0;" >取消</button>
@@ -281,19 +295,30 @@
       </view>
     </view>
   </view>
-  <!-- 分享图+转发好友 -->
-  <canvas style="width: 375px; height: 500px;position:fixed;left:-1000px;" canvas-id="myCanvas"></canvas>
-  
-  <view class="imgMark" wx:if="{{hbImgBl}}">
-    <image src="{{hbImg}}" bindtap='previewImage'></image>
-    <view>这张商品优惠券已自动保存到手机相册</view>
-    <view class='text_t'>快快分享给好友吧</view>
-    <view class='bottom' bindtap='hideMark'>
-      <!-- <button bindtap='copy'>复制微口令</button> -->
-      <text class='text'>我知道了</text>
+  <view wx:if="{{showInfo&&showShareInfo}}" style="position:fixed;bottom:6rem;left:1rem;z-index:6666">
+      <image src="https://duoyidian.hzinterconn.cn/icon_freeorder_arrow.png" mode="widthFix" style="height:2rem;width:2rem;position:fixed;right:6rem;bottom:6rem;"/>
+    <view style="position:relative;">
+      <view style="position:absolute;top:0;left:0;border-radius:50%;background-color:#aaa;height:3rem;width:3rem;z-index:1;overflow:hidden;">
+        <image src="{{share_head_img}}" style="float:left;border-radius:50%;height:3rem;width:3rem;"/>
+      </view>
+      <view style="position:absolute;top:0rem;left:1.5rem;border-top-right-radius:.5rem;background-color:#fec52d;height:1rem;width:5rem;text-align:center;color:#A04420;">{{share_name}}</view>
+      <view style="position:absolute;top:1rem;left:1.5rem;border-radius:.2rem;background-color:#ff5637;height:3rem;width:15rem;color:#fff;box-sizing:border-box;padding:.2rem .2rem;padding-left:2rem;">我已经成功领取免单了~ 成为会员就能 免费领取哟，快来加入吧~</view>
     </view>
   </view>
-
+  <!-- 分享图+转发好友 -->
+  <canvas style="width: 375px; height: 500px;position:fixed;left:-1000px;" canvas-id="myCanvas"></canvas>
+  <image wx:if="{{hbImgBl}}" bindtap='hideMark' src="https://duoyidian.hzinterconn.cn/icon_close_btn.png" style="position:absolute;top:3rem;right:2rem;width:1.5rem;height:1.5rem;z-index:666;"/>
+    
+  <view class="imgMark" wx:if="{{hbImgBl}}">
+    <image src="{{hbImg}}" bindtap='previewImage'></image>
+    <!-- <view>这张商品优惠券已自动保存到手机相册</view> -->
+    <!-- <view class='text_t'>快快分享给好友吧</view> -->
+    <!-- <view class='bottom' style="padding:.4rem .4rem;border-radius:1rem;" bindtap='hideMark'>
+      <button bindtap='copy'>复制微口令</button>
+      <text class='text'>保存图片</text>
+    </view> -->
+  </view>
+    <image wx:if="{{showHomeBtn}}" src="https://duoyidian.hzinterconn.cn/freeorder_to_home_btn.png" bindtap="toHome" style="position:fixed;bottom:2rem;right:.5rem;height:3rem;width:3rem;"/>
     <view style="height:1rem;"></view>
   </view>
 </view>

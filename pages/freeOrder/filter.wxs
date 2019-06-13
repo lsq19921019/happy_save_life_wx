@@ -1,6 +1,34 @@
 var toRate = function(v){
-  return parseInt((v.surplusNum/v.num)*100);
+  var r = (((v.num-v.surplusNum)/v.num)*100).toFixed(2);
+  return r;
 }
+var getTime_ = function(t){
+  var time = t;
+
+    var date =getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+    var hours = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    return (hours<10?'0'+hours:hours)+':'+(min<10?'0'+min:min)+':'+(sec<10?'0'+sec:sec);
+}
+var getDate_ = function(t){
+  var time = t;
+
+  var date =getDate(time);
+  var M = date.getMonth() + 1;
+  var y = date.getFullYear();
+  var d = date.getDate();
+  var hours = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  return (y<10?'0'+y:y)+'-'+(M<10?'0'+M:M)+'-'+(d<10?'0'+d:d);
+}
+
   module.exports = {
     toRate:toRate,
+    getDate_:getDate_,
+    getTime_:getTime_
   };
