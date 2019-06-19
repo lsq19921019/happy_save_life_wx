@@ -47,12 +47,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('==============页面参数==================');
     console.log(options);
+    console.log('==============页面参数==================');
     if(options.userId){
       this.setData({
         share_user_id:options.userId
       });
-      this.getShareInfo(options.userId);
+      // this.getShareInfo(options.userId);
+      // this.getShareInfo(app.globalData.userkey);
+    }else if(options.loginParm){
+      let o = JSON.parse(options.loginParm);
+      this.setData({
+        share_user_id:o.userId
+      });
+      // this.getShareInfo(o.userId);
     }
     if(options.fromhome){
       this.setData({
@@ -62,6 +71,10 @@ Page({
         showShareInfo:false
       });
     }
+    
+    // this.setData({
+    //   showShareInfo:true
+    // });
     this.clearCountTime();
     wx.setNavigationBarTitle({ title: '免单活动'});// title名
     
@@ -296,6 +309,9 @@ Page({
    */
   onShow: function() {
     let that = this;
+    this.getShareInfo();
+    // this.getShareInfo(options.userId);
+    // this.getShareInfo(app.globalData.userkey);
     console.log("roleeeeeeeeeeeee==========="+app.globalData.role+"===========roleeeeeeeeeeeee");
     // wx.showToast({
     //   title: app.globalData.role+'======666666666666666666666',
@@ -310,6 +326,9 @@ Page({
         showInfo: true
       });
     }
+    // that.setData({
+    //   showInfo: true
+    // });
     // that.data.data_list.forEach((ele,index)=>{
     //   // let t_fun='data_list['+index+'].t_fun';
     //   clearInterval(that.data.data_list[index].t_fun)
@@ -371,7 +390,7 @@ Page({
     return {
       title: '拼多多免单活动，火热秒杀中！速来~',
       imageUrl: "https://duoyidian.hzinterconn.cn/share_freeorder.png",
-      path: '/pages/freeOrder/freeOrder?userId=' + app.globalData.user.unionidF + '&id=' + that.data.spreadId + "&platform=" + that.data.platform
+      path: '/pages/freeOrder/freeOrder?userId=' + app.globalData.user.unionidF
     }
   },
   
@@ -467,12 +486,14 @@ Page({
 // http://129.204.138.152:8093/user/r/getFatherInfo?token=mu_65467097-8c8d-4251-93bf-4d54d15958d0&userId=oeWJc1LNZD12o-CNm909be6ssGMQ
   getShareInfo:function(id_){
     let that = this;
-    let pams = {token:app.globalData.token, userId:id_}
+    let pams = {token:app.globalData.token}
     util.request(myUrl.mainUrl + 'user/r/getFatherInfo?', pams, 'GET', 1, function(resp) {
+      console.log('============分享人信息================');
       console.log(resp);
+      console.log('============分享人信息================');
       if(resp.data.result==='OK'){
         that.setData({
-          share_head_img:resp.data.headImg?resp.data.headImg:'暂无信息',
+          share_head_img:resp.data.headImg,
           share_name:resp.data.nickName?resp.data.nickName:'暂无信息'
         });
       }
@@ -518,6 +539,18 @@ Page({
             util.request(myUrl.mainUrl + 'pdd/free/index?', pams, 'GET', 1, function(resp) {
               console.log(resp);
               if(resp.data.result==='OK'){
+                wx.removeStorage({
+                  key: 'url_free_order',
+                  success: function(res) {
+                    console.log(res);
+                  },
+                });
+                wx.removeStorage({
+                  key: 'opn_free_order',
+                  success: function(res) {
+                    console.log(res);
+                  },
+                });
                 that.setData({
                   ifHavaFree:resp.data.ifHavaFree
                 });
@@ -965,6 +998,13 @@ Page({
           that.saveImageToPhotosAlbum(resp.data.img);
           // console.timeEnd("canvas")
         }, 500)
+      }else{
+        wx.showToast({
+          title: res.data.result,
+          mask: "true",
+          icon: 'none',
+          duration: 3000
+        })
       }
     });
   },

@@ -33,6 +33,7 @@
     "pages/freeOrder/incomelist/incomelist",
     "pages/freeOrder/deposit/deposit",
     "pages/freeOrder/ruleFreeOrder/ruleFreeOrder",
+    "pages/freeOrder/Alipay/Alipay",
     "pages/incomelist/incomelist"
   ],
   "subPackages": [

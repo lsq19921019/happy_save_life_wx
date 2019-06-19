@@ -42,7 +42,7 @@ Page({
       console.log(res.data);
       if (res.data.result == 'OK') {
         that.setData({
-          // page_num:res.data.list.length,
+          page_num:res.data.list.length,
           data_list: res.data.list,
           page_size: p_size+1
         });

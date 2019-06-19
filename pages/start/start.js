@@ -11,6 +11,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options);
     var that = this;
 
     //响应式高度
@@ -28,9 +29,29 @@ Page({
       }
     });
     
+    console.log('==========*********===========启动页参数==========*********===========');
+    console.log('===========启动URL==========');
+    console.log(wx.getStorageSync('url_free_order'));
+    console.log('===========启动URL==========');
     //接收返回过来的options
-    that.data.options = options;
-    options = JSON.parse(options.options)     //params
+    if(wx.getStorageSync('url_free_order')){
+      console.log('======freeorder=======');
+      that.data.options = wx.getStorageSync('opn_free_order');
+      options = wx.getStorageSync('opn_free_order');     //params
+      console.log(options);
+      console.log('======freeorder=======');
+    }else{
+      console.log('======otherpage=======');
+      that.data.options = options;
+      // if(opnions.loginParm){
+      //   options = options.options     //params
+      // }else{
+        options = JSON.parse(options.options)     //params
+      // }
+      console.log(options);
+      console.log('======otherpage=======');
+    }
+    console.log('==========*********===========启动页参数==========*********===========');
 
     // 设置标题
     wx.setNavigationBarTitle({
@@ -75,14 +96,57 @@ Page({
         icon: 'none',
         duration: 3000,
       })
-
-      var options1 = getCurrentPages()[getCurrentPages().length - 1].options
-
-      console.log(options1);
+      var options1 = {};
+      if(wx.getStorageSync('url_free_order')){
+        options1 = {};
+        // var options1 = wx.getStorageSync('opn_free_order');
+        console.log('=====================启动页参数==freeorder===================');
+        // console.log(options1);
+        // // console.log(options1.route);
+        // // console.log(options1);
+        // console.log(options1.route);
+        // console.log(options1.options);
+        options1.options = wx.getStorageSync('opn_free_order');
+        options1.route = wx.getStorageSync('url_free_order');
+        console.log('=====================启动页参数==freeorder===================');
+        
+      }else{
+        options1 = getCurrentPages()[getCurrentPages().length - 1].options
+        console.log('=====================启动页参数=====================');
+        console.log(options1);
+        // console.log(options1.route);
+        // console.log(options1);
+        console.log(options1.route);
+        console.log(options1.options);
+        if(JSON.parse(options1.options).route){
+          wx.setStorageSync("url_free_order",JSON.parse(options1.options).route);
+          wx.setStorageSync("opn_free_order",JSON.parse(options1.options).options);
+        }
+        console.log('=====================启动页参数=====================');
+      }
+      
+      // console.log(options1.options.replace('\',''));
+      // if(options1.route.indexOf('freeOrder')>-1){
+      //   options1.options={};
+      // }
       setTimeout(() => {
-
+        if(wx.getStorageSync('url_free_order')){
+          // var options1 = wx.getStorageSync('opn_free_order');
+          console.log('=====================启动页参数==freeorder===================');
+          // console.log(options1);
+          // // console.log(options1.route);
+          // // console.log(options1);
+          // console.log(options1.route);
+          // console.log(options1.options);
+          options1.options = {};
+          options1.route = '/pages/freeOrder/freeOrder';
+          console.log(wx.getStorageSync('url_free_order'));
+          console.log('=====================启动页参数==freeorder===================');
+          
+        }
         wx.reLaunch({
           url: options1.route + '?loginParm=' + options1.options,
+          // url: options1.route + '?loginParm={}',
 
           fail: function () {
             console.log('跳转到tabbar页面失败,直接默认跳转到首页')//跳转失败，直接默认跳转到首页
@@ -99,6 +163,22 @@ Page({
             //   icon: 'none',
             //   duration: 3000,
             // })
+          },
+          success: function(){
+            // if(options1.route.indexOf('freeOrder')>-1){
+            //   wx.removeStorage({
+            //     key: 'url_free_order',
+            //     success: function(res) {
+            //       console.log(res);
+            //     },
+            //   });
+            //   wx.removeStorage({
+            //     key: 'opn_free_order',
+            //     success: function(res) {
+            //       console.log(res);
+            //     },
+            //   });
+            // }
           }
         })
 

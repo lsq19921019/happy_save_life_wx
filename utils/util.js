@@ -19,6 +19,9 @@ const utilMd5 = require('md5.js');
 
 
 function request(url, data, method, load, callback, options) {
+  
+  // wx.setStorageSync("url_free_order", '');
+  // wx.setStorageSync('opn_free_order', '');
   if (load == 1) {
     wx.showLoading({
       mask: true,
@@ -37,7 +40,7 @@ function request(url, data, method, load, callback, options) {
   //每个接口都要加partnerId和签名,
   data.partnerId = getApp().globalData.partnerId;
   if(url.indexOf('pddPromotion')>-1){
-console.log(data);
+    console.log(data);
   }
   data.sign = czParms(data);
   wx.request({
@@ -49,9 +52,17 @@ console.log(data);
     method: method,
     success: function (res) {
       load == 1 ? wx.hideLoading() : '';
+      console.log('=======接口全局拦截=========');
+      console.log(res);
+      console.log('=======接口全局拦截=========');
       if (res.data.result == 'login') {
         var url = getCurrentPages()[getCurrentPages().length - 1].route; //本页面路径    
         var options = getCurrentPages()[getCurrentPages().length - 1].options; //参数
+        console.log(url);
+        if(url.indexOf('freeOrder')>-1){
+          wx.setStorageSync("url_free_order", url);
+          wx.setStorageSync('opn_free_order',JSON.stringify(options));
+        }
         options = options.loginParm ? JSON.parse(options.loginParm) : options; //如果参数是登录进来的options=options.loginParm
         console.log(options);
         wx.reLaunch({
@@ -197,11 +208,14 @@ function loginFlow(app, load, callback) {
         appid: app.globalData.APPID,
         secret: app.globalData.AppSecret
       }
-
+      console.log(props);
       //第三方调用的接口
       let ifExt = null;
       app.globalData.ext ? ifExt = 'mini/user/componentOauth' : ifExt = 'mini/user/oauthByAppid';
       request(myUrl.userUrl + ifExt, props, "GET", load, function (res) {
+        console.log("=========微信登录success===========");
+        console.log(res);
+        console.log("=========微信登录success===========");
         let iscancel = res.errMsg.split(":")[1]
         if (iscancel != 'ok') {
           wx.showToast({
@@ -225,7 +239,9 @@ function loginFlow(app, load, callback) {
       })
     },
     fail: (res) => {
+      console.log("=========微信登录fail===========");
       console.log(res);
+      console.log("=========微信登录fail===========");
       wx.showToast({
         title: res.errMsg,
         icon: 'none',

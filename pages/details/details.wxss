@@ -291,7 +291,16 @@
   align-items: center;
   flex-direction: column;
 }
-
+.indexHImg_fixded{
+  margin: 0 auto 10rpx auto!important;
+  /* margin-bottom: 10rpx; */
+}
+.indexH_fixded{
+  width:60%!important;
+}
+.indexH_fixded_{
+  width:40%!important;
+}
 .indexHImg {
   width: 34rpx;
   height: 34rpx;

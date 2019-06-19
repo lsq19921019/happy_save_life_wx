@@ -217,7 +217,7 @@
     <view style="height:110rpx;"></view>
     <view class='bonFixed'>
       <view class='left'>
-        <view class='indexH' bindtap="index">
+        <view class='indexH indexH_fixded_' bindtap="index">
           <view class='indexHImg'>
             <image src='https://bnlnimg.bnln100.com/detail_index.png'></image>
           </view>
@@ -238,12 +238,14 @@
         </block>
 
         <block wx:else>
-          <view class='indexH' bindtap="canvasFn">
-            <view class='indexHImg'>
-              <image src='https://bnlnimg.bnln100.com/detail_share.png'></image>
-            </view>
-            <view class='indexHkFont'>
-              分享商品
+          <view class='indexH indexH_fixded' bindtap="canvasFn">
+            <view>
+              <view class='indexHImg indexHImg_fixded'>
+                <image src='https://bnlnimg.bnln100.com/detail_share.png'></image>
+              </view>
+              <view class='indexHkFont'>
+                分享商品
+              </view>
             </view>
           </view>
         </block>
