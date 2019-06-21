@@ -94,7 +94,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-
+    // debugger;
     wx.setNavigationBarTitle({
       title: app.globalData.title
     })

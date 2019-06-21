@@ -74,8 +74,8 @@
 
     </view>
     
-    <!-- 面单活动页面 -->
-    <view style="width:100%;box-sizing:border-box;padding:10rpx 10rpx;">
+    <!-- 面单活动页面banner -->
+    <view wx:if="{{ifFree}}" style="width:100%;box-sizing:border-box;padding:10rpx 10rpx;">
       <image src="https://duoyidian.hzinterconn.cn/banner_index_freeorder.png" data-isfree="{{ifFree}}" bindtap="toFreeOrder" mode="widthFix"></image>
     </view>
 
